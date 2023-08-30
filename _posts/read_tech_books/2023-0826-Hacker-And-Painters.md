@@ -1,3 +1,15 @@
+---
+title: "Hacker and painters"
+subtitle: "引言"
+layout: post
+author: "Liu Xin"
+published: false
+header-style: text
+tags:
+  - Career Growth
+  - CS books
+---
+
 # Hackers and  Painters
 
 ## Why read this book?
