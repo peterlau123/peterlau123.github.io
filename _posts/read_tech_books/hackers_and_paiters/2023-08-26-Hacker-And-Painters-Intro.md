@@ -3,7 +3,7 @@ title: "Hacker and painters"
 subtitle: "引言"
 layout: post
 author: "Liu Xin"
-published: false
+published: true
 header-style: text
 tags:
   - Career Growth
