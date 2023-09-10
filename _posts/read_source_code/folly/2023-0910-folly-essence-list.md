@@ -1,3 +1,15 @@
+---
+title: "Folly"
+subtitle: "Plan list"
+layout: post
+author: "Peter Lau"
+published: true
+header-style: text
+tags:
+  - C++
+  - Open Source
+---
+
 # folly essence list
 
 The following list is a catelog of code components of folly library which I will 

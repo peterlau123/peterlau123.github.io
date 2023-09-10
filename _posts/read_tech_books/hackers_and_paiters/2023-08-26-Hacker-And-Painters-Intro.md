@@ -1,8 +1,8 @@
 ---
 title: "Hacker and painters"
-subtitle: "引言"
+subtitle: "Introduction"
 layout: post
-author: "Liu Xin"
+author: "Peter Lau"
 published: true
 header-style: text
 tags:
