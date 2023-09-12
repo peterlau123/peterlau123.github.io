@@ -17,3 +17,14 @@ tags:
 ### Daily problems
 
 
+#### Rule  format
+
+A recipe should always start with a Tab
+
+
+#### Variable
+
+"*** empty variable name"
+
+
+
