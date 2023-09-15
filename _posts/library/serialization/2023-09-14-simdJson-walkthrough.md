@@ -12,3 +12,19 @@ tags:
 ---
 
 # simdJson
+
+## Motivation
+
+
+
+## Features
+
+### Fast
+
+### Less memory consumption
+
+
+
+## Mechanism
+
+But how to do to support the folliwing features?
