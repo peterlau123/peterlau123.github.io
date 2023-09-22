@@ -7,7 +7,7 @@ published: true
 header-style: text
 tags:
   - Framework
-  - Artificial Intelligence
+  - Deep Learning
 ---
 
 # Memory

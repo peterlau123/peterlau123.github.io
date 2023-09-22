@@ -12,9 +12,13 @@ tags:
 
 # TODO tasks
 
-## 2023.09.11
-
 ### Questions
+
+## 2023.09.22
+
+1. Why does SD XL run more slowly in T4 than RTX 4090 when under the same settings in onnxruntime ?
+
+## 2023.09.11
 
 1.why does onnxruntime consume much more memory than corresponding pytorch model?
 
