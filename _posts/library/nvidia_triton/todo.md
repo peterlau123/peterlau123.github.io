@@ -18,14 +18,3 @@
 1.tritonserver starts each model instance  via thread or process?
 
 2.Does triton support multiple differnent backends work together?
-
-### features
-
-1.A request can have multiple responses
-
-2.repository agent 
-
-responsible for authntification
-
-3.each model instance can be set *rate limit*,*resources*,*priority*
-
