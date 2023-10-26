@@ -1,9 +1,9 @@
 ---
 title: "Pytorch"
-subtitle: "Memory"
+subtitle: "内存管理机制"
 layout: post
 author: "Peter Lau"
-published: true
+published: false
 header-style: text
 tags:
   - Framework

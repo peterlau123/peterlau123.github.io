@@ -1,3 +1,14 @@
+---
+title: "mediapipe"
+subtitle: "问题"
+layout: post
+author: "Peter Lau"
+published: false
+header-style: text
+tags:
+  - mediapipe
+  - C++
+---
 
 # packet
 数据结构的设计，不是直接packet<T>的形式，而是HolderBase-->Holder<T>，Holder<T>是packet成员变量的形式

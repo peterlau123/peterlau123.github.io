@@ -1,73 +1,18 @@
 ---
 title: "ONNXRuntime"
-subtitle: "Code Walkthrough"
+subtitle: "API"
 layout: post
 author: "Peter Lau"
 published: true
 header-style: text
 tags:
-  - Framework
   - Deep Learning
+  - Framework
 ---
 
-# Code walkthrough
+近期的工作由于经常涉及到基于onnxruntime进行模型部署，本着学啥熟悉啥的习惯，上来第一件事就是浏览了它的API。onnxruntime API带给我最大的感觉是清晰，让开发者很难会去误用它的接口。
 
-## Classes and config
-
-### Classes
-
-### Config
-
-## Mechanisms
-
-
-## workflows
-
-
-### Whole workflow
-
-```
-graph TD;
-
-A[Create Environment] --> B[Create inference session]
-
-B --> C[Run the session]
-
-```
-
-### Environment  creation
-
-1. Init ortEnv
-
-2. set inter/intra op thread pool
-
-3. set shared_allocators
-
-4. set logging manager
-
-### Session Initialize
-
-1. set allocator
-
-2. transform graph
-
-    + do graph partitioning
-
-### Session Run
-
-1. provider run/start
-
-2. execute graph
-
-
-## Lessons
-
-### API
-
-Good APIs
-
-The APISs  use macros to indicate the input,output,return and also some possible notes when using
-
+*include/onnxruntime/core/session/onnxruntime_c_api.h*开头的一段代码就展示了为API的输入和输出等制定的宏。
 
 ```c++
 #define _Out_
@@ -90,9 +35,8 @@ The APISs  use macros to indicate the input,output,return and also some possible
 ```
 
 
+进一步，我们观察一个主要API，**Run**
 ```c++
-ORT_API2_STATUS(CreateEnv, OrtLoggingLevel log_severity_level, _In_ const char* logid, _Outptr_ OrtEnv** out);
-
 /** \brief Run the model in an ::OrtSession
  *
  * Will not return until the model run has completed. Multiple threads might be used to run the model based on
@@ -118,12 +62,7 @@ ORT_API2_STATUS(Run, _Inout_ OrtSession* session, _In_opt_ const OrtRunOptions* 
                _Inout_updates_all_(output_names_len) OrtValue** outputs);
 ```
 
-### minimal build
+可以看到，输入与输出被很明显的标记出来。不仅如此，对于数组，可以很清晰地看到它的大小约束；对于参数的读/写属性，也可以很方便通过**_In_reads_**和**_Inout_updates_all_**确认。
 
-I often see minimal build in TensorRT and onnxruntime
+好的API就应该这样书写！
 
-for example
-
-onnxruntime has ORT model format to support memory constrained scenarios
-
-But what is being cut off?

@@ -1,13 +1,13 @@
 ---
 title: "NVIDIA Triton"
-subtitle: "Architecture"
+subtitle: "架构"
 layout: post
 author: "Peter Lau"
-published: true
+published: false
 header-style: text
 tags:
-  - Model Serving
-  - Artificial Intelligence
+  - Deep Learning
+  - Framework
 ---
 
 ## Architecture

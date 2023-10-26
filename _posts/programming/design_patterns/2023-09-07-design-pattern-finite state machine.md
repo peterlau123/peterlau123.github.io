@@ -1,9 +1,9 @@
 ---
 title: "Design Pattern"
-subtitle: "Finite state machine"
+subtitle: "有限状态机"
 layout: post
 author: "Peter Lau"
-published: true
+published: false
 header-style: text
 tags:
   - Design Patterns

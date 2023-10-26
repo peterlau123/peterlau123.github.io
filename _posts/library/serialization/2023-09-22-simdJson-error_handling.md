@@ -24,27 +24,29 @@ A[std::pair<T,error_code>] --> B[simdjson::internal::simdjson_result_base<T>]
 B --> C[simdjson::simdjson_result<T>]
 ```
 
-通过上面**simdjson::**
+通过上面类层级，可知**simdjson::simdjson_result<t>**通过**std::pair<T,error_code>**将错误码与值绑定在一起。
 
 ```c++
-simdjson::simdjson_result< T >
+simdjson_warn_unused simdjson_inline error_code     get (T &value) &&noexcept;
+
+simdjson_inline error_code  error () const noexcept;
+
+simdjson_inline T &  value () &noexcept(false);
+
+simdjson_inline T &&  value () &&noexcept(false);
+
 ```
 
-This struct put value and error together,it is useful when we donnot want to take extra action when return result while exception occurs.
+我们可以像上面API所示，方便的取出值和其绑定的错误码。另外，为了更加方便的使用，simdJson提供了如下API
 
-As usual,we would like to return default result or fill it with values indicating failure.Instead, done in the above way,we can just check the error inside the above struct.
-
-Very convenient and make code more concise.
-
-```c+++
-simdjson_inline error_code  error () const noexcept
-
-simdjson_inline T &     value () &noexcept(false)
+```c++
+simdjson_inline     operator T&& () &&noexcept(false);
 ```
 
+这样，我们就可以直接在**simdjson::simdjson_result<T>**的对象上调用**T**的方法。
 
 
-References
+参考链接：
 
 1. Rust option
 

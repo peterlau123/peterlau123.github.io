@@ -1,3 +1,16 @@
+---
+title: "mediapipe"
+subtitle: "其他"
+layout: post
+author: "Peter Lau"
+published: false
+header-style: text
+tags:
+  - mediapipe
+  - C++
+---
+
+
 # 线程
 ## Thread safety annotations 
 代码中大量使用了thread safety annotations，为了方便在编译期就检查mutex的使用正确性

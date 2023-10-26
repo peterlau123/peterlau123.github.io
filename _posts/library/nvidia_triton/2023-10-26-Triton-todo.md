@@ -1,3 +1,15 @@
+---
+title: "NVIDIA Triton"
+subtitle: "待办项"
+layout: post
+author: "Peter Lau"
+published: false
+header-style: text
+tags:
+  - Deep Learning
+  - Framework
+---
+
 # TODO
 
 ## 2023.09.05

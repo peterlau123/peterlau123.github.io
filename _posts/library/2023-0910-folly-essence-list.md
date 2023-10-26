@@ -3,11 +3,11 @@ title: "Folly"
 subtitle: "Plan list"
 layout: post
 author: "Peter Lau"
-published: true
+published: false
 header-style: text
 tags:
+  - folly
   - C++
-  - Open Source
 ---
 
 # folly essence list
