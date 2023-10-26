@@ -1,6 +1,6 @@
 ---
 title: "The Pragmatic Programmer"
-subtitle: "重点摘录"
+subtitle: "务实的哲学"
 layout: post
 author: "Peter Lau"
 published: true
@@ -45,11 +45,3 @@ tags:
 
 
 技术在日新月异的变化着，个人技能也要像产品版本一样，不断有更新和升级。
-
-
-
-## 务实的方法
-
-### ETC
-
-Easier to change的缩写

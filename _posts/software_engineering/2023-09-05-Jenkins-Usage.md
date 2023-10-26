@@ -1,9 +1,9 @@
 ---
 title: "Jenkins"
-subtitle: "Usage"
+subtitle: "如何搭建一个CI"
 layout: post
 author: "Peter Lau"
-published: true
+published: false
 header-style: text
 tags:
   - CI/CD

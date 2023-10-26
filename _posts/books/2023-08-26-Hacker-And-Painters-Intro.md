@@ -1,6 +1,6 @@
 ---
 title: "Hacker and painters"
-subtitle: "Introduction"
+subtitle: "这是本什么书"
 layout: post
 author: "Peter Lau"
 published: true
@@ -9,10 +9,6 @@ tags:
   - Career Growth
   - CS books
 ---
-
-# Hackers and  Painters
-
-## Why read this book?
 
 这本书名字粗看起来将画家与黑客联系在一起，有点毛不着头脑。刚开始我看到书名，着实感到有点莫名奇妙，不知所以。直到最近，我阅读完书籍，有了许多心的思考。
 

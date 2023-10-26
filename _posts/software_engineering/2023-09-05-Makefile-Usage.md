@@ -1,9 +1,9 @@
 ---
 title: "Makefile"
-subtitle: "Usage"
+subtitle: "使用实践规范"
 layout: post
 author: "Peter Lau"
-published: true
+published: false
 header-style: text
 tags:
   - Software Engineering Tools
