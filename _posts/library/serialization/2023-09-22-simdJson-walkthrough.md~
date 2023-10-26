@@ -1,30 +1,39 @@
 ---
 title: "simdJson"
-subtitle: "Error handling"
+subtitle: "Code Walkthrough"
 layout: post
 author: "Peter Lau"
 published: true
 header-style: text
 tags:
+  - Framework
   - Serialization/Deserialization
-  - simdJson
   - C++
 ---
 
+# simdJson
 
-最近在进行C++的差错处理时，经常碰到如果函数内部发生异常或错误，返回结果该怎么设置的问题。最常见的办法是为可能出现的异常或错误，设置对应的返回数值，这样当调用者拿到结果时，检查返回值就可以知道函数工作是否正常了；另外一种办法可能就是为函数配备错误码，返回值放到函数中按照引用来标记，将错误作为返回值，调用者可以直接根据错误码就行判断。
-
-在simdJson的错误处理中，我看到了另一种处理方法，就是将**输出数值**与**错误信息**绑定。
+## Motivation
 
 
-```mermaid
-graph TD;
 
-A[std::pair<T,error_code>] --> B[simdjson::internal::simdjson_result_base<T>]
-B --> C[simdjson::simdjson_result<T>]
-```
+## Features
 
-通过上面**simdjson::**
+### Fast
+
+### Less memory consumption
+
+
+
+## Mechanism
+
+But how to do to support the folliwing features?
+
+## Lessons
+
+### Systematic error handling
+
+In its code, I usually see the struct
 
 ```c++
 simdjson::simdjson_result< T >
