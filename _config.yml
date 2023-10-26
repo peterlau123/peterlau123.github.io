@@ -73,7 +73,7 @@ netease_comment: false
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
-sidebar-about-description: "要做一个有 理想与现实兼顾 的程序员"
+sidebar-about-description: "要做一个有 理想与现实兼顾 的工程师"
 #sidebar-avatar: https://github.com/Huxpro.png # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags
@@ -88,6 +88,6 @@ service-worker: true
 page-mathjax: false
 
 # Friends
-friends:
-  [
-  ]
+#friends:
+#  [
+#  ]
