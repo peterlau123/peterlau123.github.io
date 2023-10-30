@@ -3,7 +3,7 @@ title: "mediapipe"
 subtitle: "数据结构"
 layout: post
 author: "Peter Lau"
-published: true
+published: false
 header-style: text
 tags:
   - mediapipe
