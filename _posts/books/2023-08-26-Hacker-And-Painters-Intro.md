@@ -1,6 +1,6 @@
 ---
 title: "Hacker and painters"
-subtitle: "这是本什么书"
+subtitle: "重点摘录"
 layout: post
 author: "Peter Lau"
 published: true

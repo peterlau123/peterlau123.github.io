@@ -1,6 +1,6 @@
 ---
 title: "The Pragmatic Programmer"
-subtitle: "务实的哲学"
+subtitle: "重点摘录"
 layout: post
 author: "Peter Lau"
 published: true
