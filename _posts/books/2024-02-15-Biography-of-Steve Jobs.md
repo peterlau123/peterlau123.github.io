@@ -10,7 +10,7 @@ tags:
 ---
 
 
-![Steve Jobs and Steve Wozniak](./images/steve_jobs_and_wozniak.jpeg)
+![Steve Jobs and Steve Wozniak](https://github.com/peterlau123/peterlau123.github.io/blob/master/_posts/books/images/steve_jobs_and_wozniak.jpeg)
 
 # 营销
 
