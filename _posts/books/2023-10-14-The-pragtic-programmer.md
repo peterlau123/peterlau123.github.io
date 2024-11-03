@@ -1,6 +1,6 @@
 ---
-title: "The Pragmatic Programmer"
-subtitle: "重点摘录"
+title: "读书笔记"
+subtitle: "The Pragmatic Programmer"
 layout: post
 author: "Peter Lau"
 published: true

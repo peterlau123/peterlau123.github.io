@@ -1,9 +1,9 @@
 ---
-title: "Fundamentals of software architecture"
-subtitle: "Overview of architecture styles"
+title: "Overview of architecture styles"
+subtitle: "Fundamentals of software architecture"
 layout: post
 author: "Peter Lau"
-published: false
+published: true
 header-style: text
 tags:
   - CS books

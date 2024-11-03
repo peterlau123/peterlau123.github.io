@@ -1,6 +1,6 @@
 ---
-title: "史蒂夫·乔布斯传"
-subtitle: "Book notes"
+title: "读书笔记"
+subtitle: "史蒂夫.乔布斯传"
 layout: post
 author: "Peter Lau"
 published: true

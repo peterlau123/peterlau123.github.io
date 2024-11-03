@@ -1,6 +1,6 @@
 ---
-title: "Hacker and painters"
-subtitle: "重点摘录"
+title: "读书笔记"
+subtitle: "Hacker and painters"
 layout: post
 author: "Peter Lau"
 published: true
