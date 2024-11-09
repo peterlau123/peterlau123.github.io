@@ -6,7 +6,8 @@ author: "Peter Lau"
 published: true
 header-style: text
 tags:
-  - Career Growth
+  - Computer science
+  - Growth
 ---
 
 # The pragmatic Programmer重点摘录

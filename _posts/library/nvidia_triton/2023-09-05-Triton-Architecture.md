@@ -6,8 +6,8 @@ author: "Peter Lau"
 published: false
 header-style: text
 tags:
+  - Computer science
   - Deep Learning
-  - Framework
 ---
 
 ## Architecture

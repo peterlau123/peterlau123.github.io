@@ -6,8 +6,9 @@ author: "Peter Lau"
 published: false
 header-style: text
 tags:
+  - Computer science
   - CI/CD
-  - Software Engineering Tools
+  - Software Engineering
 ---
 
 # Jenkins

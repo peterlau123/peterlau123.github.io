@@ -6,7 +6,8 @@ author: "Peter Lau"
 published: true
 header-style: text
 tags:
-  - CS books
+  - Computer science
+  - software architecture
 ---
 
 

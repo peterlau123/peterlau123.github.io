@@ -6,8 +6,7 @@ author: "Peter Lau"
 published: true
 header-style: text
 tags:
-  - Serialization/Deserialization
-  - simdJson
+  - Computer sciende
   - C++
 ---
 

@@ -6,7 +6,8 @@ author: "Peter Lau"
 published: false
 header-style: text
 tags:
-  - Software Engineering Tools
+  - Computer science
+  - Software Engineering
 ---
 
 # Makefile

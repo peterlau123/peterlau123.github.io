@@ -6,8 +6,8 @@ author: "Peter Lau"
 published: true
 header-style: text
 tags:
-  - Career Growth
-  - CS books
+  - Computer science
+  - Growth
 ---
 
 这本书名字粗看起来将画家与黑客联系在一起，有点毛不着头脑。刚开始我看到书名，着实感到有点莫名奇妙，不知所以。直到最近，我阅读完书籍，有了许多心的思考。

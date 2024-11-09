@@ -6,8 +6,8 @@ author: "Peter Lau"
 published: false
 header-style: text
 tags:
-  - Framework
-  - Artificial Intelligence
+  - Computer science
+  - Deep Learning
 ---
 
 # Memory
