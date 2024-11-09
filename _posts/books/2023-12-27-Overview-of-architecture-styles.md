@@ -7,7 +7,8 @@ published: true
 header-style: text
 tags:
   - Computer science
-  - software architecture
+  - Software
+  - Software architecture
 ---
 
 
