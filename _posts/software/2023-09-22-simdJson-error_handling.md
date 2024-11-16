@@ -1,6 +1,6 @@
 ---
-title: "simdJson"
-subtitle: "Error handling"
+title: "Error handling"
+subtitle: "simdJson"
 layout: post
 author: "Peter Lau"
 published: true
