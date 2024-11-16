@@ -1,6 +1,6 @@
 ---
-title: "读书笔记"
-subtitle: "The Pragmatic Programmer"
+title: "务实的哲学"
+subtitle: "程序员修炼之道"
 layout: post
 author: "Peter Lau"
 published: true
@@ -9,8 +9,6 @@ tags:
   - Computer science
   - Growth
 ---
-
-# The pragmatic Programmer重点摘录
 
 ## 务实的哲学
 
@@ -88,6 +86,3 @@ tags:
 
 
 技术在日新月异的变化着，个人技能也要像产品版本一样，不断有更新和升级。
-
-
-### 交流
