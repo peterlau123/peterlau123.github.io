@@ -74,14 +74,18 @@
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        console.log("Mermaid initialization starting...");
         mermaid.initialize({
           startOnLoad: true,
           theme: 'default',
+          securityLevel: 'loose',
           flowchart: {
             useMaxWidth: true,
-            htmlLabels: true
+            htmlLabels: true,
+            curve: 'basis'
           }
         });
+        console.log("Mermaid initialization complete");
       });
     </script>
 </head>
