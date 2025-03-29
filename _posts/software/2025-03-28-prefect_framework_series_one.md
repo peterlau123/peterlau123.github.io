@@ -11,10 +11,12 @@ tags:
   - Python
 ---
 
-<div style="text-align: center">
-    <img src="{{ site.baseurl }}/img/prefect/prefect_logo.png" alt="prefect logo" width="300" height="200" style="display: block; margin: 0 auto;">
-    <em style="color: #666; display: block; margin-top: 10px;">prefect logo</em>
-</div>
+
+<figure style="text-align: center">
+    <img class="prefect logo" src="/img/prefect/prefect_logo.png" width="300" height="200">
+    <figcaption style="font-style: italic; color: #666;">prefect logo</figcaption>
+</figure>
+
 
 ## 背景
 
@@ -88,25 +90,25 @@ prefect server start
 运行本地按照prefect flow编写的脚本，流程监控如下
 
 
-<div style="text-align: center">
-    <img src="{{ site.baseurl }}/img/prefect/prefect_dashboard_flow_task.png" alt="prefect dashboard" width="260" height="200" style="display: block; margin: 0 auto;">
-    <em style="color: #666; display: block; margin-top: 10px;">prefect dashboard</em>
-</div>
+<figure style="text-align: center">
+    <img class="prefect dashboard" src="/img/prefect/prefect_dashboard_flow_task.png" width="400" height="250">
+    <figcaption style="font-style: italic; color: #666;">prefect dashboard</figcaption>
+</figure>
 
 prefect dashboard 可以总览最近运行的flow和task
 
 
-<div style="text-align: center">
-    <img src="{{ site.baseurl }}/img/prefect/prefect_runs.png" alt="prefect runs" width="260" height="200" style="display: block; margin: 0 auto;">
-    <em style="color: #666; display: block; margin-top: 10px;">prefect runs</em>
-</div>
+<figure style="text-align: center">
+    <img class="prefect runs" src="/img/prefect/prefect_runs.png" width="400" height="250">
+    <figcaption style="font-style: italic; color: #666;">prefect runs</figcaption>
+</figure>
 
 prefect runs可以查询各种运行状态的flow和task
 
 
-<div style="text-align: center">
-    <img src="{{ site.baseurl }}/img/prefect/prefect_flow_detail.png" alt="flow detail" width="260" height="200" style="display: block; margin: 0 auto;">
-    <em style="color: #666; display: block; margin-top: 10px;">prefect flow detail</em>
-</div>
+<figure style="text-align: center">
+    <img class="flow detail" src="/img/prefect/prefect_flow_detail.png" width="400" height="250">
+    <figcaption style="font-style: italic; color: #666;">prefect flow detail</figcaption>
+</figure>
 
 prefect flow可以查询flow运行时的日志和行为
