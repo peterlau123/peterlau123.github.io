@@ -12,9 +12,8 @@ tags:
 ---
 
 
-![prefect tag]({{ site.baseurl }}/img/prefect/prefect_logo.png)
 <figure style="text-align: center">
-    <img class="prefect logo" src="{{ site.baseurl }}/img/prefect/prefect_logo.png" width="260" height="200">
+    <img class="prefect logo" src="/img/prefect/prefect_logo.png" width="260" height="200">
     <figcaption style="font-style: italic; color: #666;">prefect logo</figcaption>
 </figure>
 
