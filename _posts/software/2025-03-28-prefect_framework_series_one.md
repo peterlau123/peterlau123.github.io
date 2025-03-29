@@ -12,9 +12,9 @@ tags:
 ---
 
 
-![prefect tag](/img/prefect/prefect_logo.png)
+![prefect tag]({{ site.baseurl }}/img/prefect/prefect_logo.png)
 <figure style="text-align: center">
-    <img class="prefect logo" src="/img/prefect/prefect_logo.png" width="260" height="200">
+    <img class="prefect logo" src="{{ site.baseurl }}/img/prefect/prefect_logo.png" width="260" height="200">
     <figcaption style="font-style: italic; color: #666;">prefect logo</figcaption>
 </figure>
 
@@ -92,7 +92,7 @@ prefect server start
 
 
 <figure style="text-align: center">
-    <img class="prefect dashboard" src="/img/prefect/prefect_dashboard_flow_task.png" width="260" height="200">
+    <img class="prefect dashboard" src="{{ site.baseurl }}/img/prefect/prefect_dashboard_flow_task.png" width="260" height="200">
     <figcaption style="font-style: italic; color: #666;">prefect dashboard</figcaption>
 </figure>
 
@@ -100,7 +100,7 @@ prefect dashboard 可以总览最近运行的flow和task
 
 
 <figure style="text-align: center">
-    <img class="prefect runs" src="/img/prefect/prefect_runs.png" width="260" height="200">
+    <img class="prefect runs" src="{{ site.baseurl }}/img/prefect/prefect_runs.png" width="260" height="200">
     <figcaption style="font-style: italic; color: #666;">prefect runs</figcaption>
 </figure>
 
@@ -108,7 +108,7 @@ prefect runs可以查询各种运行状态的flow和task
 
 
 <figure style="text-align: center">
-    <img class="flow detail" src="/img/prefect/prefect_flow_detail.png" width="260" height="200">
+    <img class="flow detail" src="{{ site.baseurl }}/img/prefect/prefect_flow_detail.png" width="260" height="200">
     <figcaption style="font-style: italic; color: #666;">prefect flow detail</figcaption>
 </figure>
 
