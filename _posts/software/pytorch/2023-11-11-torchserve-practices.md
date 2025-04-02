@@ -3,7 +3,7 @@ title: "谈谈torchserve的优化机制"
 subtitle: "torchserve internals"
 layout: post
 author: "Peter Lau"
-published: false
+published: true
 header-style: text
 tags:
   - Computer science

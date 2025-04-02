@@ -3,7 +3,7 @@ title: "Matrix multiplication"
 subtitle: "Optimization methods"
 layout: post
 author: "Peter Lau"
-published: false
+published: true
 header-style: text
 tags:
   - Computer science
