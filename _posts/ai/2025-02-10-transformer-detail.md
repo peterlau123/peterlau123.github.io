@@ -54,8 +54,8 @@ $QK^T$得到$N*N$的矩阵，再按行执行$softmax$
 
 
 $$
-\text{MultiHead}(Q,K,V)=\text{Concat}(\text{head}_1,\text{head}_2,\ldots,\text{head}_h)W^O \newline
-\text{head}_i=\text{Attention}(QW^Q_i,KW^K_i,VW^V_i)
+MultiHead(Q,K,V)={Concat}({head}_1,{head}_2,\ldots,{head}_h)W^O \newline
+{head}_i={Attention}(QW^Q_i,KW^K_i,VW^V_i)
 $$
 
 $$
