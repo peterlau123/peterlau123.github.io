@@ -52,18 +52,28 @@ $QK^T$得到$N*N$的矩阵，再按行执行$softmax$
 
 ### multi-head attention
 
+
 $$
-MultiHead(Q,K,V)=Concat(head_1,head_2,...,head_h)W^O\newline
-head_i=Attention(QW^Q_i,KW^K_i,VW^V_i)
+\text{MultiHead}(Q,K,V)=\text{Concat}(\text{head}_1,\text{head}_2,\ldots,\text{head}_h)W^O \newline
+\text{head}_i=\text{Attention}(QW^Q_i,KW^K_i,VW^V_i)
 $$
 
-$W^Q_i \in R^{d_{model}*d_k}$
+$$
+W^Q_i \in \mathbb{R}^{d_{\text{model}} \times d_k}
+$$
 
-$W^K_i \in R^{d_{model}*d_k}$
+$$
+W^K_i \in \mathbb{R}^{d_{\text{model}} \times d_k}
+$$
 
-$W^V_i \in R^{d_{model}*d_v}$
+$$
+W^V_i \in \mathbb{R}^{d_{\text{model}} \times d_v}
+$$
 
-$W^O \in R^{hd_v*d_{model}}$
+$$
+W^O \in \mathbb{R}^{h \cdot d_v \times d_{\text{model}}}
+$$
+
 
 从$W^O$的维度可以看出，$Concat$是在$head_i$行方向上进行
 
