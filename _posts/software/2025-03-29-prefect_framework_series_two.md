@@ -1,5 +1,5 @@
 ---
-title: "Prefect framework series one"
+title: "Prefect Internals"
 subtitle: "Mechanism under the hood"
 layout: post
 author: "Peter Lau"

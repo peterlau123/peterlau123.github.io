@@ -1,5 +1,5 @@
 ---
-title: "Prefect framework series one"
+title: "Prefect intro"
 subtitle: "Python workflow"
 layout: post
 author: "Peter Lau"
