@@ -3,7 +3,7 @@ title: "The transformer's details"
 subtitle: "From math to code"
 layout: post
 author: "Peter Lau"
-published: false
+published: true
 header-style: text
 tags:
   - Computer science
