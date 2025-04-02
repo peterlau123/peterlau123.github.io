@@ -81,17 +81,27 @@ Attention论文中$h=8$，$d_{model}=512$，$d_v=d_k=\frac{d_{model}}{h}=64$
 
 ### Add&Norm
 
-**Multi-Head Attention**的输出为$N*d_{model}$大小的矩阵
+多头注意力输出$N*d_{model}$大小的矩阵
 
 以$N=3,d_{model}=512$为例
 
-多头注意力模块的输出矩阵大小为3*512，输入$x \in R^{3*512}$
+多头注意力模块的输出矩阵大小为3*512，输入$x \in R^{3*512}$，相加输出的矩阵$\in R^{3\times512}$
 
+$$
+LayerNorm(x_i)=\frac{(x_i-\mu)}{\sigma};\mu=\frac{1}{d}\sum_{i}{x_i},\sigma=\sqrt{\frac{1}{d}\sum_{i}{x_i}}
+$$
+
+$x_i$代表一行
+
+### FeedForward
+
+从当前操作后续接**Add & Norm**可知，当前操作参数矩阵大小为$512\times512$
 
 
 
 
 ## 代码实现
+
 
 
 ## 参考信息
