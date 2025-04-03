@@ -54,8 +54,8 @@ $QK^T$得到$N*N$的矩阵，再按行执行$softmax$
 
 
 $$
-MultiHead(Q,K,V)={Concat}({head}_1,{head}_2,\ldots,{head}_h)W^O \newline
-{head}_i={Attention}(QW^Q_i,KW^K_i,VW^V_i)
+MultiHead(Q,K,V)=Concat(head_1,head_2,\ldots,head_h)W^O \newline
+head_i=Attention(QW^Q_i,KW^K_i,VW^V_i)
 $$
 
 $$
@@ -85,7 +85,7 @@ Attention论文中$h=8$，$d_{model}=512$，$d_v=d_k=\frac{d_{model}}{h}=64$
 
 以$N=3,d_{model}=512$为例
 
-多头注意力模块的输出矩阵大小为3*512，输入$x \in R^{3*512}$，相加输出的矩阵$\in R^{3\times512}$
+多头注意力模块的输出矩阵大小为3*512，输入 $x \in R^{3*512}$，相加输出的矩阵 $\in R^{3 \times 512}$
 
 $$
 LayerNorm(x_i)=\frac{(x_i-\mu)}{\sigma};\mu=\frac{1}{d}\sum_{i}{x_i},\sigma=\sqrt{\frac{1}{d}\sum_{i}{x_i}}
