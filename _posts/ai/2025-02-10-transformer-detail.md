@@ -1,13 +1,14 @@
 ---
 title: "The transformer's details"
-subtitle: "From math to code"
+subtitle: "Mathmatical formula derivation"
 layout: post
 author: "Peter Lau"
 published: true
 header-style: text
 tags:
   - Computer science
-  - LLM 
+  - LLM
+  - Transformers 
 ---
 
 
@@ -17,7 +18,7 @@ tags:
 
 
 
-## 数学表w
+## 数学表达式
 
 ### Input embedding
 
@@ -30,8 +31,6 @@ tags:
 输入$N \times d_f$，输出$N \times d_f$
 
 ### Encoding
-
-
 
 #### Q,K,V
 
@@ -150,7 +149,7 @@ Add&Norm的操作如前所示
 
 #### 小结
 
-Encoder层是可以堆叠的，比如选择6层或者12层，每一层的输入输出维度是一样的
+Encoder层是可以堆叠的，比如选择6层或者12层，每一层的输入输出维度是一样的，最终的输出作为Decoder各层的输入
 
 ### Decoder
 
@@ -185,17 +184,38 @@ $$
 
 #### Linear&softmax
 
+$$
+y_{output}=Softmax(Linear(x))
+$$
+
+$Linear$负责将$x$中每一个token的特征维度，映射到词汇表大小的维度$d_{voc}$，如下
+
+$$
+Linear(x)=xW_{voc}
+$$
+
+$$
+W_{voc} \in R^{d_{model} \times d_{voc}}
+$$
+
+$Softmax$再对每一个toekn的线性映射结果做转换，得到$(0,1)$范围内的概率值
+
+
+最终输出大小$N_1 \times d_{voc}$
 
 
 #### 小结
 
-Decoder层也是可以堆叠w
+Decoder层可以堆叠，堆叠的层数跟Encoder层可以一致或不一致；对于GPT系列模型，仅需要Decoder层
 
-## 代码实现
+对于首次token预测，Decoder的输入是起始符
 
+## Encoder-Decoder交互动态演示
+
+![](https://jalammar.github.io/images/t/transformer_decoding_2.gif)
 
 ## 参考信息
 
 1. [illustrated transformer](https://jalammar.github.io/illustrated-transformer/)
   
-2. [The Annotated Transformer]()
+2. [The Annotated Transformer](https://nlp.seas.harvard.edu/2018/04/03/attention.html)
