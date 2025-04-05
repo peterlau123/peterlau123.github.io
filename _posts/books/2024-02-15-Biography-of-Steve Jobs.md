@@ -1,6 +1,6 @@
 ---
-title: "读书笔记"
-subtitle: "史蒂夫.乔布斯传"
+title: "史蒂夫.乔布斯传"
+subtitle: "读书笔记"
 layout: post
 author: "Peter Lau"
 published: true
@@ -10,10 +10,9 @@ tags:
 ---
 
 
-<figure style="text-align: center">
-    <img class="Steve Jobs and Steve Wozniak" src="/img/steve_jobs_and_wozniak.jpeg" width="260" height="200">
-    <figcaption style="font-style: italic; color: #666;">史蒂夫·乔布斯与史蒂夫·沃兹尼亚克在早期的苹果公司</figcaption>
-</figure>
+<div>
+  <img class="steve" src="/img/growth/steve_jobs_and_wozniak.jpeg" width="500" height="300" alt="史蒂夫·乔布斯与史蒂夫·沃兹尼亚克在早期的苹果公司">
+</div>
 
 # 营销
 
