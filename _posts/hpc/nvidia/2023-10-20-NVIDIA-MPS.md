@@ -7,14 +7,19 @@ published: true
 header-style: text
 tags:
   - Computer science
-  - hpc
+  - HPC
   - nvidia
+categories:
+  - HPC
 ---
 
 
+## 使用场景
 
-## Architecture
 
+
+
+## 架构
 
 ![](https://docs.nvidia.com/deploy/mps/_images/image2.png)
 
@@ -25,12 +30,9 @@ tags:
 MPI(Message Pass Interface)
 
 
-## constraints
+## 实践
 
 
-## practices
-
-
-## references
+## 参考信息
 
 1. [Multi-Process Service](https://docs.nvidia.com/deploy/mps/index.html)
