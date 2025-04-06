@@ -1,6 +1,6 @@
 ---
-title: "谈谈torchserve的优化机制"
-subtitle: "torchserve internals"
+title: "torchserve模型服务"
+subtitle: "optmization strategies"
 layout: post
 author: "Peter Lau"
 published: true
