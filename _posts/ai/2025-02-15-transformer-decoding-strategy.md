@@ -35,6 +35,11 @@ tags:
 
 举个例子：
 
+<div>
+  <img class="greed" src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*peGpWtPOF1FrvUt0FrEJ9Q.png" width="500" height="300" alt="greedy search">
+</div>
+
+如上图，按照贪婪搜索的方法，最终的预测序列是**The cat is**，但是从整体结果来看**the red fox**才是最佳答案。可以看出，贪婪搜索会忽略当前低概率token后续的高概率token。
 
 ### sampling
 
