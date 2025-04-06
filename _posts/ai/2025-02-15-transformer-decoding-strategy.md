@@ -38,8 +38,6 @@ tags:
 
 ### sampling
 
-随机选择一个预测的token，可以再细分为如下四种策略
-
 #### random sampling
 
 从模型输出的token概率分布中，随机选择一个预测token
@@ -74,13 +72,15 @@ $$
 这样仍存在选取不太可能的token作为输出的情况，比w概率分布左侧尖锐尾部很长的场景
 
 
-#### nucleus   sampling
+#### nucleus  sampling
 
 相较于*top-k*采样，此方法不固定选择的token数目。它设定一个概率$p$阈值，选择的$k_t$个token概率和要不高于$p$
 
 #### 小结
 
 使用温度，可以改变模型的输出概率分布，使其变得更加尖锐或者平滑；top-k或者top-p可以使得输出结果更加流畅
+
+这三种方法相当于缩小与采样范围，从新的范围中选择一个token作为预测结果
 
 ### beam search
 
