@@ -85,8 +85,38 @@ Torchserve默认运行在单个JVM进程中，所有的模型加载和处理都�
 
 ### Micro-batching
 
+使用场景：
+
+requests数量源源不断，数量较多；提高吞吐并降低整体延迟
+
+
+工作示意图如下：
 
 ![](https://mermaid.ink/img/pako:eNp1kD9vgzAQxb8KuplE2OavhyztEqmVonRryGDhIyAFmxpbaor47nUgLFXqyXf3e_fsN0KlJQKHixF9E7wdSxX4czwZ_HI42OEcbDa74EBOvcHe6AqHYWMbg0IG5PyAF4Q-QegDOZCZ2Z9aVaNBVeE6oMtgqfbLprubHuw_ditEn0H0D8SeQewMof9wK4Fb4zCEDk0n7iWMd3kJtsEOS-D-KrEW7mpLKNXkZb1Qn1p3q9Jod2nWwvVSWHxthQ_TE7W4Dr4rnNUfN1WtFMrWavO-xD6n79egkmhetFMWOKXp7AN8hG_gLIq3RR6laZGTKI2yOIQbcELibZ7TJC8oo0nGkmwK4Wd-WbTNCEuzghRxnEQsy-PpF-0NlZg?type=png)
+
+可以将输入的requests想象成一个request流，**preprocess**、**inference**和**postprocess**对应流水线上的三个环节。
+
+Frontend会积聚request为较大的一个batch，然后发送至backend，在backend再拆分成多个micro-batch来处理。
+
+当**inference**工作时，**preprocess**和**postprocess**也在进行处理。这样尽管三者存在依赖关系，流水线处理策略可以使得三个任务可以在时间上overlap，提高整体处理时间。
+
+参考配置如下：
+```Yaml
+batchSize: 32 #backend接收的batch大小
+micro_batching:
+  micro_batch_size: 4 #拆分的micro-batch大小
+  parallelism:
+    preprocess: 2 #预处理的线程数量
+    inference: 1
+    postprocess: 2 #后处理线程的数量
+```
+
+
+参考评测结果：
+
+<div>
+  <img class="miacro-batching" src="/img/torchserve/throughput_latency.png" width="500" height="300" alt="micro-batching">
+</div>
 
 
 
