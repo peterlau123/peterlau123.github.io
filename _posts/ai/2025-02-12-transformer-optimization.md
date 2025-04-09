@@ -19,6 +19,23 @@ tags:
 
 ## 背景
 
+### 自回归transformer模型
+
+
+
+
+首先来看自回归transformer模型结构，它主要包含以下部分：
++ input
++ embedding
++ positional encoding
++ Masked MultiHead Attention
++ FeedForward
++ Linear&Softmax
+  
+  其中**MultiHead Attention**和**FeedFoward**作为一个基础模块可以不断堆叠。
+
+
+### kv cache matters
 
 <div>
   <img class="vLLM" src="/img/vllm/kv_cache_现状.png" width="500" height="300" alt="current kv cache">
