@@ -1,6 +1,10 @@
 
-Hi, this is Xin Liu whose English name is Peter Lau. Welcome to my personal blog.
+Hobbies：
 
-I'm fond of reading, particularly interested in history and literature besides computer science books.
+History and literature reading，running，Midjourey painting
 
-I worked on as an AI engineer in SenseTime for five years after graduation, now I am a software developer in Bytedance.
+Work experience：
+
+2018~2023，Sensetime，Algorithm development engineer of deep learning
+
+2023~Now，Bytedance，Senior development engineer of Capcut Effect
