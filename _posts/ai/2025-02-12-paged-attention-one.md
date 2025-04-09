@@ -86,7 +86,7 @@ Q由于每次计算只跟当前输入有关，无需缓存；但是K和V会涉�
 ### kv cache matters
 
 <div>
-  <img class="vLLM" src="/img/vllm/kv_cache_现状.png" width="500" height="300" alt="current kv cache">
+  <img class="vLLM" src="/img/vllm/kv_cache_现状.png" width="800" height="200" alt="current kv cache">
 </div>
 
 针对KV进行缓存，一个直观的实现方法是在GPU内存上开辟连续空间用于存储，空间一部分用来存储历史token的KV矩阵，另一部分用来存储预测token的KV，当前prompt结果生成后再进行空间销毁。
