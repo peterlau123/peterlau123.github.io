@@ -85,10 +85,11 @@ Torchserve默认运行在单个JVM进程中，所有的模型加载和处理都�
 
 ### Micro-batching
 
-使用场景：
+该机制主要工作在**Model**层级
 
-requests数量源源不断，数量较多；提高吞吐并降低整体延迟
+适用场景:
 
+requests数量源源不断且数量较多时，为了提高系统吞吐
 
 工作示意图如下：
 
@@ -98,7 +99,7 @@ requests数量源源不断，数量较多；提高吞吐并降低整体延迟
 
 Frontend会积聚request为较大的一个batch，然后发送至backend，在backend再拆分成多个micro-batch来处理。
 
-当**inference**工作时，**preprocess**和**postprocess**也在进行处理。这样尽管三者存在依赖关系，流水线处理策略可以使得三个任务可以在时间上overlap，提高整体处理时间。
+当**inference**工作时，**preprocess**和**postprocess**也在进行处理，同时**preprocess**和**postprocess**支持并发处理。这样尽管三者存在依赖关系，流水线处理策略可以使得三个任务可以在时间上overlap，提高系统吞吐量。
 
 参考配置如下：
 ```Yaml
@@ -111,13 +112,29 @@ micro_batching:
     postprocess: 2 #后处理线程的数量
 ```
 
-
 参考评测结果：
 
 <div>
   <img class="miacro-batching" src="/img/torchserve/throughput_latency.png" width="500" height="300" alt="micro-batching">
 </div>
 
+### Slice & Concat
+
+该机制主要工作在**workflow**层级
+
+适用场景：
+
+每个request对应的工作负荷较大
+
+比如系统接收的request是时长5s至20s的视频，系统需要对视频的每一帧都要处理，而且前后帧可能需要做关联
+
+
+此时micros-batching并不能带来吞吐量的提升而且延迟还较大，因为瓶颈点在于request处理本身
+
+
+![](https://mermaid.ink/img/pako:eNqVlM9v0zAUx_-VyNKkTeqqxm6TNAcucGQXuNFUU0jcNqK1g5NojKqHVdPWbogOcSsIaVKBCQmNHWA_qPbXNElv-xdI4jXtKlqYT8_P733fx_azm8CgJgYqWFkRNjBr6JYZ_NwJTw79D9fj45NwcOUP-luUvcDMv_w1Pn7jD3bDoz0eo5FKnW4ZNZ25wuMnGhGiEen4519G11_Hp-fBWXt80A7bl3yJ4ZcedlxndXVira0J6-sPhFg_Vtp06paBN0lEVJr4hMQnxL4yl5nW6eyF3X1eIbL93ju_82N00R1dfOOU8TauejfDDke_GXZ57l_qJRw1nZh1zMTSrVH-r3B4v3A0F55uJzjtzZGH_V3_-9HkrOMwx3teZbpdS1GFObV42AzbjBrYccTS1C4nEBapYIaJgcVSavIVmzruNG06uRXGxJzlnQeBy0HgYhC4BATeHwQtB0GLQdASEPRvkLgh-d39fh98-hic7Y93-lFDBofD4O3n2XeQ3t2d3jcoMXR3rvm5c7b70_NelHwnDC0MAxlQZZYJ1Iped3AGNPjjj36CZqygAbeGG1gDamSauKJ7dVcDGmlFebZOnlHaAKrLvCiTUa9aS3U829Rd_MjSo1tppF7dc-nTbWJMcrBpuZRt8K_H4DjRyZuYPaQecYEqioWkEFCb4BVQoSJl80UZyUiSEVIkUcqAbaAqMCvLuQLKiXJRKhaKsJUBrxO0XFaBsKDkoSgqUEIwL7X-ADbu4Sw?type=png)
+
+上图所示，对于输入的requests，将其进行拆分，分配到多个**Model**节点上，各个**Model**节点独自处理
 
 
 ## 参考信息
