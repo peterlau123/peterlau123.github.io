@@ -8,9 +8,7 @@ header-style: text
 tags:
   - Computer science
   - HPC
-  - nvidia
-categories:
-  - HPC
+  - Nvidia
 ---
 
 
