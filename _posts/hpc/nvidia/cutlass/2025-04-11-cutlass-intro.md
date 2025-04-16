@@ -13,16 +13,28 @@ tags:
 ---
 
 
-
-
-
 <div>
   <img class="cutlass" src="/img/hpc/cutlass/cutlass关键概念.png" width="500" height="300" alt="cutlass intro">
 </div>
 
 
+## 关键概念
+
+### Tensor
 
 
+
+### Layout
+
+$Tensor \in R^{8\times15}$
+
+$Tensor$是可以嵌套的
+
+$HierachyTensor \in R^{(2,4),(3,5)}$
+
+这里的$(2,4)$分别代表tensor内层行数和外层行数；$(3,5)$分别代表tensor内层列数和外层列数
+
+对应的$stride \in R^{(3,6),(1,24)}$
 
 
 ## 参考链接
