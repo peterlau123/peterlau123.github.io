@@ -10,3 +10,8 @@ tags:
   - LLM
   - StableDiffusion
 ---
+
+
+<div>
+  <img class="shadow" src="/img/stable_diffusion/stable_diffusion_arch.png" width="800" height="250" alt="sd 3.5 medium"
+</div>
