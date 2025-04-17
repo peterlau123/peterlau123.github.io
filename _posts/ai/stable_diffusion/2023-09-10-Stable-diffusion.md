@@ -15,3 +15,22 @@ tags:
 <div>
   <img class="shadow" src="/img/stable_diffusion/stable_diffusion_arch.png" width="800" height="250" alt="sd 3.5 medium"
 </div>
+
+## History
+
+
+
+
+
+## 现在
+
+
+
+
+## 参考信息
+
+1. [illustrated-stable-diffusion](https://jalammar.github.io/illustrated-stable-diffusion/)
+
+
+
+
