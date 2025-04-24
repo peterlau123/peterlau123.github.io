@@ -1,5 +1,5 @@
 ---
-title: "Dive into qwen LLM models"
+title: "Llama multimodal"
 subtitle: "Internals"
 layout: post
 author: "Peter Lau"
@@ -8,13 +8,6 @@ header-style: text
 tags:
   - Computer science
   - LLM
-  - Qwen
+  - LLama
+  - Multimodal
 ---
-
-本文对Qwen系列模型的演变进行分析。
-
-## Qwen
-
-## Qwen2
-
-## Qwen2.5
