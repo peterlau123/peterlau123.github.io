@@ -86,9 +86,47 @@ Qwen2-VL沿用了Qwen-VL的模型架构，但只保留了两个部分：
 
 #### 动态分辨率
 
+输入分辨率不固定，输出token数目不固定
+
+为达到这个目的：
+
++ 使用2D-RoPE来获取二维的相对位置信息
++ ViT后将相邻的$2 \tmes 2$tokens进行压缩，变为一个token
+
+2D-RoPE的计算方式如下：
+
+
+
 #### 多模态RoPE
 
+文中提出按照**temporal**、**height**和**width**三个维度对embedding进行位置编码，编码格式为$(t,w,h)$。这里的编码可以简单理解为编号。
+
+对于文本信息，只有**temporal**维度有位置编码，等同于RoPE
+
+对于视觉图片，**temporal**保持一致，**width**和**height**进行位置编码
+
+对于视频，**temporal**、**width**和**height**都进行位置编码
+
+多模态输入，按照以上的编码方式进行统一编码，如下图所示：
+
+
+<div>
+  <img class="shadow" src="/img/qwen/M-RoPE.png" width="500" height="300" alt="Qwen2-VL Architecture">
+</div>
+
+
+M-RoPE具体计算过程：
+
+
+
+
 #### 统一图片和视频理解
+
+使用3D卷积来处理视频输入
+
+对视屏进行采样，一秒取两帧；若输入是一张图片，则被当作两个相同的帧
+
+使用3D tube代替2D patch来减少输入视频对应的token序列长度；另外，通过动态调整视频分辨率，将视频的总体token数目限制在16384以内
 
 ### 训练
 
