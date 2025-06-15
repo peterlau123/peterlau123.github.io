@@ -42,6 +42,22 @@ T$_\theta$是条件控制网络，可将输入的控制信息如文本、图片�
 
 #### UNet
 
+##### self-attention
+
+对于输入的$x \in R^{C \times H \times W}$，进行先行投影变换得到$Q,K,V$，如下：
+$$
+Q = W_{Q} \times x , W_{Q} \in R^{d \times CHW}\\
+K = W_{K} \times x , W_{K} \in R^{d \times CHW}\\
+V = W_{V} \times x, W_{V} \in R^{d \times CHW}
+$$
+
+$$
+y=softmax(\frac{QK^T}{\sqrt{d}})V
+$$
+
+自注意力可以获取图片全局信息之间的关系
+
+##### cross-attention
 
 
 ### 训练阶段
@@ -58,17 +74,20 @@ T$_\theta$是条件控制网络，可将输入的控制信息如文本、图片�
 2. 生成去噪图片
 
 ## 模型系列
-### stabilityai/stable-diffusion-xl-base-1.0
+### stable-diffusion-xl
 #### 网络结构
 
 <div>
   <img class="shadow" src="/img/stable_diffusion/sd_xl_1_0.png" width="800" height="250" alt="XL pipeline">
 </div>
 
+Base模型输入是prompt，输出是潜在空间表示；refiner模型输入是潜在空间表示，输出是生成结果图片
 
+### stable-diffusion-2-1-base
 
-### 3.5
-### Medium
+### stable-diffusion-3-medium
+
+### stable-diffusion-3.5-medium
 
 <div>
   <img class="shadow" src="/img/stable_diffusion/sd3.5_medium_demo.jpg" width="800" height="250" alt="sd 3.5 medium">
