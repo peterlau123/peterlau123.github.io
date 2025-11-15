@@ -1,0 +1,18 @@
+# Configuration for actions/labeler
+# Add labels to pull requests based on the paths of files being changed
+
+documentation:
+  - changed-files:
+    - any-glob-to-any-file: ['**/*.md', 'docs/**/*']
+
+dependencies:
+  - changed-files:
+    - any-glob-to-any-file: ['**/package.json', '**/package-lock.json', '**/Gemfile*', '**/requirements.txt']
+
+github-actions:
+  - changed-files:
+    - any-glob-to-any-file: ['.github/workflows/**']
+
+posts:
+  - changed-files:
+    - any-glob-to-any-file: ['_posts/**/*']
