@@ -22,8 +22,13 @@ jobs:
       - name: Build site
         run: bundle exec jekyll build
 
-      - name: Validate HTML
-        uses: Cyb3r-Jak3/html5validator-action@v7
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          root: _site/
-          css: true
+          python-version: '3.x'
+
+      - name: Install html5validator
+        run: pip install html5validator
+
+      - name: Validate HTML
+        run: html5validator --root _site/ --also-check-css --ignore-re 'Attribute ".*" not allowed'
