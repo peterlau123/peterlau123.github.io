@@ -1,9 +1,12 @@
-name: HTML Validator
+name: Site Validation
 
 on:
   push:
     branches: ["master"]
   pull_request:
+  schedule:
+    # Run weekly on Monday at 00:00 UTC
+    - cron: '0 0 * * 1'
   workflow_dispatch:
 
 jobs:
@@ -23,7 +26,7 @@ jobs:
         run: bundle exec jekyll build
 
       - name: Setup Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
@@ -31,4 +34,12 @@ jobs:
         run: pip install html5validator
 
       - name: Validate HTML
-        run: html5validator --root _site/ --also-check-css --ignore-re 'Attribute ".*" not allowed'
+        run: html5validator --root _site/ --also-check-css
+
+      - name: Check links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --verbose --no-progress './_site/**/*.html'
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
