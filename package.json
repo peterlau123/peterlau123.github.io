@@ -11,7 +11,7 @@
     "bugs": "https://github.com/peterlau123/peterlau123.github.io/issues",
     "devDependencies": {
         "grunt": ">=1.6.1",
-        "grunt-banner": "~0.2.3",
+        "grunt-banner": "~0.6.0",
         "grunt-contrib-less": "^2.0.0",
         "grunt-contrib-uglify": "^4.0.1",
         "grunt-contrib-watch": "^1.1.0",
