@@ -1,6 +1,6 @@
 # Peter Lau Blog
 
-Personal blog hosted at [peterlau.me](http://peterlau.me)
+Personal blog hosted at [peterlau123](https://peterlau123.github.io/)
 
 ## Setup
 

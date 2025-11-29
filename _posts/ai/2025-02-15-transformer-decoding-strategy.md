@@ -22,7 +22,7 @@ tags:
 </div>
 
 
-在[The transformer's details](https://peterlau.me/2025/02/10/transformer-detail/)一文中，Decoder最后一层$Softmax$输出预测token在词汇表是各个token的概率大小。
+在*The transformer's details*一文中，Decoder最后一层$Softmax$输出预测token在词汇表是各个token的概率大小。
 
 
 实际使用中，预测的token是连续生成的，那么怎么挑选预测的token会对结果有不同的影响

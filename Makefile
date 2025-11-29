@@ -1,7 +1,7 @@
 info:
 	@echo "This is Liuxin's personal blog"
 	@echo ""
-	@echo "Welcome to visit http://peterlau.me"
+	@echo "Welcome to visit https://peterlau123.github.io"
 .PHONY: info
 
 
