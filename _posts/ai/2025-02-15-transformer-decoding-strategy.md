@@ -117,5 +117,4 @@ beam search适合对最终整体结果正确性要求较高的场景，不适合
 ## 参考信息
 
 1. [Decoding Strategies for Transformers](https://www.scaler.com/topics/nlp/decoding-strategies-for-transformers/)
-2. [Two minutes NLP — Most used Decoding Methods for Language Models](https://medium.com/nlplanet/two-minutes-nlp-most-used-decoding-methods-for-language-models-9d44b2375612)
-3. [cmu llm course](https://storage.googleapis.com/cmu-llms/2024/2024-08-26-course-intro-and-lm-basics.pdf)
+2. [cmu llm course](https://storage.googleapis.com/cmu-llms/2024/2024-08-26-course-intro-and-lm-basics.pdf)
