@@ -7,6 +7,8 @@ on:
     paths:
       - '**/*.md'
       - '**/*.markdown'
+      - '.markdownlint.json'
+      - '.markdownlintignore'
 
 jobs:
   markdown-lint:
@@ -21,4 +23,6 @@ jobs:
           globs: |
             **/*.md
             **/*.markdown
-            !node_modules
+          separator: '---'
+          config: '.markdownlint.json'
+          ignore_path: '.markdownlintignore'
