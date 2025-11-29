@@ -1,0 +1,6 @@
+_site/
+.jekyll-cache/
+node_modules/
+vendor/
+*.min.js
+*.min.css

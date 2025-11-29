@@ -1,4 +1,4 @@
-name: Link Checker
+name: Site Validation
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  link-check:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -19,11 +19,24 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1'
+          ruby-version: '3.3'
           bundler-cache: true
 
       - name: Build site
         run: bundle exec jekyll build
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install html5validator
+        run: pip install html5validator
+
+      - name: Validate HTML
+        run: |
+          html5validator --root _site/ --also-check-css --ignore '*/css/bootstrap.*' --ignore '*/css/bootstrap.min.*' --format text || echo "HTML validation completed with warnings"
+        continue-on-error: true
 
       - name: Check links
         uses: lycheeverse/lychee-action@v2

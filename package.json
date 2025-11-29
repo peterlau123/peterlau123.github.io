@@ -14,11 +14,14 @@
         "grunt-banner": "~0.2.3",
         "grunt-contrib-less": "^2.0.0",
         "grunt-contrib-uglify": "^4.0.1",
-        "grunt-contrib-watch": "^1.1.0"
+        "grunt-contrib-watch": "^1.1.0",
+        "markdownlint-cli": "^0.39.0"
     },
     "scripts": {
         "start": "bundle exec jekyll serve",
         "dev": "grunt watch & npm run start",
+        "lint": "markdownlint '**/*.md' --config .markdownlint.json --ignore-path .markdownlintignore",
+        "lint:fix": "markdownlint '**/*.md' --config .markdownlint.json --ignore-path .markdownlintignore --fix",
         "boil": "git push boilerplate boilerplate:master",
         "push": "git push origin master --tag"
     }

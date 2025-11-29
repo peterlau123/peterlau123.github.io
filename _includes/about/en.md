@@ -1,10 +1,11 @@
 
-Hobbies：
+# About
 
-History and literature reading，running，Midjourey painting
+## Hobbies
 
-Work experience：
+History and literature reading, running, Midjourney painting
 
-2018~2023，Sensetime，Algorithm development engineer of deep learning
+## Work Experience
 
-2023~Now，Bytedance，Senior development engineer of Capcut Effect
+* 2018~2023, Sensetime, Algorithm development engineer of deep learning
+* 2023~Now, Bytedance, Senior development engineer of Capcut Effect

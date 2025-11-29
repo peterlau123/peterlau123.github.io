@@ -44,10 +44,10 @@
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="{{ " /css/bootstrap.min.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ " /css/hux-blog.min.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ "/css/hux-blog.min.css" | prepend: site.baseurl }}">
 
     <!-- Custom Fonts -->
     <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
@@ -88,4 +88,54 @@
         console.log("Mermaid initialization complete");
       });
     </script>
+
+    {% if site.anchorjs %}
+    <style>
+        /* place left on bigger screen */
+        @media all and (min-width: 800px) {
+            .anchorjs-link{
+                position: absolute;
+                left: -0.75em;
+                font-size: 1.1em;
+                margin-top : -0.1em;
+            }
+        }
+    </style>
+    {% endif %}
+
+    {% if page.layout == 'post' or page.layout == 'page' %}
+    <style type="text/css">
+        header.intro-header{
+            position: relative;
+            background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}');
+            {% if page.header-bg-css %}background: {{ page.header-bg-css }};{% endif %}
+        }
+
+        {% if page.header-mask %}
+        header.intro-header .header-mask{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: rgba(0,0,0, {{ page.header-mask }});
+        }
+        {% endif %}
+    </style>
+    {% endif %}
+
+    {% if page.layout == 'keynote' %}
+    <style type="text/css">
+        header.intro-header{
+            height: 500px;
+            overflow: hidden;
+        }
+        header.intro-header .container{
+            visibility: hidden;
+        }
+        header iframe{
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+    {% endif %}
 </head>
