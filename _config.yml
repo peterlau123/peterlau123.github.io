@@ -14,10 +14,7 @@ future: true
 # SNS settings
 RSS: false
 # weibo_username: huxpro
-zhihu_username: liu-xin-36-86-97
 github_username: peterlau123
-twitter_username: Sloth9527131900
-leetcode_username: peterlau123
 
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
