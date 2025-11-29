@@ -1,8 +1,14 @@
 # 🌟 Peter Lau Blog
 
-> *"天地有大美而不言，四时有明法而不议，万物有成理而不说"* —— 庄周
->
-> *大道至简，致广大而尽精微*
+<div align="center">
+  <img src="img/zhuangzi.jpeg" alt="庄周" style="opacity: 0.618; max-width: 300px; height: auto; border-radius: 8px;">
+  <br><br>
+  <blockquote>
+    <p><em>"天地有大美而不言，四时有明法而不议，万物有成理而不说"</em></p>
+    <cite>—— 庄周</cite>
+  </blockquote>
+  <p><strong>大道至简，致广大而尽精微</strong></p>
+</div>
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Deployed-brightgreen)](https://peterlau123.github.io/)
 [![Jekyll](https://img.shields.io/badge/Jekyll-4.3.3-blue)](https://jekyllrb.com/)
@@ -15,10 +21,12 @@
 
 这个博客记录了我对 **计算机科学**、**人工智能**、**软件工程**、**编程语言** 等领域的学习和思考。内容涵盖：
 
-- 🤖 **AI & 深度学习**：Transformer、LLM、推理优化
+- 🤖 **AI & 深度学习**：Transformer、LLM、推理优化、AI Infra
 - 💻 **编程语言**：C++、Python、Rust、Lisp
 - 🏗️ **软件架构**：系统设计、性能优化
 - 📈 **个人成长**：技术修炼、工程实践
+  
+另有**写作随想**，存放了个人一些文史写作文章
 
 ## 🛠️ 技术栈
 
