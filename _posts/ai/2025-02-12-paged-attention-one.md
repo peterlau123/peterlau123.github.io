@@ -1,5 +1,5 @@
 ---
-title: "Paged Attention One"
+title: "Paged Attention"
 subtitle: "Mechanism Intro"
 layout: post
 author: "Peter Lau"
