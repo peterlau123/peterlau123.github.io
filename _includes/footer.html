@@ -289,7 +289,7 @@
         noResultsText: 'No results',
         limit: 50,
         fuzzy: false,
-        // a hack to get escaped subtitle unescaped. for some reason, 
+        // a hack to get escaped subtitle unescaped. for some reason,
         // post.subtitle w/o escape filter nuke entire search.
         templateMiddleware: function (prop, value, template) {
             if (prop === 'subtitle' || prop === 'title') {
@@ -321,10 +321,77 @@
                 $searchClose.on('click', function (e) {
                     e.preventDefault();
                     $searchPage.removeClass('search-active');
-                    $body.attr('class', prevClasses);  // from closure 
+                    $body.attr('class', prevClasses);  // from closure
                 });
                 $searchInput.focus();
             }
         });
+    });
+</script>
+
+<!-- Back to Top Button -->
+<script>
+    $(document).ready(function () {
+        var $backToTop = $('#back-to-top');
+
+        // Show/hide button based on scroll position
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 300) {
+                $backToTop.addClass('show');
+            } else {
+                $backToTop.removeClass('show');
+            }
+        });
+
+        // Smooth scroll to top
+        $backToTop.click(function (e) {
+            e.preventDefault();
+            $('html, body').animate({ scrollTop: 0 }, 600);
+        });
+    });
+</script>
+
+<!-- Reading Progress Indicator -->
+<script>
+    $(document).ready(function () {
+        var $progressBar = $('#reading-progress-bar');
+        var $article = $('article');
+
+        function updateProgress() {
+            if ($article.length === 0) return;
+
+            var articleTop = $article.offset().top;
+            var articleHeight = $article.outerHeight();
+            var windowHeight = $(window).height();
+            var scrollTop = $(window).scrollTop();
+
+            // Calculate how much of the article is visible
+            var articleBottom = articleTop + articleHeight;
+            var windowBottom = scrollTop + windowHeight;
+
+            var progress = 0;
+
+            if (scrollTop > articleTop) {
+                if (windowBottom >= articleBottom) {
+                    // Article fully visible
+                    progress = 100;
+                } else {
+                    // Article partially visible
+                    var visibleHeight = windowBottom - articleTop;
+                    progress = (visibleHeight / articleHeight) * 100;
+                }
+            }
+
+            // Ensure progress is between 0 and 100
+            progress = Math.max(0, Math.min(100, progress));
+
+            $progressBar.css('width', progress + '%');
+        }
+
+        // Update progress on scroll
+        $(window).scroll(updateProgress);
+
+        // Initial update
+        updateProgress();
     });
 </script>

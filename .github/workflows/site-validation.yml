@@ -2,7 +2,7 @@ name: Site Validation
 
 on:
   push:
-    branches: ["master"]
+    branches: ["main"]
   pull_request:
   schedule:
     # Run weekly on Monday at 00:00 UTC
@@ -41,7 +41,7 @@ jobs:
       - name: Check links
         uses: lycheeverse/lychee-action@v2
         with:
-          args: --verbose --no-progress './_site/**/*.html'
+          args: --verbose --no-progress --exclude 'https://peterlau123\.github\.io.*' './_site/**/*.html'
           fail: true
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="这里是 @Peter Lau 刘鑫 的个人博客，与你一起发现更大的世界 | 要做一个有 理想与现实兼顾 的程序员">
+    <meta name="keywords" content="刘鑫, 博客, 个人网站, 互联网, C++/C, Python, Lua, Rust, Lisp, 软件工程, 软件架构设计, 人工智能, 并行计算">
+    <meta name="theme-color" content="#000000">
+
+    <!-- Open Graph -->
+    <meta property="og:title"
+        content="DeepSeek R1 - 刘鑫的博客 | Peter Lau Blog">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="
+  
+
+">
+    
+    <meta property="article:published_time" content=" 2025-02-09T00:00:00Z">
+    
+    
+    <meta property="article:author" content="Peter Lau">
+    
+    
+    <meta property="article:tag" content="Computer science">
+    
+    <meta property="article:tag" content="LLM">
+    
+    <meta property="article:tag" content="DeepSeek">
+    
+    
+    <meta property="og:image" content="https://peterlau123.github.io">
+    <meta property="og:url" content="https://peterlau123.github.io/2025/02/09/DeepSeek-R1/">
+    <meta property="og:site_name" content="刘鑫的博客 | Peter Lau Blog">
+
+    <title>DeepSeek R1 - 刘鑫的博客 | Peter Lau Blog</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://peterlau123.github.io/2025/02/09/DeepSeek-R1/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <!-- Google AdSense -->
+    <script data-ad-client="ca-pub-6487568398225121" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- Mermaid Support -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("Mermaid initialization starting...");
+        mermaid.initialize({
+          startOnLoad: true,
+          theme: 'default',
+          securityLevel: 'loose',
+          flowchart: {
+            useMaxWidth: true,
+            htmlLabels: true,
+            curve: 'basis'
+          }
+        });
+        console.log("Mermaid initialization complete");
+      });
+    </script>
+
+    
+    <style>
+        /* place left on bigger screen */
+        @media all and (min-width: 800px) {
+            .anchorjs-link{
+                position: absolute;
+                left: -0.75em;
+                font-size: 1.1em;
+                margin-top : -0.1em;
+            }
+        }
+    </style>
+    
+
+    
+    <style type="text/css">
+        header.intro-header{
+            position: relative;
+            background-image: url('/img/home-bg.jpg');
+            
+        }
+
+        
+    </style>
+    
+
+    
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body>
+
+    <!-- Navigation -->
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
+    
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Peter Lau Blog</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div id="huxblog_navbar">
+                <div class="navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                        
+                        
+                        <li>
+                            <a href="/archive/">Archive</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li class="search-icon">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <script>
+        // Drop Bootstarp low-performance Navbar
+        // Use customize navbar with high-quality material design animation
+        // in high-perf jank-free CSS3 implementation
+        var $body = document.body;
+        var $toggle = document.querySelector('.navbar-toggle');
+        var $navbar = document.querySelector('#huxblog_navbar');
+        var $collapse = document.querySelector('.navbar-collapse');
+
+        var __HuxNav__ = {
+            close: function () {
+                $navbar.className = " ";
+                // wait until animation end.
+                setTimeout(function () {
+                    // prevent frequently toggle
+                    if ($navbar.className.indexOf('in') < 0) {
+                        $collapse.style.height = "0px"
+                    }
+                }, 400)
+            },
+            open: function () {
+                $collapse.style.height = "auto"
+                $navbar.className += " in";
+            }
+        }
+
+        // Bind Event
+        $toggle.addEventListener('click', function (e) {
+            if ($navbar.className.indexOf('in') > 0) {
+                __HuxNav__.close()
+            } else {
+                __HuxNav__.open()
+            }
+        })
+
+        /**
+         * Since Fastclick is used to delegate 'touchstart' globally
+         * to hack 300ms delay in iOS by performing a fake 'click',
+         * Using 'e.stopPropagation' to stop 'touchstart' event from 
+         * $toggle/$collapse will break global delegation.
+         * 
+         * Instead, we use a 'e.target' filter to prevent handler
+         * added to document close HuxNav.  
+         *
+         * Also, we use 'click' instead of 'touchstart' as compromise
+         */
+        document.addEventListener('click', function (e) {
+            if (e.target == $toggle) return;
+            if (e.target.className == 'icon-bar') return;
+            __HuxNav__.close();
+        })
+    </script>
+    <!-- Search -->
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Include Mermaid.js -->
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
+</script>
+
+<!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/home-bg.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+
+
+
+
+
+
+<header class="intro-header style-text" >
+
+    <div class="header-mask"></div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/archive/?tag=Computer+science" title="Computer science">Computer science</a>
+                        
+                        <a class="tag" href="/archive/?tag=LLM" title="LLM">LLM</a>
+                        
+                        <a class="tag" href="/archive/?tag=DeepSeek" title="DeepSeek">DeepSeek</a>
+                        
+                    </div>
+                    <h1>DeepSeek R1</h1>
+                    
+                    <h2 class="subheading">Internals</h2>
+                    <span class="meta">Posted by Peter Lau on February 9, 2025</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <!-- Multi-Lingual -->
+                
+
+				<div>
+  <p><img class="shadow" src="/img/deepseek/DeepSeek-Logo.jpg" width="800" height="250" alt="Transformer Architecture" /></p>
+</div>
+
+<p>本文主要介绍DeepSeek R1的模型结构并介绍其模型生产流程。</p>
+
+<h2 id="model-architecture">Model Architecture</h2>
+
+<p><img src="https://media.geeksforgeeks.org/wp-content/uploads/20250203194805367699/architecture.webp" alt="DeepSeek R1 Architecture" /></p>
+
+<h3 id="moe-architecture">MoE Architecture</h3>
+
+<p>R1使用256个专家，但对于每个token只会激活其中8个专家，另有一个共享专家。</p>
+
+<h4 id="router-network">Router Network</h4>
+
+<p>输入token，数量$N$；输出$N\times256$的向量</p>
+
+<p>第一步：输入$x \in R^{N\times7168}$投影至低维空间</p>
+
+\[h_{proj}=xW_{proj}\\
+W_{proj} \in R^{7168 \times 2048}\]
+
+<p>第二步：将注意力输出与投影后的输出进行concat</p>
+
+\[h_{fused}=Concat(h_{proj},h_{attn}) \in R^{N \times (2048+2048)}\]
+
+<p>第三步：进行二次投影，输出大小$N \times 256$</p>
+
+\[Router=GeLU(h_{fused})W_{gate}\\
+W_{gate} \in R^{4096 \times 256}\]
+
+<p>256个数值代表每个token选择对应专家的概率，按照概率大小取top-8对应的专家。</p>
+
+<p>被选中的专家网络，其权重将被激活；相反，没被激活的专家，其权重将不会参与计算。</p>
+
+<h4 id="expert">Expert</h4>
+
+<p>每个专家是一个独立的FFN，输入大小$N \times 7168$
+，输出大小为$N \times 7168$</p>
+
+<p>公示如下：</p>
+
+\[Expert_i(x)=GeLU(xW_{up})W_{down}\\
+W_{up} \in R^{7168\times2048}\\
+W_{down} \in R^{2048 \times 7168}\]
+
+<p>每个专家的输出大小是一样的，多个专家的输出会按照token对应专家的概率进行加权融合作为最终的专家网络输出</p>
+
+<h3 id="mla">MLA</h3>
+
+<h4 id="kv联合压缩">KV联合压缩</h4>
+
+<p>输入$h_t \in R^{N \times 7168}$</p>
+
+\[c_t^{KV}=h_tW^{DKV}\\
+W^{DKV} \in R^{7168 \times 128}\\
+K_t=c_t^{KV}W^{UK} ,\quad V_t=c_t^{KV}W^{UV}\\
+W^{UK} \in R^{128 \times 7168},\quad W^{UV} \times R^{128 \times 7168}\]
+
+<p>输出的KV矩阵大小为$N \times 7168$</p>
+
+<h4 id="q压缩">Q压缩</h4>
+
+\[Q_t=(h_tW^{DQ})W^{UQ}\\
+W^{DQ} \in R^{7168 \times 128}\\
+W^{UQ} \in R^{128 \times 7168}\]
+
+<p>输出$Q_t \in R^{N \times 7168}$</p>
+
+<h4 id="小结">小结</h4>
+
+<p>可以看出，相比于MHA，MLA是将K\V\Q的计算过程转换为两步骤的低秩乘法过程，从而达到减少计算量的效果</p>
+
+<h4 id="rope解耦">RoPE解耦</h4>
+
+\[Q_t^{R}=RoPE(h_tW^{QR}),\quad K_t^{R}=RoPE(h_tW^{KR})\\
+W^{QR} \in R^{7168\times26},\quad W^{KR} \in R^{7168 \times 26}\]
+
+<p>输出的$Q_t^{R}$和$K_t^{R}$大小均为$N\times26$</p>
+
+\[Q_{final}=Concat(Q_t,Q_t^{R})\\
+K_{final}=Concat(K_t,K_t^{R})\]
+
+<p><em>Concat</em>沿着行进行，输出大小$N \times 7194$</p>
+
+<h4 id="注意力计算">注意力计算</h4>
+
+<p>使用64个注意力头
+对于每一个$head_i$，其计算如下：</p>
+
+\[head_i=softmax(\frac {Q_{final}K_{final}^T}{\sqrt{112}})V_t\]
+
+<p>其中</p>
+
+\[Q_{final} \in R^{N \times 138}\\
+K_{final} \in R^{N \times 138}\\
+V_t \in R^{N \times 112}\\\]
+
+<p>这里的$138=112+26$，也就是说拆分头是对原来的$7168$维度进行拆分，将RoPE的26维追加到每个拆分的112维度中</p>
+
+<p>$head_i$的输出大小为$N\times112$</p>
+
+<p>最后再经过一层映射，回到$R^{7168}$维空间</p>
+
+\[O_{concat}=Concat(head_1,head_2,...,head_{64})W^O\\
+W^O \in R^{7168 \times 7168}\]
+
+<h2 id="参考信息">参考信息</h2>
+
+<ol>
+  <li><a href="https://www.geeksforgeeks.org/deepseek-r1-technical-overview-of-its-architecture-and-innovations/">DeepSeek R1: Technical Overview of Its Architecture and Innovations</a></li>
+  <li><a href="https://storage.googleapis.com/cmu-llms/2024/2024-09-05-architecture-advancement-on-transformers.pdf">Architecture Advancement on Transformers</a></li>
+  <li><a href="https://www.51cto.com/article/809184.html">深度学习中的注意力机制革命：MHA、MQA、GQA至DeepSeek MLA的演变</a></li>
+  <li><a href="https://mp.weixin.qq.com/s?__biz=MzI1MjU4NjUzMg==&amp;mid=2247484059&amp;idx=1&amp;sn=f3520146ada05cde19b9bf8842d042e3&amp;chksm=e83c457343bc863001d3d4ed9086cd78aab97407039b7464f2a2ba9d9eef5d6a084530d89ad6#rd">DeepSeek核心架构-MLA：剖析低秩联合压缩优化KV缓存、提升推理效率的技术细节</a></li>
+</ol>
+
+
+                <hr style="visibility: hidden;">
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2024/11/30/cursor%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93/" data-toggle="tooltip" data-placement="top" title="Cursor实践总结">
+                        Previous<br>
+                        <span>Cursor实践总结</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2025/02/10/transformer-detail/" data-toggle="tooltip" data-placement="top" title="The transformer's details">
+                        Next<br>
+                        <span>The transformer's details</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <hr style="visibility: hidden;">
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+                
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+
+<section>
+    
+        <hr class="hidden-sm hidden-xs">
+    
+    <h5><a href="/archive/">FEATURED TAGS</a></h5>
+    <div class="tags">
+        
+        
+        
+        
+        
+        
+                <a data-sort="0007" 
+                    href="/archive/?tag=Computer+science"
+                    title="Computer science"
+                    rel="14">Computer science</a>
+        
+                <a data-sort="0014" 
+                    href="/archive/?tag=LLM"
+                    title="LLM"
+                    rel="7">LLM</a>
+        
+                <a data-sort="0015" 
+                    href="/archive/?tag=Growth"
+                    title="Growth"
+                    rel="6">Growth</a>
+        
+                <a data-sort="0018" 
+                    href="/archive/?tag=Deep+Learning"
+                    title="Deep Learning"
+                    rel="3">Deep Learning</a>
+        
+                <a data-sort="0018" 
+                    href="/archive/?tag=Transformers"
+                    title="Transformers"
+                    rel="3">Transformers</a>
+        
+                <a data-sort="0019" 
+                    href="/archive/?tag=DeepSeek"
+                    title="DeepSeek"
+                    rel="2">DeepSeek</a>
+        
+                <a data-sort="0019" 
+                    href="/archive/?tag=Software"
+                    title="Software"
+                    rel="2">Software</a>
+    </div>
+</section>
+
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+<!-- add support for mathjax by voleking-->
+
+
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "Peter Lau";
+    var disqus_identifier = "/2025/02/09/DeepSeek-R1";
+    var disqus_url = "https://peterlau123.github.io/2025/02/09/DeepSeek-R1/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'right',
+          // icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <!-- SNS Link -->
+                
+
+
+<ul class="list-inline text-center">
+
+
+  
+  
+  
+  
+  
+  
+  <li>
+    <a target="_blank" href="https://github.com/peterlau123">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  
+  
+</ul>
+
+                <p class="copyright text-muted">
+                    Copyright &copy; Peter Lau Blog 2025
+                    <br>
+                    Powered by <a href="http://huangxuan.me">Hux Blog</a> |
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" width="100"
+                        height="20"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+<!-- Simple Jekyll Search -->
+<script src="/js/simple-jekyll-search.min.js"></script>
+
+<!-- Service Worker -->
+
+<script src="/js/snackbar.js"></script>
+<script src="/js/sw-registration.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+        var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+
+
+
+
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function () {
+        var $nav = document.querySelector("nav");
+        if ($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        // interop with multilangual 
+        if ('' == 'true') {
+            _containerSelector = 'div.post-container.active'
+        } else {
+            _containerSelector = 'div.post-container'
+        }
+
+        // init
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        // clean
+        $(selector).html('')
+
+        // appending
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+<!-- Multi-Lingual -->
+
+
+<!-- Simple Jekyll Search -->
+<script>
+    // https://stackoverflow.com/questions/1912501/unescape-html-entities-in-javascript
+    function htmlDecode(input) {
+        var e = document.createElement('textarea');
+        e.innerHTML = input;
+        // handle case of empty input
+        return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+    }
+
+    SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('search-results'),
+        json: '/search.json',
+        searchResultTemplate: '<div class="post-preview item"><a href="{url}"><h2 class="post-title">{title}</h2><h3 class="post-subtitle">{subtitle}</h3><hr></a></div>',
+        noResultsText: 'No results',
+        limit: 50,
+        fuzzy: false,
+        // a hack to get escaped subtitle unescaped. for some reason,
+        // post.subtitle w/o escape filter nuke entire search.
+        templateMiddleware: function (prop, value, template) {
+            if (prop === 'subtitle' || prop === 'title') {
+                if (value.indexOf("code")) {
+                    return htmlDecode(value);
+                } else {
+                    return value;
+                }
+            }
+        }
+    });
+
+    $(document).ready(function () {
+        var $searchPage = $('.search-page');
+        var $searchOpen = $('.search-icon');
+        var $searchClose = $('.search-icon-close');
+        var $searchInput = $('#search-input');
+        var $body = $('body');
+
+        $searchOpen.on('click', function (e) {
+            e.preventDefault();
+            $searchPage.toggleClass('search-active');
+            var prevClasses = $body.attr('class') || '';
+            setTimeout(function () {
+                $body.addClass('no-scroll');
+            }, 400)
+
+            if ($searchPage.hasClass('search-active')) {
+                $searchClose.on('click', function (e) {
+                    e.preventDefault();
+                    $searchPage.removeClass('search-active');
+                    $body.attr('class', prevClasses);  // from closure
+                });
+                $searchInput.focus();
+            }
+        });
+    });
+</script>
+
+<!-- Back to Top Button -->
+<script>
+    $(document).ready(function () {
+        var $backToTop = $('#back-to-top');
+
+        // Show/hide button based on scroll position
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 300) {
+                $backToTop.addClass('show');
+            } else {
+                $backToTop.removeClass('show');
+            }
+        });
+
+        // Smooth scroll to top
+        $backToTop.click(function (e) {
+            e.preventDefault();
+            $('html, body').animate({ scrollTop: 0 }, 600);
+        });
+    });
+</script>
+
+<!-- Reading Progress Indicator -->
+<script>
+    $(document).ready(function () {
+        var $progressBar = $('#reading-progress-bar');
+        var $article = $('article');
+
+        function updateProgress() {
+            if ($article.length === 0) return;
+
+            var articleTop = $article.offset().top;
+            var articleHeight = $article.outerHeight();
+            var windowHeight = $(window).height();
+            var scrollTop = $(window).scrollTop();
+
+            // Calculate how much of the article is visible
+            var articleBottom = articleTop + articleHeight;
+            var windowBottom = scrollTop + windowHeight;
+
+            var progress = 0;
+
+            if (scrollTop > articleTop) {
+                if (windowBottom >= articleBottom) {
+                    // Article fully visible
+                    progress = 100;
+                } else {
+                    // Article partially visible
+                    var visibleHeight = windowBottom - articleTop;
+                    progress = (visibleHeight / articleHeight) * 100;
+                }
+            }
+
+            // Ensure progress is between 0 and 100
+            progress = Math.max(0, Math.min(100, progress));
+
+            $progressBar.css('width', progress + '%');
+        }
+
+        // Update progress on scroll
+        $(window).scroll(updateProgress);
+
+        // Initial update
+        updateProgress();
+    });
+</script>
+
+
+    <!-- Mermaid JS -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            mermaid.initialize({ startOnLoad: true });
+        });
+    </script>
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+          }
+        });
+      </script>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <!-- Migrate from head to bottom, no longer block render and still work -->
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Back to Top">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <!-- Reading Progress Indicator -->
+    <div id="reading-progress">
+        <div id="reading-progress-bar"></div>
+    </div>
+
+</body>
+
+</html>

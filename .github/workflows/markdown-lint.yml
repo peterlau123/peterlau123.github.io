@@ -2,7 +2,7 @@ name: Markdown Lint
 
 on:
   push:
-    branches: ["master"]
+    branches: ["main"]
   pull_request:
     paths:
       - '**/*.md'
@@ -25,4 +25,3 @@ jobs:
             **/*.markdown
           separator: '---'
           config: '.markdownlint.json'
-          ignore_path: '.markdownlintignore'
