@@ -528,23 +528,40 @@ body {
       }
     }
   }
-  background: no-repeat center center;
-  background-color: @brand-gray;
+  background: linear-gradient(135deg, @brand-primary 0%, lighten(@brand-primary, 20%) 100%);
   background-attachment: scroll;
-  .background-cover;
-  // NOTE: Background images are set within the HTML using inline CSS!
-  margin-bottom: 0px; /* 0 on mobile, modify by Hux */
-  @media only screen and (min-width: 768px) {
-    margin-bottom: 20px; /* response on desktop */
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 255, 0.1) 10px,
+      rgba(255, 255, 255, 0.1) 20px
+    );
+    opacity: 0.3;
   }
   .site-heading,
   .post-heading,
   .page-heading {
+    position: relative;
+    z-index: 2;
     padding: 85px 0 55px;
     color: white;
     @media only screen and (min-width: 768px) {
       padding: 150px 0;
     }
+  }
+  // NOTE: Background images are set within the HTML using inline CSS!
+  margin-bottom: 0px; /* 0 on mobile, modify by Hux */
+  @media only screen and (min-width: 768px) {
+    margin-bottom: 20px; /* response on desktop */
   }
   // masterialize
   .site-heading {
