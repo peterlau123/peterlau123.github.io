@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="这里是 @Peter Lau 刘鑫 的个人博客，与你一起发现更大的世界 | 要做一个有 理想与现实兼顾 的程序员">
+    <meta name="keywords" content="刘鑫, 博客, 个人网站, 互联网, C++/C, Python, Lua, Rust, Lisp, 软件工程, 软件架构设计, 人工智能, 并行计算">
+    <meta name="theme-color" content="#000000">
+
+    <!-- Open Graph -->
+    <meta property="og:title"
+        content="The transformer's decoding - 刘鑫的博客 | Peter Lau Blog">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="
+  
+
+">
+    
+    <meta property="article:published_time" content=" 2025-02-15T00:00:00Z">
+    
+    
+    <meta property="article:author" content="Peter Lau">
+    
+    
+    <meta property="article:tag" content="Computer science">
+    
+    <meta property="article:tag" content="LLM">
+    
+    <meta property="article:tag" content="Transformers">
+    
+    
+    <meta property="og:image" content="https://peterlau123.github.io">
+    <meta property="og:url" content="https://peterlau123.github.io/2025/02/15/transformer-decoding-strategy/">
+    <meta property="og:site_name" content="刘鑫的博客 | Peter Lau Blog">
+
+    <title>The transformer's decoding - 刘鑫的博客 | Peter Lau Blog</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://peterlau123.github.io/2025/02/15/transformer-decoding-strategy/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    <!-- Google AdSense -->
+    <script data-ad-client="ca-pub-6487568398225121" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- Mermaid Support -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("Mermaid initialization starting...");
+        mermaid.initialize({
+          startOnLoad: true,
+          theme: 'default',
+          securityLevel: 'loose',
+          flowchart: {
+            useMaxWidth: true,
+            htmlLabels: true,
+            curve: 'basis'
+          }
+        });
+        console.log("Mermaid initialization complete");
+      });
+    </script>
+
+    
+    <style>
+        /* place left on bigger screen */
+        @media all and (min-width: 800px) {
+            .anchorjs-link{
+                position: absolute;
+                left: -0.75em;
+                font-size: 1.1em;
+                margin-top : -0.1em;
+            }
+        }
+    </style>
+    
+
+    
+    <style type="text/css">
+        header.intro-header{
+            position: relative;
+            background-image: url('/img/home-bg.jpg');
+            
+        }
+
+        
+    </style>
+    
+
+    
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body>
+
+    <!-- Navigation -->
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
+    
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Peter Lau Blog</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div id="huxblog_navbar">
+                <div class="navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                        
+                        
+                        <li>
+                            <a href="/archive/">Archive</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li class="search-icon">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <script>
+        // Drop Bootstarp low-performance Navbar
+        // Use customize navbar with high-quality material design animation
+        // in high-perf jank-free CSS3 implementation
+        var $body = document.body;
+        var $toggle = document.querySelector('.navbar-toggle');
+        var $navbar = document.querySelector('#huxblog_navbar');
+        var $collapse = document.querySelector('.navbar-collapse');
+
+        var __HuxNav__ = {
+            close: function () {
+                $navbar.className = " ";
+                // wait until animation end.
+                setTimeout(function () {
+                    // prevent frequently toggle
+                    if ($navbar.className.indexOf('in') < 0) {
+                        $collapse.style.height = "0px"
+                    }
+                }, 400)
+            },
+            open: function () {
+                $collapse.style.height = "auto"
+                $navbar.className += " in";
+            }
+        }
+
+        // Bind Event
+        $toggle.addEventListener('click', function (e) {
+            if ($navbar.className.indexOf('in') > 0) {
+                __HuxNav__.close()
+            } else {
+                __HuxNav__.open()
+            }
+        })
+
+        /**
+         * Since Fastclick is used to delegate 'touchstart' globally
+         * to hack 300ms delay in iOS by performing a fake 'click',
+         * Using 'e.stopPropagation' to stop 'touchstart' event from 
+         * $toggle/$collapse will break global delegation.
+         * 
+         * Instead, we use a 'e.target' filter to prevent handler
+         * added to document close HuxNav.  
+         *
+         * Also, we use 'click' instead of 'touchstart' as compromise
+         */
+        document.addEventListener('click', function (e) {
+            if (e.target == $toggle) return;
+            if (e.target.className == 'icon-bar') return;
+            __HuxNav__.close();
+        })
+    </script>
+    <!-- Search -->
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Include Mermaid.js -->
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
+</script>
+
+<!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/home-bg.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+
+
+
+
+
+
+<header class="intro-header style-text" >
+
+    <div class="header-mask"></div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/archive/?tag=Computer+science" title="Computer science">Computer science</a>
+                        
+                        <a class="tag" href="/archive/?tag=LLM" title="LLM">LLM</a>
+                        
+                        <a class="tag" href="/archive/?tag=Transformers" title="Transformers">Transformers</a>
+                        
+                    </div>
+                    <h1>The transformer's decoding</h1>
+                    
+                    <h2 class="subheading">Several decoding strategies</h2>
+                    <span class="meta">Posted by Peter Lau on February 15, 2025</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <!-- Multi-Lingual -->
+                
+
+				<div>
+  <p><img class="decoding" src="/img/transformers/MIT-GrandDecoder-01-press.jpg" width="500" height="300" alt="decoding strategy" /></p>
+</div>
+
+<h2 id="背景">背景</h2>
+
+<div>
+  <p><img class="decoding" src="/img/transformers/decoding-strategies-for-transformers-thumbnail.webp" width="400" height="200" alt="decoding strategy" /></p>
+</div>
+
+<p>在<em>The transformer’s details</em>一文中，Decoder最后一层$Softmax$输出预测token在词汇表是各个token的概率大小。</p>
+
+<p>实际使用中，预测的token是连续生成的，那么怎么挑选预测的token会对结果有不同的影响</p>
+
+<h2 id="解码策略">解码策略</h2>
+
+<h3 id="greedy-search">greedy search</h3>
+
+<p>顾名思义，预测的每个token都是top-1概率大小的token。优势是简单效率高，不足之处在于步步最优不一定代表整体最优，很有可能陷入了局部最优。</p>
+
+<p>举个例子：</p>
+
+<div>
+  <p><img class="greed" src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*peGpWtPOF1FrvUt0FrEJ9Q.png" width="500" height="300" alt="greedy search" /></p>
+</div>
+
+<p>如上图，按照贪婪搜索的方法，最终的预测序列是<strong>The cat is</strong>，但是从整体结果来看<strong>the red fox</strong>才是最佳答案。可以看出，贪婪搜索会忽略当前低概率token后续的高概率token。</p>
+
+<h3 id="sampling">sampling</h3>
+
+<h4 id="random-sampling">random sampling</h4>
+
+<p>从模型输出的token概率分布中，随机选择一个预测token</p>
+
+<div>
+  <p><img class="random sampling" src="/img/transformers/problem_with_random_sampling.png" width="500" height="300" alt="decoding strategy" /></p>
+</div>
+
+<p>参考上图，使用随机采样的方法，<em>I set my cat down on the</em>后面很有可能跟<strong>web</strong>或<strong>monkey</strong>，因为词汇表中大部分的token概率数值都较低，整个词汇表概率分布呈现长尾现象。</p>
+
+<h4 id="random-sampling-with-temperatue">random sampling with temperatue</h4>
+
+\[P(Y_t=i)=\frac{exp(\frac{z_i}{T})}{\sum_jexp(\frac{z_j}{T})}\]
+
+<p>引入$T$来计算输出token的概率分布，$T$大小与词汇表token概率分布的关系如下图</p>
+
+<div>
+  <p><img class="random sampling" src="/img/transformers/decoding/random_sampling_temperature.png" width="500" height="250" alt="decoding strategy" /></p>
+</div>
+
+<p>可以看出，温度越高，预测token整体概率分布越趋于均衡，左侧分布幅度越小。这也侧面说明，温度越高，文本预测结果越适合创作场景，因为不需要对结果有很高的准确度约束。</p>
+
+<h4 id="top-k-sampling">top-k sampling</h4>
+
+<p>只考虑概率最大的k个token，通常$k \in [10,50]$</p>
+
+<p>这样仍存在选取不太可能的token作为输出的情况，比如概率分布左侧尖锐尾部很长的场景</p>
+
+<h4 id="nucleus--sampling">nucleus  sampling</h4>
+
+<p>相较于<em>top-k</em>采样，此方法不固定选择的token数目。它设定一个概率$p$阈值，选择的$k_t$个token概率和要不高于$p$</p>
+
+<h4 id="小结">小结</h4>
+
+<p>使用温度，可以改变模型的输出概率分布，使其变得更加尖锐或者平滑；top-k或者top-p可以使得输出结果更加流畅</p>
+
+<p>这三种方法相当于缩小与采样范围，从新的范围中选择一个token作为预测结果</p>
+
+<h3 id="beam-search">beam search</h3>
+
+<p>目标是最大概率的预测序列</p>
+
+<p>示意图如下，beam size为2</p>
+
+<div>
+  <p><img class="beam search" src="/img/transformers/decoding/beam_search.png" width="500" height="300" alt="decoding strategy" /></p>
+</div>
+
+<p>从上图可以看到，在每一轮预测，都会保留top-2结果；图中的灰色path（也称beams）就是被选择的结果。如果beam size变大，带来的计算量会显著增大。</p>
+
+<p>beam search适合对最终整体结果正确性要求较高的场景，不适合创作性要求高的场景</p>
+
+<h2 id="小结-1">小结</h2>
+
+<div>
+  <p><img class="trade off" src="/img/transformers/decoding/decoding_strategy_tradeoff.png" width="600" height="300" alt="decoding strategy" /></p>
+</div>
+
+<p>左右两端对应结果两极，通常根据场景设定对应的decoding策略参数</p>
+
+<h2 id="参考信息">参考信息</h2>
+
+<ol>
+  <li><a href="https://www.scaler.com/topics/nlp/decoding-strategies-for-transformers/">Decoding Strategies for Transformers</a></li>
+  <li><a href="https://storage.googleapis.com/cmu-llms/2024/2024-08-26-course-intro-and-lm-basics.pdf">cmu llm course</a></li>
+</ol>
+
+
+                <hr style="visibility: hidden;">
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2025/02/12/paged-attention-one/" data-toggle="tooltip" data-placement="top" title="Paged Attention">
+                        Previous<br>
+                        <span>Paged Attention</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2025/03/01/Llama/" data-toggle="tooltip" data-placement="top" title="Llama">
+                        Next<br>
+                        <span>Llama</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <hr style="visibility: hidden;">
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+                
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+
+<section>
+    
+        <hr class="hidden-sm hidden-xs">
+    
+    <h5><a href="/archive/">FEATURED TAGS</a></h5>
+    <div class="tags">
+        
+        
+        
+        
+        
+        
+                <a data-sort="0007" 
+                    href="/archive/?tag=Computer+science"
+                    title="Computer science"
+                    rel="14">Computer science</a>
+        
+                <a data-sort="0014" 
+                    href="/archive/?tag=LLM"
+                    title="LLM"
+                    rel="7">LLM</a>
+        
+                <a data-sort="0015" 
+                    href="/archive/?tag=Growth"
+                    title="Growth"
+                    rel="6">Growth</a>
+        
+                <a data-sort="0018" 
+                    href="/archive/?tag=Deep+Learning"
+                    title="Deep Learning"
+                    rel="3">Deep Learning</a>
+        
+                <a data-sort="0018" 
+                    href="/archive/?tag=Transformers"
+                    title="Transformers"
+                    rel="3">Transformers</a>
+        
+                <a data-sort="0019" 
+                    href="/archive/?tag=DeepSeek"
+                    title="DeepSeek"
+                    rel="2">DeepSeek</a>
+        
+                <a data-sort="0019" 
+                    href="/archive/?tag=Software"
+                    title="Software"
+                    rel="2">Software</a>
+    </div>
+</section>
+
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+<!-- add support for mathjax by voleking-->
+
+
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "Peter Lau";
+    var disqus_identifier = "/2025/02/15/transformer-decoding-strategy";
+    var disqus_url = "https://peterlau123.github.io/2025/02/15/transformer-decoding-strategy/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'right',
+          // icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <!-- SNS Link -->
+                
+
+
+<ul class="list-inline text-center">
+
+
+  
+  
+  
+  
+  
+  
+  <li>
+    <a target="_blank" href="https://github.com/peterlau123">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  
+  
+</ul>
+
+                <p class="copyright text-muted">
+                    Copyright &copy; Peter Lau Blog 2025
+                    <br>
+                    Powered by <a href="http://huangxuan.me">Hux Blog</a> |
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" width="100"
+                        height="20"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+<!-- Simple Jekyll Search -->
+<script src="/js/simple-jekyll-search.min.js"></script>
+
+<!-- Service Worker -->
+
+<script src="/js/snackbar.js"></script>
+<script src="/js/sw-registration.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+        var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+
+
+
+
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function () {
+        var $nav = document.querySelector("nav");
+        if ($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        // interop with multilangual 
+        if ('' == 'true') {
+            _containerSelector = 'div.post-container.active'
+        } else {
+            _containerSelector = 'div.post-container'
+        }
+
+        // init
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        // clean
+        $(selector).html('')
+
+        // appending
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+<!-- Multi-Lingual -->
+
+
+<!-- Simple Jekyll Search -->
+<script>
+    // https://stackoverflow.com/questions/1912501/unescape-html-entities-in-javascript
+    function htmlDecode(input) {
+        var e = document.createElement('textarea');
+        e.innerHTML = input;
+        // handle case of empty input
+        return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+    }
+
+    SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('search-results'),
+        json: '/search.json',
+        searchResultTemplate: '<div class="post-preview item"><a href="{url}"><h2 class="post-title">{title}</h2><h3 class="post-subtitle">{subtitle}</h3><hr></a></div>',
+        noResultsText: 'No results',
+        limit: 50,
+        fuzzy: false,
+        // a hack to get escaped subtitle unescaped. for some reason,
+        // post.subtitle w/o escape filter nuke entire search.
+        templateMiddleware: function (prop, value, template) {
+            if (prop === 'subtitle' || prop === 'title') {
+                if (value.indexOf("code")) {
+                    return htmlDecode(value);
+                } else {
+                    return value;
+                }
+            }
+        }
+    });
+
+    $(document).ready(function () {
+        var $searchPage = $('.search-page');
+        var $searchOpen = $('.search-icon');
+        var $searchClose = $('.search-icon-close');
+        var $searchInput = $('#search-input');
+        var $body = $('body');
+
+        $searchOpen.on('click', function (e) {
+            e.preventDefault();
+            $searchPage.toggleClass('search-active');
+            var prevClasses = $body.attr('class') || '';
+            setTimeout(function () {
+                $body.addClass('no-scroll');
+            }, 400)
+
+            if ($searchPage.hasClass('search-active')) {
+                $searchClose.on('click', function (e) {
+                    e.preventDefault();
+                    $searchPage.removeClass('search-active');
+                    $body.attr('class', prevClasses);  // from closure
+                });
+                $searchInput.focus();
+            }
+        });
+    });
+</script>
+
+<!-- Back to Top Button -->
+<script>
+    $(document).ready(function () {
+        var $backToTop = $('#back-to-top');
+
+        // Show/hide button based on scroll position
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 300) {
+                $backToTop.addClass('show');
+            } else {
+                $backToTop.removeClass('show');
+            }
+        });
+
+        // Smooth scroll to top
+        $backToTop.click(function (e) {
+            e.preventDefault();
+            $('html, body').animate({ scrollTop: 0 }, 600);
+        });
+    });
+</script>
+
+<!-- Reading Progress Indicator -->
+<script>
+    $(document).ready(function () {
+        var $progressBar = $('#reading-progress-bar');
+        var $article = $('article');
+
+        function updateProgress() {
+            if ($article.length === 0) return;
+
+            var articleTop = $article.offset().top;
+            var articleHeight = $article.outerHeight();
+            var windowHeight = $(window).height();
+            var scrollTop = $(window).scrollTop();
+
+            // Calculate how much of the article is visible
+            var articleBottom = articleTop + articleHeight;
+            var windowBottom = scrollTop + windowHeight;
+
+            var progress = 0;
+
+            if (scrollTop > articleTop) {
+                if (windowBottom >= articleBottom) {
+                    // Article fully visible
+                    progress = 100;
+                } else {
+                    // Article partially visible
+                    var visibleHeight = windowBottom - articleTop;
+                    progress = (visibleHeight / articleHeight) * 100;
+                }
+            }
+
+            // Ensure progress is between 0 and 100
+            progress = Math.max(0, Math.min(100, progress));
+
+            $progressBar.css('width', progress + '%');
+        }
+
+        // Update progress on scroll
+        $(window).scroll(updateProgress);
+
+        // Initial update
+        updateProgress();
+    });
+</script>
+
+
+    <!-- Mermaid JS -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            mermaid.initialize({ startOnLoad: true });
+        });
+    </script>
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+          }
+        });
+      </script>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <!-- Migrate from head to bottom, no longer block render and still work -->
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Back to Top">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <!-- Reading Progress Indicator -->
+    <div id="reading-progress">
+        <div id="reading-progress-bar"></div>
+    </div>
+
+</body>
+
+</html>
