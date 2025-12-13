@@ -158,6 +158,10 @@
                         
                         
                         
+                        
+                        
+                        
+                        
                         <li class="search-icon">
                             <a href="javascript:void(0)">
                                 <i class="fa fa-search"></i>
@@ -281,8 +285,393 @@
     <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12
       col-xs-12 postlist-container">
       
+<div class="post-preview">
+    <a href="/2025/03/28/prefect_framework_intro/">
+        <h2 class="post-title">
+            Prefect intro
+        </h2>
+        
+        <h3 class="post-subtitle">
+            Python workflow
+        </h3>
+        
+        <div class="post-content-preview">
+            
+                
+  
+
+
+背景
+
+最近经常需要使用python脚本处理数据，在目标场景中数据需要经过多个环节处理才能完成。最初，个人使用多个python脚本，每个脚本对应一个环节，最后再使用shell或者python将这些环节串起来。
+
+后来发现，这些代码可用性较差、不方便维护且需要引入额外的处理比如日志监控和差错重试等。如果去重构也需要再花些时间去梳理，RoI并不高。有无可能从刚开始就按照工作流的形式规...
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Peter Lau on March 28, 2025
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2025/03/01/Llama/">
+        <h2 class="post-title">
+            Llama
+        </h2>
+        
+        <h3 class="post-subtitle">
+            Internals
+        </h3>
+        
+        <div class="post-content-preview">
+            
+                
+  
+
+
+本文主要介绍Llama的模型结构和主要优化特性。
+
+Model Architecture
+
+
+  
+
+
+Llama结构整体如上，是个典型的decoder-only结构，它包含如下部分：
+
+
+  Embedding
+  Transformer stack
+  RMS Norm
+  Linear
+  Softmax
+
+
+Transformer stack包含多个Transformer...
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Peter Lau on March 1, 2025
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2025/02/15/transformer-decoding-strategy/">
+        <h2 class="post-title">
+            The transformer's decoding
+        </h2>
+        
+        <h3 class="post-subtitle">
+            Several decoding strategies
+        </h3>
+        
+        <div class="post-content-preview">
+            
+                
+  
+
+
+背景
+
+
+  
+
+
+在The transformer’s details一文中，Decoder最后一层$Softmax$输出预测token在词汇表是各个token的概率大小。
+
+实际使用中，预测的token是连续生成的，那么怎么挑选预测的token会对结果有不同的影响
+
+解码策略
+
+greedy search
+
+顾名思义，预测的每个token都是top-1概率大小的token。优...
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Peter Lau on February 15, 2025
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2025/02/12/paged-attention-one/">
+        <h2 class="post-title">
+            Paged Attention
+        </h2>
+        
+        <h3 class="post-subtitle">
+            Mechanism Intro
+        </h3>
+        
+        <div class="post-content-preview">
+            
+                
+  
+
+
+背景
+
+自回归transformer模型
+
+首先来看自回归transformer模型结构，如下图：
+
+
+  
+
+
+它主要包含以下部分：
+
+  input
+  embedding
+  positional encoding
+  Masked MultiHead Attention
+  FeedForward
+  Linear&amp;Softmax
+
+
+其中Masked-Multi...
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Peter Lau on February 12, 2025
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2025/02/11/DeepSeek-V2/">
+        <h2 class="post-title">
+            DeepSeek V2
+        </h2>
+        
+        <h3 class="post-subtitle">
+            Internals
+        </h3>
+        
+        <div class="post-content-preview">
+            
+                
+  
+
+
+本文主要介绍DeepSeek V2的模型结构并用数学表达式分析模型计算过程。
+
+Model Architecture
+
+
+  
+
+
+V2共计有60层，$h_t=5120$，注意力头数$n_h=128$，每个头的维度$R\in^{128}$
+
+除了第一层的FFN，V2将每个transformer block中的FFN都替换为MoE层。
+
+每个toekn，只会激活6个专家；V2共计参...
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Peter Lau on February 11, 2025
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2025/02/10/transformer-detail/">
+        <h2 class="post-title">
+            The transformer's details
+        </h2>
+        
+        <h3 class="post-subtitle">
+            Mathmatical formula derivation
+        </h3>
+        
+        <div class="post-content-preview">
+            
+                
+  
+
+
+数学表达式
+
+Input embedding
+
+假设目前输入为 $N$ 个token，经过embedding后，变为 $N \times d_f$ 矩阵，记为 $I$
+
+Positional encoding
+
+对输入的各个token做位置编码，最简单的编码方式是直接将位置向量累加到对应的emdding向量中
+
+输入$N \times d_f$，输出$N \times d_f$
+...
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Peter Lau on February 10, 2025
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2025/02/09/DeepSeek-R1/">
+        <h2 class="post-title">
+            DeepSeek R1
+        </h2>
+        
+        <h3 class="post-subtitle">
+            Internals
+        </h3>
+        
+        <div class="post-content-preview">
+            
+                
+  
+
+
+本文主要介绍DeepSeek R1的模型结构并介绍其模型生产流程。
+
+Model Architecture
+
+
+
+MoE Architecture
+
+R1使用256个专家，但对于每个token只会激活其中8个专家，另有一个共享专家。
+
+Router Network
+
+输入token，数量$N$；输出$N\times256$的向量
+
+第一步：输入$x \in R^{N\times7...
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Peter Lau on February 9, 2025
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2024/11/30/cursor%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93/">
+        <h2 class="post-title">
+            Cursor实践总结
+        </h2>
+        
+        <h3 class="post-subtitle">
+            Cursor
+        </h3>
+        
+        <div class="post-content-preview">
+            
+                
+  
+
+
+本篇文章会持续更新，记录Cursor的实践总结。
+
+代码生成
+
+工作中经常需要使用脚本处理各种任务，比如日志分析、可视化数据、文本批量修改等。使用Python并借助Cursor的代码生成功能，可以大大提高工作效率。下面贴一张经常使用的Python代码Prompt生成示例。
+
+Prompt示例
+
+Please write a python script:
+
+Method:
+usin...
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Peter Lau on November 30, 2024
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2024/11/24/%E7%9F%A5%E9%81%93%E5%9C%A8%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%81%9C%E6%AD%A2/">
+        <h2 class="post-title">
+            知道什么时候停止
+        </h2>
+        
+        <h3 class="post-subtitle">
+            程序员修炼之道
+        </h3>
+        
+        <div class="post-content-preview">
+            
+                
+  
+
+
+这是一个相当大的主题，可以在许多领域用到，今天主要在软件开发领域聊聊这个话题。
+
+Elon Musk 和 OpenAI CEO Sam Altman 都推崇这样一个做法：你先迈出一步，再逐步精进。不要妄想等到万事俱备才开始，也不要期盼所需的前置学习都要掌握才开始，那样你永远都不会开始。
+
+为什么会有这样的论调？
+
+首先我们要承认没有绝对完美的计划，条件大差不差的时候，可以着手去做...
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Peter Lau on November 24, 2024
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2024/11/16/%E4%BD%A0%E6%9C%89%E6%9D%83%E9%80%89%E6%8B%A9/">
+        <h2 class="post-title">
+            你有权选择
+        </h2>
+        
+        <h3 class="post-subtitle">
+            程序员修炼之道
+        </h3>
+        
+        <div class="post-content-preview">
+            
+                
+  
+
+
+这个标题不是为了鼓励在工作中遇到不顺就跳槽。
+
+“你有权选择”是指人生是自己的，你要去主动选择适合自己的工作环境，工作方向以及任务内容。被动选择最大的坏处，是对自己职业生涯的不负责。
+
+被动选择，那么通常情况下是遇事才做出选择。如果不提出自己的诉求，想做的工作方向，那么分配给到自己的不太可能是你一直心心念想要做的工作。因为外人不太可能很了解你擅长什么，你的职业目标。
+
+所以，要放...
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Peter Lau on November 16, 2024
+    </p>
+</div>
+<hr>
+
 
 <!-- Pager -->
+
+<ul class="pager">
+    
+    
+    <li class="next">
+        <a href="/page2">Older Posts &rarr;</a>
+    </li>
+    
+</ul>
 
 
     </div>
