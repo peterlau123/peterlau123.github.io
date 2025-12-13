@@ -47,9 +47,11 @@ h4 {
 }
 a {
   color: @gray-dark;
+  transition: color 0.3s ease;
   &:hover,
   &:focus {
     color: @brand-primary;
+    transform: translateY(-1px);
   }
 }
 
@@ -779,11 +781,14 @@ footer {
 }
 
 .btn-default {
+  transition: all 0.3s ease;
   &:hover,
   &:focus {
     background-color: @brand-primary;
     border: 1px solid @brand-primary;
     color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   }
 }
 

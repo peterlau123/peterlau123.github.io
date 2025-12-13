@@ -693,10 +693,12 @@ h4 {
 }
 a {
   color: #404040;
+  transition: color 0.3s ease;
 }
 a:hover,
 a:focus {
   color: #87CEEB;
+  transform: translateY(-1px);
 }
 a img:hover,
 a img:focus {
@@ -1379,11 +1381,16 @@ footer .copyright a:focus {
   font-size: 16px;
   padding: 25px 35px;
 }
+.btn-default {
+  transition: all 0.3s ease;
+}
 .btn-default:hover,
 .btn-default:focus {
   background-color: #87CEEB;
   border: 1px solid #87CEEB;
   color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 .pager {
   margin: 20px 0 0 !important;
