@@ -1330,8 +1330,8 @@ samp {
   font-style: italic;
   margin: 0;
   display: block;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
 }
 footer {
   font-size: 20px;
