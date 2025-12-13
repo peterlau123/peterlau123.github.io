@@ -350,3 +350,48 @@
         });
     });
 </script>
+
+<!-- Reading Progress Indicator -->
+<script>
+    $(document).ready(function () {
+        var $progressBar = $('#reading-progress-bar');
+        var $article = $('article');
+
+        function updateProgress() {
+            if ($article.length === 0) return;
+
+            var articleTop = $article.offset().top;
+            var articleHeight = $article.outerHeight();
+            var windowHeight = $(window).height();
+            var scrollTop = $(window).scrollTop();
+
+            // Calculate how much of the article is visible
+            var articleBottom = articleTop + articleHeight;
+            var windowBottom = scrollTop + windowHeight;
+
+            var progress = 0;
+
+            if (scrollTop > articleTop) {
+                if (windowBottom >= articleBottom) {
+                    // Article fully visible
+                    progress = 100;
+                } else {
+                    // Article partially visible
+                    var visibleHeight = windowBottom - articleTop;
+                    progress = (visibleHeight / articleHeight) * 100;
+                }
+            }
+
+            // Ensure progress is between 0 and 100
+            progress = Math.max(0, Math.min(100, progress));
+
+            $progressBar.css('width', progress + '%');
+        }
+
+        // Update progress on scroll
+        $(window).scroll(updateProgress);
+
+        // Initial update
+        updateProgress();
+    });
+</script>
