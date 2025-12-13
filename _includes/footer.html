@@ -289,7 +289,7 @@
         noResultsText: 'No results',
         limit: 50,
         fuzzy: false,
-        // a hack to get escaped subtitle unescaped. for some reason, 
+        // a hack to get escaped subtitle unescaped. for some reason,
         // post.subtitle w/o escape filter nuke entire search.
         templateMiddleware: function (prop, value, template) {
             if (prop === 'subtitle' || prop === 'title') {
@@ -321,10 +321,32 @@
                 $searchClose.on('click', function (e) {
                     e.preventDefault();
                     $searchPage.removeClass('search-active');
-                    $body.attr('class', prevClasses);  // from closure 
+                    $body.attr('class', prevClasses);  // from closure
                 });
                 $searchInput.focus();
             }
+        });
+    });
+</script>
+
+<!-- Back to Top Button -->
+<script>
+    $(document).ready(function () {
+        var $backToTop = $('#back-to-top');
+
+        // Show/hide button based on scroll position
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 300) {
+                $backToTop.addClass('show');
+            } else {
+                $backToTop.removeClass('show');
+            }
+        });
+
+        // Smooth scroll to top
+        $backToTop.click(function (e) {
+            e.preventDefault();
+            $('html, body').animate({ scrollTop: 0 }, 600);
         });
     });
 </script>
