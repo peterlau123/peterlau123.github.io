@@ -776,6 +776,9 @@ samp {
 .postlist-container {
   margin-bottom: 15px;
 }
+.post-container {
+  border: 1px solid #def2fa;
+}
 .post-container a {
   color: #337ab7;
 }
