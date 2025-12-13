@@ -779,6 +779,7 @@ samp {
   margin-bottom: 15px;
 }
 .post-container {
+  background-color: rgba(135, 206, 235, 0.02);
   border: 1px solid #def2fa;
 }
 .post-container a {
