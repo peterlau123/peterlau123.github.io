@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include head.html %}
+
+<body class="chirpy-layout">
+    
+    <!-- Chirpy Style Left Sidebar -->
+    {% include chirpy-sidebar.html %}
+    
+    <!-- Main Content Area -->
+    <div class="chirpy-main-content">
+        
+        <!-- Top Bar with Breadcrumb and Search -->
+        {% include chirpy-topbar.html %}
+        
+        <!-- Search Modal (保留原有搜索功能) -->
+        {% include search.html %}
+        
+        <!-- Content Wrapper -->
+        <div class="content-wrapper">
+            {{ content }}
+        </div>
+        
+        <!-- Footer -->
+        {% include footer.html %}
+    </div>
+
+    <!-- Mermaid JS -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            mermaid.initialize({ startOnLoad: true });
+        });
+    </script>
+    
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+          }
+        });
+    </script>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    
+    <!-- Image to hack wechat -->
+    <img src="/img/icon_wechat.png" width="0" height="0" />
+
+</body>
+
+</html>

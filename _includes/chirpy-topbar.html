@@ -1,0 +1,31 @@
+<!-- Chirpy Style Top Bar -->
+<div class="chirpy-topbar">
+    <!-- 面包屑导航 -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{{ site.baseurl }}/">Home</a>
+            </li>
+            {% if page.title %}
+            <li class="breadcrumb-item active" aria-current="page">
+                {{ page.title }}
+            </li>
+            {% endif %}
+        </ol>
+    </nav>
+    
+    <!-- 搜索框 -->
+    <div class="search-trigger">
+        <input type="text" placeholder="Search..." class="search-input" onclick="openSearch()">
+    </div>
+</div>
+
+<script>
+function openSearch() {
+    // 触发原有的搜索功能
+    const searchIcon = document.querySelector('.search-icon a');
+    if (searchIcon) {
+        searchIcon.click();
+    }
+}
+</script>

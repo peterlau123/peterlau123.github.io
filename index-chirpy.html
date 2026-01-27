@@ -1,0 +1,283 @@
+---
+layout: chirpy-default
+description: "「离开世界之前 一切都是过程」"
+---
+
+<!-- Chirpy Style Home Page - Card Layout -->
+<div class="chirpy-home">
+    <!-- Posts List -->
+    <div class="posts-list">
+        {% for post in paginator.posts %}
+        <article class="post-card">
+            <a href="{{ post.url | prepend: site.baseurl }}" class="post-card-link">
+                <header class="post-card-header">
+                    <h2 class="post-card-title">{{ post.title }}</h2>
+                    {% if post.subtitle %}
+                    <p class="post-card-subtitle">{{ post.subtitle }}</p>
+                    {% endif %}
+                </header>
+                
+                <div class="post-card-excerpt">
+                    {% if post.lang == 'en' %}
+                        {{ post.content | strip_html | truncate:200 }}
+                    {% else %}
+                        {{ post.content | strip_html | truncate:150 }}
+                    {% endif %}
+                </div>
+                
+                <footer class="post-card-footer">
+                    <div class="post-meta">
+                        <span class="post-date">
+                            <i class="fa fa-calendar"></i>
+                            {{ post.date | date: "%b %-d, %Y" }}
+                        </span>
+                        {% if post.author %}
+                        <span class="post-author">
+                            <i class="fa fa-user"></i>
+                            {{ post.author }}
+                        </span>
+                        {% endif %}
+                    </div>
+                    
+                    {% if post.tags %}
+                    <div class="post-tags">
+                        {% for tag in post.tags limit:3 %}
+                        <span class="tag-pill">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </footer>
+            </a>
+        </article>
+        {% endfor %}
+    </div>
+    
+    <!-- Pagination -->
+    {% if paginator.total_pages > 1 %}
+    <nav class="pagination-nav">
+        <ul class="pagination">
+            {% if paginator.previous_page %}
+            <li class="page-item">
+                <a class="page-link" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">
+                    <i class="fa fa-chevron-left"></i> Newer
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <span class="page-link"><i class="fa fa-chevron-left"></i> Newer</span>
+            </li>
+            {% endif %}
+            
+            <li class="page-item page-indicator">
+                <span class="page-link">{{ paginator.page }} / {{ paginator.total_pages }}</span>
+            </li>
+            
+            {% if paginator.next_page %}
+            <li class="page-item">
+                <a class="page-link" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">
+                    Older <i class="fa fa-chevron-right"></i>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <span class="page-link">Older <i class="fa fa-chevron-right"></i></span>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+
+<style>
+/* Chirpy Style Home Page Styles */
+.chirpy-home {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.posts-list {
+    display: grid;
+    gap: 30px;
+}
+
+.post-card {
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.post-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+    border-color: #dee2e6;
+}
+
+.post-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.post-card-header {
+    margin-bottom: 15px;
+}
+
+.post-card-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #404040;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+    transition: color 0.2s ease;
+}
+
+.post-card:hover .post-card-title {
+    color: #0085a1;
+}
+
+.post-card-subtitle {
+    font-size: 16px;
+    color: #6c757d;
+    margin: 0;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.post-card-excerpt {
+    font-size: 15px;
+    color: #6c757d;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.post-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid #e9ecef;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.post-meta {
+    display: flex;
+    gap: 15px;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.post-meta i {
+    margin-right: 5px;
+}
+
+.post-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.tag-pill {
+    display: inline-block;
+    padding: 3px 10px;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
+    font-size: 12px;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.tag-pill:hover {
+    background: #e9ecef;
+    color: #495057;
+}
+
+/* Pagination */
+.pagination-nav {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.page-item {
+    list-style: none;
+}
+
+.page-link {
+    display: block;
+    padding: 10px 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    color: #404040;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.page-link:hover {
+    background: #0085a1;
+    color: white;
+    border-color: #0085a1;
+}
+
+.page-item.disabled .page-link {
+    color: #adb5bd;
+    cursor: not-allowed;
+    background: #f8f9fa;
+}
+
+.page-indicator .page-link {
+    border: none;
+    background: none;
+    cursor: default;
+    color: #6c757d;
+}
+
+.page-indicator .page-link:hover {
+    background: none;
+    color: #6c757d;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .post-card {
+        padding: 20px;
+    }
+    
+    .post-card-title {
+        font-size: 20px;
+    }
+    
+    .post-card-subtitle {
+        font-size: 14px;
+    }
+    
+    .post-card-excerpt {
+        font-size: 14px;
+    }
+    
+    .post-card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .page-link {
+        padding: 8px 15px;
+        font-size: 13px;
+    }
+}
+</style>
