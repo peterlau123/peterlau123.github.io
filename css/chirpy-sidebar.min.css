@@ -69,7 +69,8 @@
   margin: 0;
 }
 .chirpy-sidebar .sidebar-nav li a {
-  display: block;
+  display: flex;
+  align-items: center;
   padding: 12px 30px;
   color: #404040;
   text-decoration: none;
@@ -79,6 +80,12 @@
   letter-spacing: 0.5px;
   transition: all 0.2s ease;
   position: relative;
+}
+.chirpy-sidebar .sidebar-nav li a i {
+  width: 20px;
+  margin-right: 12px;
+  text-align: center;
+  font-size: 16px;
 }
 .chirpy-sidebar .sidebar-nav li a:hover {
   background-color: #e9ecef;
@@ -98,13 +105,13 @@
   background-color: #0085a1;
 }
 .chirpy-sidebar .sidebar-sns {
-  padding: 20px;
-  text-align: center;
+  padding: 20px 30px;
+  text-align: left;
   border-top: 1px solid #e9ecef;
 }
 .chirpy-sidebar .sidebar-sns a {
   display: inline-block;
-  margin: 0 8px;
+  margin-right: 15px;
   color: #404040;
   font-size: 20px;
   transition: color 0.2s ease;
