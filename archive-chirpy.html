@@ -1,0 +1,297 @@
+---
+layout: chirpy-page
+title: Archives
+description: "按时间线展示的文章归档"
+---
+
+<!-- Chirpy Style Timeline Archives -->
+<div class="chirpy-archives">
+    <!-- Year Groups -->
+    {% for post in site.posts %}
+        {% assign currentYear = post.date | date: "%Y" %}
+        {% assign previousYear = post.previous.date | date: "%Y" %}
+        
+        {% if currentYear != previousYear %}
+            {% if forloop.index != 1 %}
+                </div> <!-- Close previous year -->
+            {% endif %}
+            
+            <!-- Year Header -->
+            <div class="archive-year">
+                <h2 class="year-title">
+                    <span class="year-number">{{ currentYear }}</span>
+                    <span class="year-count">({% assign year_posts = site.posts | where_exp: "item", "item.date | date: '%Y' == currentYear" %}{{ year_posts | size }} posts)</span>
+                </h2>
+                
+                <!-- Timeline Container -->
+                <div class="timeline-container">
+        {% endif %}
+        
+        <!-- Timeline Item -->
+        <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <div class="timeline-date">
+                    <span class="month">{{ post.date | date: "%b" }}</span>
+                    <span class="day">{{ post.date | date: "%d" }}</span>
+                </div>
+                <div class="timeline-post">
+                    <h3 class="post-title">
+                        <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                    </h3>
+                    {% if post.subtitle %}
+                    <p class="post-subtitle">{{ post.subtitle }}</p>
+                    {% endif %}
+                    {% if post.tags %}
+                    <div class="post-tags">
+                        {% for tag in post.tags limit:3 %}
+                        <span class="tag-badge">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        {% if forloop.last %}
+                </div> <!-- Close last year -->
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+<style>
+/* Chirpy Style Archives - Timeline Design */
+.chirpy-archives {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.archive-year {
+    margin-bottom: 60px;
+}
+
+.year-title {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #0085a1;
+}
+
+.year-number {
+    font-size: 32px;
+    font-weight: 700;
+    color: #0085a1;
+    line-height: 1;
+}
+
+.year-count {
+    font-size: 16px;
+    color: #6c757d;
+    font-weight: 400;
+}
+
+.timeline-container {
+    position: relative;
+    padding-left: 40px;
+}
+
+/* Timeline vertical line */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #0085a1, #e9ecef);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 35px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -33px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid #0085a1;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-marker {
+    transform: scale(1.3);
+    border-color: #006d84;
+}
+
+.timeline-content {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.timeline-date {
+    flex-shrink: 0;
+    text-align: right;
+    min-width: 60px;
+    padding-top: 2px;
+}
+
+.timeline-date .month {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0085a1;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.timeline-date .day {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    color: #404040;
+    line-height: 1.2;
+}
+
+.timeline-post {
+    flex: 1;
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 3px solid #0085a1;
+    transition: all 0.3s ease;
+}
+
+.timeline-post:hover {
+    background: #fff;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transform: translateX(5px);
+}
+
+.timeline-post .post-title {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.timeline-post .post-title a {
+    color: #404040;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.timeline-post .post-title a:hover {
+    color: #0085a1;
+}
+
+.timeline-post .post-subtitle {
+    font-size: 14px;
+    color: #6c757d;
+    margin: 0 0 10px 0;
+    line-height: 1.5;
+}
+
+.post-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.tag-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    background: #e9ecef;
+    border-radius: 10px;
+    font-size: 11px;
+    color: #495057;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .timeline-container {
+        padding-left: 30px;
+    }
+    
+    .timeline-container::before {
+        left: 9px;
+    }
+    
+    .timeline-marker {
+        left: -26px;
+        width: 10px;
+        height: 10px;
+        border-width: 2px;
+    }
+    
+    .timeline-content {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .timeline-date {
+        text-align: left;
+        min-width: auto;
+        display: flex;
+        gap: 8px;
+        align-items: baseline;
+    }
+    
+    .timeline-date .month {
+        font-size: 13px;
+    }
+    
+    .timeline-date .day {
+        font-size: 18px;
+    }
+    
+    .year-title {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .year-number {
+        font-size: 28px;
+    }
+    
+    .year-count {
+        font-size: 14px;
+    }
+    
+    .timeline-post {
+        padding: 12px 15px;
+    }
+    
+    .timeline-post .post-title {
+        font-size: 16px;
+    }
+    
+    .timeline-post .post-subtitle {
+        font-size: 13px;
+    }
+}
+
+/* Empty State */
+.chirpy-archives:empty::after {
+    content: "暂无文章";
+    display: block;
+    text-align: center;
+    color: #6c757d;
+    font-size: 18px;
+    padding: 60px 0;
+}
+</style>

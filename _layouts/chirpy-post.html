@@ -1,0 +1,393 @@
+---
+layout: chirpy-default
+---
+
+<!-- Chirpy Style Post Layout -->
+<article class="chirpy-post">
+    <!-- Post Header -->
+    <header class="post-header">
+        <h1 class="post-title">{{ page.title }}</h1>
+        
+        {% if page.subtitle %}
+        <p class="post-subtitle">{{ page.subtitle }}</p>
+        {% endif %}
+        
+        <!-- Post Meta -->
+        <div class="post-meta">
+            <span class="meta-item">
+                <i class="fa fa-calendar"></i>
+                <span>Posted {{ page.date | date: "%B %d, %Y" }}</span>
+            </span>
+            
+            {% if page.author %}
+            <span class="meta-item">
+                <i class="fa fa-user"></i>
+                <span>By {{ page.author }}</span>
+            </span>
+            {% endif %}
+            
+            {% if page.update_date %}
+            <span class="meta-item">
+                <i class="fa fa-refresh"></i>
+                <span>Updated {{ page.update_date | date: "%B %d, %Y" }}</span>
+            </span>
+            {% endif %}
+            
+            <!-- Reading Time -->
+            <span class="meta-item">
+                <i class="fa fa-clock-o"></i>
+                <span>{% assign words = content | strip_html | number_of_words %}{% if words < 360 %}1 min{% else %}{{ words | divided_by: 180 }} min{% endif %} read</span>
+            </span>
+        </div>
+        
+        <!-- Tags -->
+        {% if page.tags %}
+        <div class="post-tags-header">
+            {% for tag in page.tags %}
+            <a href="{{ site.baseurl }}/archive.html?tag={{ tag | url_encode }}" class="tag-link">
+                <i class="fa fa-tag"></i> {{ tag }}
+            </a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </header>
+    
+    <!-- Post Content -->
+    <div class="post-content">
+        {{ content }}
+    </div>
+    
+    <!-- Post Footer -->
+    <footer class="post-footer">
+        <div class="post-copyright">
+            <p><strong>本文作者：</strong>{{ page.author | default: site.title }}</p>
+            <p><strong>本文链接：</strong><a href="{{ page.url | prepend: site.url }}">{{ page.url | prepend: site.url }}</a></p>
+            <p><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 CC BY-NC-SA 4.0 许可协议。转载请注明出处！</p>
+        </div>
+        
+        <!-- Post Navigation -->
+        <nav class="post-nav">
+            {% if page.previous.url %}
+            <div class="nav-item nav-prev">
+                <span class="nav-label">
+                    <i class="fa fa-chevron-left"></i> Previous
+                </span>
+                <a href="{{ page.previous.url | prepend: site.baseurl }}" class="nav-link">
+                    {{ page.previous.title }}
+                </a>
+            </div>
+            {% endif %}
+            
+            {% if page.next.url %}
+            <div class="nav-item nav-next">
+                <span class="nav-label">
+                    Next <i class="fa fa-chevron-right"></i>
+                </span>
+                <a href="{{ page.next.url | prepend: site.baseurl }}" class="nav-link">
+                    {{ page.next.title }}
+                </a>
+            </div>
+            {% endif %}
+        </nav>
+    </footer>
+</article>
+
+<style>
+/* Chirpy Style Post Layout */
+.chirpy-post {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.post-header {
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e9ecef;
+    margin-bottom: 40px;
+}
+
+.post-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #404040;
+    margin: 0 0 15px 0;
+    line-height: 1.3;
+}
+
+.post-subtitle {
+    font-size: 20px;
+    color: #6c757d;
+    font-weight: 400;
+    margin: 0 0 20px 0;
+    line-height: 1.5;
+}
+
+.post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 15px;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.meta-item i {
+    color: #0085a1;
+}
+
+.post-tags-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 12px;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 15px;
+    font-size: 13px;
+    color: #495057;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.tag-link:hover {
+    background: #0085a1;
+    border-color: #0085a1;
+    color: white;
+}
+
+.tag-link i {
+    font-size: 11px;
+}
+
+.post-content {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #404040;
+    margin-bottom: 50px;
+}
+
+.post-content h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 50px 0 20px 0;
+    padding-top: 20px;
+    border-top: 1px solid #e9ecef;
+    color: #404040;
+}
+
+.post-content h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 40px 0 15px 0;
+    color: #404040;
+}
+
+.post-content h4 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 30px 0 12px 0;
+    color: #6c757d;
+}
+
+.post-content p {
+    margin: 1.2em 0;
+}
+
+.post-content a {
+    color: #0085a1;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.post-content a:hover {
+    border-bottom-color: #0085a1;
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1.5em auto;
+    display: block;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.post-content blockquote {
+    border-left: 4px solid #0085a1;
+    padding-left: 20px;
+    margin: 1.5em 0;
+    color: #6c757d;
+    font-style: italic;
+}
+
+.post-content ul,
+.post-content ol {
+    padding-left: 30px;
+    margin: 1.2em 0;
+}
+
+.post-content li {
+    margin: 0.5em 0;
+}
+
+.post-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+}
+
+.post-content table th,
+.post-content table td {
+    border: 1px solid #dee2e6;
+    padding: 10px 15px;
+    text-align: left;
+}
+
+.post-content table th {
+    background: #f8f9fa;
+    font-weight: 600;
+}
+
+.post-footer {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 2px solid #e9ecef;
+}
+
+.post-copyright {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #0085a1;
+    margin-bottom: 40px;
+}
+
+.post-copyright p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #6c757d;
+    line-height: 1.6;
+}
+
+.post-copyright a {
+    color: #0085a1;
+    text-decoration: none;
+}
+
+.post-copyright a:hover {
+    text-decoration: underline;
+}
+
+.post-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.nav-item {
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-item:hover {
+    border-color: #0085a1;
+    box-shadow: 0 2px 8px rgba(0,133,161,0.1);
+}
+
+.nav-item.nav-prev {
+    grid-column: 1;
+}
+
+.nav-item.nav-next {
+    grid-column: 2;
+    text-align: right;
+}
+
+.nav-label {
+    display: block;
+    font-size: 12px;
+    color: #6c757d;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.nav-link {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #404040;
+    text-decoration: none;
+    line-height: 1.4;
+}
+
+.nav-link:hover {
+    color: #0085a1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .post-title {
+        font-size: 28px;
+    }
+    
+    .post-subtitle {
+        font-size: 18px;
+    }
+    
+    .post-meta {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .post-content {
+        font-size: 15px;
+    }
+    
+    .post-content h2 {
+        font-size: 24px;
+    }
+    
+    .post-content h3 {
+        font-size: 20px;
+    }
+    
+    .post-content h4 {
+        font-size: 18px;
+    }
+    
+    .post-nav {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .nav-item.nav-prev,
+    .nav-item.nav-next {
+        grid-column: 1;
+        text-align: left;
+    }
+    
+    .post-copyright {
+        padding: 15px;
+    }
+    
+    .post-copyright p {
+        font-size: 13px;
+    }
+}
+</style>
