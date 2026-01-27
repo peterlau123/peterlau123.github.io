@@ -1,0 +1,97 @@
+<!-- Chirpy Style Left Sidebar -->
+<aside class="chirpy-sidebar">
+    <!-- 品牌区域 -->
+    <div class="sidebar-brand">
+        <div class="brand-logo">
+            <img src="{{ site.baseurl }}/img/black_horse.png" alt="{{ site.title }}">
+        </div>
+        <h1 class="brand-title">
+            <a href="{{ site.baseurl }}/">Peter Lau</a>
+        </h1>
+        <p class="brand-tagline">{{ site.sidebar-about-description }}</p>
+    </div>
+    
+    <!-- 导航菜单 -->
+    <nav class="sidebar-nav">
+        <ul>
+            <li>
+                <a href="{{ site.baseurl }}/" class="{% if page.url == '/' or page.url == '/index.html' %}active{% endif %}">
+                    <i class="fa fa-home"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ site.baseurl }}/categories/" class="{% if page.url contains '/categories/' %}active{% endif %}">
+                    <i class="fa fa-th-list"></i>
+                    <span>CATEGORIES</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ site.baseurl }}/tags/" class="{% if page.url contains '/tags/' %}active{% endif %}">
+                    <i class="fa fa-tags"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ site.baseurl }}/archive/" class="{% if page.url contains '/archive/' %}active{% endif %}">
+                    <i class="fa fa-archive"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ site.baseurl }}/about/" class="{% if page.url contains '/about/' %}active{% endif %}">
+                    <i class="fa fa-info-circle"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    
+    <!-- SNS Links -->
+    <div class="sidebar-sns">
+        {% if site.github_username %}
+        <a href="https://github.com/{{ site.github_username }}" target="_blank" title="GitHub">
+            <i class="fa fa-github"></i>
+        </a>
+        {% endif %}
+        {% if site.zhihu_username %}
+        <a href="https://www.zhihu.com/people/{{ site.zhihu_username }}" target="_blank" title="知乎">
+            <i class="fa fa-zhihu"></i>
+        </a>
+        {% endif %}
+        {% if site.twitter_username %}
+        <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" title="Twitter">
+            <i class="fa fa-twitter"></i>
+        </a>
+        {% endif %}
+        {% if site.leetcode_username %}
+        <a href="https://leetcode.com/{{ site.leetcode_username }}" target="_blank" title="LeetCode">
+            <i class="fa fa-code"></i>
+        </a>
+        {% endif %}
+    </div>
+</aside>
+
+<!-- Mobile Menu Toggle -->
+<button class="mobile-menu-toggle d-md-none" onclick="toggleMobileSidebar()">
+    <i class="fa fa-bars"></i>
+</button>
+
+<!-- Sidebar Overlay -->
+<div class="sidebar-overlay" onclick="closeMobileSidebar()"></div>
+
+<script>
+function toggleMobileSidebar() {
+    const sidebar = document.querySelector('.chirpy-sidebar');
+    const overlay = document.querySelector('.sidebar-overlay');
+    sidebar.classList.toggle('mobile-open');
+    overlay.classList.toggle('active');
+}
+
+function closeMobileSidebar() {
+    const sidebar = document.querySelector('.chirpy-sidebar');
+    const overlay = document.querySelector('.sidebar-overlay');
+    sidebar.classList.remove('mobile-open');
+    overlay.classList.remove('active');
+}
+</script>

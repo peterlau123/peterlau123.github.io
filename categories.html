@@ -1,0 +1,44 @@
+---
+title: Categories
+layout: default
+description: "Keep hungry, keep foolish"
+header-img: "img/bg-little-universe.jpg"
+---
+
+<!-- Page Header -->
+{% include intro-header.html type='page' short=true %}
+
+<!-- Main Content -->
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="chirpy-categories">
+                {% assign sorted_categories = site.categories | sort %}
+                {% for category in sorted_categories %}
+                <div class="category-card">
+                    <div class="card-header collapsed" data-toggle="collapse" data-target="#collapse-{{ category[0] | slugify }}" aria-expanded="false">
+                        <div class="card-title">
+                            <i class="fa fa-folder-open fa-fw"></i>
+                            <span class="category-name">{{ category[0] }}</span>
+                            <span class="text-muted small ml-2">{{ category[1].size }} posts</span>
+                        </div>
+                        <i class="fa fa-angle-down arrow"></i>
+                    </div>
+                    <div id="collapse-{{ category[0] | slugify }}" class="collapse card-body">
+                        <ul class="post-list">
+                            {% for post in category[1] %}
+                            <li class="post-item">
+                                <a href="{{ post.url | prepend: site.baseurl }}" class="post-link">
+                                    {{ post.title }}
+                                </a>
+                                <span class="post-meta date">{{ post.date | date: "%b %d, %Y" }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+		</div>
+	</div>
+</div>

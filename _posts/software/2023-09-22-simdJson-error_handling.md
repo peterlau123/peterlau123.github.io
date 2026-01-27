@@ -1,7 +1,7 @@
 ---
 title: "Error handling"
 subtitle: "simdJson"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
 published: true
 header-style: text
