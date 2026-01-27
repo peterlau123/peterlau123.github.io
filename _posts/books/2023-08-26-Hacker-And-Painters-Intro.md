@@ -1,9 +1,9 @@
 ---
 title: "读书笔记"
 subtitle: "Hacker and painters"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
-published: false
+published: true
 header-style: text
 tags:
   - Computer science

@@ -1,7 +1,7 @@
 ---
 title: "Paged Attention One"
 subtitle: "Mechanism Intro"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
 published: true
 header-style: text

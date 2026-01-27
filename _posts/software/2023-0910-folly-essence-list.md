@@ -1,9 +1,9 @@
 ---
 title: "Folly"
 subtitle: "Plan list"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
-published: false
+published: true
 header-style: text
 tags:
   - Computer science

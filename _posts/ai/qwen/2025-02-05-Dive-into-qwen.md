@@ -1,7 +1,7 @@
 ---
 title: "Dive into qwen models"
 subtitle: "Internals"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
 published: false
 header-style: text

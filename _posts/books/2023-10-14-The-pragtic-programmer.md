@@ -1,7 +1,7 @@
 ---
 title: "务实的哲学"
 subtitle: "程序员修炼之道"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
 published: true
 header-style: text

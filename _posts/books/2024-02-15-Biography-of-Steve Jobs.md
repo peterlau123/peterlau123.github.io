@@ -1,7 +1,7 @@
 ---
 title: "史蒂夫.乔布斯传"
 subtitle: "读书笔记"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
 published: true
 header-style: text

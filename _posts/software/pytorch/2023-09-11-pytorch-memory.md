@@ -1,7 +1,7 @@
 ---
 title: "Pytorch"
 subtitle: "内存管理机制"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
 published: false
 header-style: text

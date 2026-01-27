@@ -1,7 +1,7 @@
 ---
 title: "The transformer's 计算复杂度"
 subtitle: "计算复杂度分析"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
 published: false
 header-style: text

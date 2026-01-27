@@ -1,7 +1,7 @@
 ---
 title: "Jenkins"
 subtitle: "如何搭建一个CI"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
 published: false
 header-style: text

@@ -1,7 +1,7 @@
 ---
 title: "Megatron-LM"
 subtitle: "Mechanism Intro"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
 published: false
 header-style: text

@@ -1,7 +1,7 @@
 ---
 title: "C++ API Design"
 subtitle: "Sevaral principles"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
 published: false
 header-style: text

@@ -1,7 +1,7 @@
 ---
 title: "ONNXRuntime Memory"
 subtitle: "实现机制"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
 published: false
 header-style: text

@@ -1,9 +1,9 @@
 ---
 title: "Stable diffusion walk through"
 subtitle: "From 1.x to 3.x"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
-published: false
+published: true
 header-style: text
 tags:
   - Computer science

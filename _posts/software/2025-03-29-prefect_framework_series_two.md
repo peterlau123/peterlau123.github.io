@@ -1,7 +1,7 @@
 ---
 title: "Prefect Internals"
 subtitle: "Mechanism under the hood"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
 published: false
 header-style: text

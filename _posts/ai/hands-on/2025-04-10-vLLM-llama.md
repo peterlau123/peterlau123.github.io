@@ -1,7 +1,7 @@
 ---
 title: "vLLM与羊驼"
 subtitle: "LLama模型部署笔记"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
 published: false
 header-style: text

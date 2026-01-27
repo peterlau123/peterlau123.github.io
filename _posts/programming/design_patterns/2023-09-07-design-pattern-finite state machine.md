@@ -1,7 +1,7 @@
 ---
 title: "Design Pattern"
 subtitle: "有限状态机"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
 published: false
 header-style: text

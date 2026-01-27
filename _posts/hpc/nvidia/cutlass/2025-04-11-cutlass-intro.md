@@ -1,9 +1,9 @@
 ---
 title: "cutlass学习之初识"
 subtitle: "Intro"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
-published: false
+published: true
 header-style: text
 tags:
   - Computer science

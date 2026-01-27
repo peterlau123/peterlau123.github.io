@@ -1,7 +1,7 @@
 ---
 title: "LLM Pruner"
 subtitle: "Mechanism"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
 published: false
 header-style: text

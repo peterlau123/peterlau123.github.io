@@ -1,7 +1,7 @@
 ---
 title: "Distilling Step by Step"
 subtitle: "Mechanism"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
 published: false
 header-style: text

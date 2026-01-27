@@ -1,7 +1,7 @@
 ---
 title: "Design Pattern"
 subtitle: "Facade Pattern"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
 published: false
 header-style: text
