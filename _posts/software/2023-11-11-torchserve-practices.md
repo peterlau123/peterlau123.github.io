@@ -1,7 +1,7 @@
 ---
 title: "torchserve模型服务"
 subtitle: "optmization strategies"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
 published: true
 header-style: text

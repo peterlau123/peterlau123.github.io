@@ -1,7 +1,7 @@
 ---
 title: "vLLM Scheduler"
 subtitle: "Efficient inference scheduling for large language models"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
 published: false
 header-style: text

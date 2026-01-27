@@ -1,7 +1,7 @@
 ---
 title: "The transformer's decoding"
 subtitle: "Several decoding strategies"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
 published: true
 header-style: text

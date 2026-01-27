@@ -1,7 +1,7 @@
 ---
 title: "问题解决风格"
 subtitle: "如何成为技术领导者"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
 published: true
 header-style: text

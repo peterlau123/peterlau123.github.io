@@ -1,7 +1,7 @@
 ---
 title: "The transformer's details"
 subtitle: "Mathmatical formula derivation"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
 published: true
 header-style: text
