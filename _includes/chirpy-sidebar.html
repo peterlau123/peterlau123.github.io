@@ -1,0 +1,86 @@
+<!-- Chirpy Style Left Sidebar -->
+<aside class="chirpy-sidebar">
+    <!-- 品牌区域 -->
+    <div class="sidebar-brand">
+        <div class="brand-logo">
+            <img src="{{ site.baseurl }}/img/liuxin_2023_04.jpg" alt="{{ site.title }}">
+        </div>
+        <h1 class="brand-title">
+            <a href="{{ site.baseurl }}/">Peter Lau</a>
+        </h1>
+        <p class="brand-tagline">{{ site.sidebar-about-description }}</p>
+    </div>
+    
+    <!-- 导航菜单 -->
+    <nav class="sidebar-nav">
+        <ul>
+            <li>
+                <a href="{{ site.baseurl }}/" class="{% if page.url == '/' or page.url == '/index.html' %}active{% endif %}">
+                    HOME
+                </a>
+            </li>
+            <li>
+                <a href="{{ site.baseurl }}/archive.html" class="{% if page.url contains 'archive' %}active{% endif %}">
+                    ARCHIVES
+                </a>
+            </li>
+            {% for pg in site.pages %}
+                {% if pg.title and pg.hide-in-nav != true and pg.url != '/archive.html' and pg.url != '/404.html' and pg.url != '/offline.html' %}
+            <li>
+                <a href="{{ pg.url | prepend: site.baseurl }}" class="{% if page.url == pg.url %}active{% endif %}">
+                    {{ pg.title | upcase }}
+                </a>
+            </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+    
+    <!-- SNS Links -->
+    <div class="sidebar-sns">
+        {% if site.github_username %}
+        <a href="https://github.com/{{ site.github_username }}" target="_blank" title="GitHub">
+            <i class="fa fa-github"></i>
+        </a>
+        {% endif %}
+        {% if site.zhihu_username %}
+        <a href="https://www.zhihu.com/people/{{ site.zhihu_username }}" target="_blank" title="知乎">
+            <i class="fa fa-zhihu"></i>
+        </a>
+        {% endif %}
+        {% if site.twitter_username %}
+        <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" title="Twitter">
+            <i class="fa fa-twitter"></i>
+        </a>
+        {% endif %}
+        {% if site.leetcode_username %}
+        <a href="https://leetcode.com/{{ site.leetcode_username }}" target="_blank" title="LeetCode">
+            <i class="fa fa-code"></i>
+        </a>
+        {% endif %}
+    </div>
+</aside>
+
+<!-- Mobile Menu Toggle -->
+<button class="mobile-menu-toggle d-md-none" onclick="toggleMobileSidebar()">
+    <i class="fa fa-bars"></i>
+</button>
+
+<!-- Sidebar Overlay -->
+<div class="sidebar-overlay" onclick="closeMobileSidebar()"></div>
+
+<script>
+function toggleMobileSidebar() {
+    const sidebar = document.querySelector('.chirpy-sidebar');
+    const overlay = document.querySelector('.sidebar-overlay');
+    sidebar.classList.toggle('mobile-open');
+    overlay.classList.toggle('active');
+}
+
+function closeMobileSidebar() {
+    const sidebar = document.querySelector('.chirpy-sidebar');
+    const overlay = document.querySelector('.sidebar-overlay');
+    sidebar.classList.remove('mobile-open');
+    overlay.classList.remove('active');
+}
+</script>

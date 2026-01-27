@@ -1,0 +1,284 @@
+/* 
+ * Chirpy Style Left Sidebar
+ * 左侧固定边栏样式 - Chirpy风格
+ */
+
+// 变量定义
+@sidebar-width: 260px;
+@sidebar-bg: #f8f9fa;
+@sidebar-text-color: #404040;
+@sidebar-link-color: #404040;
+@sidebar-link-hover: #0085a1;
+@sidebar-active-bg: #e9ecef;
+
+/* 左侧边栏容器 */
+.chirpy-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: @sidebar-width;
+  height: 100vh;
+  background-color: @sidebar-bg;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 100;
+  transition: transform 0.3s ease;
+  border-right: 1px solid #e9ecef;
+  
+  /* 品牌区域 */
+  .sidebar-brand {
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 1px solid #e9ecef;
+    
+    .brand-logo {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      overflow: hidden;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    
+    .brand-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: @sidebar-text-color;
+      margin: 0 0 5px 0;
+      line-height: 1.2;
+      
+      a {
+        color: @sidebar-text-color;
+        text-decoration: none;
+        
+        &:hover {
+          color: @sidebar-link-hover;
+        }
+      }
+    }
+    
+    .brand-tagline {
+      font-size: 14px;
+      font-style: italic;
+      color: #6c757d;
+      margin: 0;
+      line-height: 1.4;
+    }
+  }
+  
+  /* 导航菜单 */
+  .sidebar-nav {
+    padding: 20px 0;
+    
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    li {
+      margin: 0;
+      
+      a {
+        display: block;
+        padding: 12px 30px;
+        color: @sidebar-link-color;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.2s ease;
+        position: relative;
+        
+        &:hover {
+          background-color: @sidebar-active-bg;
+          color: @sidebar-link-hover;
+        }
+        
+        &.active {
+          background-color: @sidebar-active-bg;
+          color: @sidebar-link-hover;
+          
+          &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: @sidebar-link-hover;
+          }
+        }
+      }
+    }
+  }
+  
+  /* SNS链接区域 */
+  .sidebar-sns {
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #e9ecef;
+    
+    a {
+      display: inline-block;
+      margin: 0 8px;
+      color: @sidebar-link-color;
+      font-size: 20px;
+      transition: color 0.2s ease;
+      
+      &:hover {
+        color: @sidebar-link-hover;
+      }
+    }
+  }
+}
+
+/* 主内容区域 */
+.chirpy-main-content {
+  margin-left: @sidebar-width;
+  min-height: 100vh;
+  background: #fff;
+  
+  /* 顶部栏 */
+  .chirpy-topbar {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    border-bottom: 1px solid #e9ecef;
+    padding: 15px 30px;
+    z-index: 90;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    .breadcrumb {
+      margin: 0;
+      padding: 0;
+      background: none;
+      font-size: 14px;
+      
+      li {
+        display: inline-block;
+        
+        & + li::before {
+          content: "›";
+          padding: 0 8px;
+          color: #6c757d;
+        }
+        
+        a {
+          color: @sidebar-link-hover;
+          text-decoration: none;
+          
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    
+    .search-trigger {
+      input {
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        padding: 6px 12px;
+        font-size: 14px;
+        width: 200px;
+        
+        &:focus {
+          outline: none;
+          border-color: @sidebar-link-hover;
+        }
+      }
+    }
+  }
+  
+  /* 内容容器 */
+  .content-wrapper {
+    padding: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+}
+
+/* 响应式 - 移动端 */
+@media (max-width: 768px) {
+  .chirpy-sidebar {
+    transform: translateX(-100%);
+    
+    &.mobile-open {
+      transform: translateX(0);
+    }
+  }
+  
+  .chirpy-main-content {
+    margin-left: 0;
+    
+    .chirpy-topbar {
+      padding: 15px;
+      
+      .search-trigger input {
+        width: 150px;
+      }
+    }
+    
+    .content-wrapper {
+      padding: 20px 15px;
+    }
+  }
+  
+  /* 移动端菜单按钮 */
+  .mobile-menu-toggle {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 101;
+    background: @sidebar-link-hover;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+  
+  /* 遮罩层 */
+  .sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    display: none;
+    
+    &.active {
+      display: block;
+    }
+  }
+}
+
+/* 平板设备 */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .chirpy-sidebar {
+    width: 220px;
+  }
+  
+  .chirpy-main-content {
+    margin-left: 220px;
+    
+    .content-wrapper {
+      padding: 30px;
+    }
+  }
+}

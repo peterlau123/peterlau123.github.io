@@ -1,7 +1,7 @@
 ---
 title: "Prefect intro"
 subtitle: "Python workflow"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
 published: true
 header-style: text

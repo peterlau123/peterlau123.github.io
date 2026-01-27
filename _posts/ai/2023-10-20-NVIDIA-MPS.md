@@ -1,7 +1,7 @@
 ---
 title: "NVIDIA multi-process service"
 subtitle: "usage and internals"
-layout: post
+layout: chirpy-post
 author: "Peter Lau"
 published: true
 header-style: text
