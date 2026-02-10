@@ -12,7 +12,7 @@ tags:
 
 
 <div>
-  <img class="shadow" src="/img/books/ai_system_perf_engineering/gauge_of_porsche.png" width="600" height="300" alt="Porsche 911 gauge">
+  <img class="shadow" src="/img/books/ai_system_perf_engineering/gauge_of_porsche.png" width="600" height="240" alt="Porsche 911 gauge">
 </div>
 
 
