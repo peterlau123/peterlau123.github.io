@@ -28,12 +28,17 @@
 .sidebar-container a:active {
   color: #87CEEB !important;
 }
-.sidebar-container .tags a {
+.sidebar-container .tags a,
+.chirpy-sidebar .tags a {
   border-color: #bfbfbf;
+  color: #404040;
 }
 .sidebar-container .tags a:hover,
-.sidebar-container .tags a:active {
+.sidebar-container .tags a:active,
+.chirpy-sidebar .tags a:hover,
+.chirpy-sidebar .tags a:active {
   border-color: #87CEEB;
+  color: #87CEEB;
 }
 .sidebar-container .short-about img {
   width: 80%;
@@ -660,7 +665,7 @@ pre.highlight {
   position: fixed;
   left: 0;
   top: 0;
-  width: 260px;
+  width: 180px;
   height: 100vh;
   background-color: #f8f9fa;
   overflow-y: auto;
@@ -673,14 +678,14 @@ pre.highlight {
   /* SNS链接区域 */
 }
 .chirpy-sidebar .sidebar-brand {
-  padding: 30px 20px;
+  padding: 20px 10px;
   text-align: center;
   border-bottom: 1px solid #e9ecef;
 }
 .chirpy-sidebar .sidebar-brand .brand-logo {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 15px;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 10px;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -690,7 +695,7 @@ pre.highlight {
   object-fit: cover;
 }
 .chirpy-sidebar .sidebar-brand .brand-title {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
   color: #404040;
   margin: 0 0 5px 0;
@@ -724,10 +729,10 @@ pre.highlight {
 .chirpy-sidebar .sidebar-nav li a {
   display: flex;
   align-items: center;
-  padding: 12px 30px;
+  padding: 10px 15px;
   color: #404040;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -758,15 +763,15 @@ pre.highlight {
   background-color: #0085a1;
 }
 .chirpy-sidebar .sidebar-sns {
-  padding: 20px 30px;
-  text-align: left;
+  padding: 15px 10px;
+  text-align: center;
   border-top: 1px solid #e9ecef;
 }
 .chirpy-sidebar .sidebar-sns a {
   display: inline-block;
-  margin-right: 15px;
+  margin: 0 5px;
   color: #404040;
-  font-size: 20px;
+  font-size: 18px;
   transition: color 0.2s ease;
 }
 .chirpy-sidebar .sidebar-sns a:hover {
@@ -774,7 +779,7 @@ pre.highlight {
 }
 /* 主内容区域 */
 .chirpy-main-content {
-  margin-left: 260px;
+  margin-left: 180px;
   min-height: 100vh;
   background: #fff;
   /* 顶部栏 */
