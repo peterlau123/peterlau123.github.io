@@ -5,6 +5,8 @@ layout: chirpy-post
 author: "Peter Lau"
 published: true
 header-style: text
+categories:
+  - AI
 tags:
   - Computer science
   - LLM
