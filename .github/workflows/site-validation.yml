@@ -6,7 +6,7 @@ on:
   pull_request:
   schedule:
     # Run weekly on Monday at 00:00 UTC
-    - cron: '0 0 * * 1'
+    - cron: "0 0 * * 1"
   workflow_dispatch:
 
 jobs:
@@ -19,7 +19,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3'
+          ruby-version: "3.3"
           bundler-cache: true
 
       - name: Build site
@@ -28,7 +28,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v6
         with:
-          python-version: '3.x'
+          python-version: "3.x"
 
       - name: Install html5validator
         run: pip install html5validator
@@ -38,10 +38,34 @@ jobs:
           html5validator --root _site/ --also-check-css --ignore '*/css/bootstrap.*' --ignore '*/css/bootstrap.min.*' --format text || echo "HTML validation completed with warnings"
         continue-on-error: true
 
+      - name: Serve site locally
+        run: |
+          python3 -m http.server 8080 --directory _site &
+          echo "SERVER_PID=$!" >> $GITHUB_ENV
+          sleep 2
+
       - name: Check links
         uses: lycheeverse/lychee-action@v2
         with:
-          args: --base file://${{ github.workspace }}/_site --verbose --no-progress --exclude 'https://peterlau123\.github\.io.*' './_site/**/*.html'
+          args: |
+            --base http://localhost:8080
+            --verbose
+            --no-progress
+            --timeout 30
+            --retry 2
+            --exclude 'https://peterlau123\.github\.io.*'
+            --exclude 'http://huangxuan\.me'
+            --exclude 'http://cdn\.bootcss\.com'
+            --exclude 'https://oss\.maxcdn\.com'
+            --exclude 'https://ghbtns\.com'
+            --exclude 'https://pagead2\.googlesyndication\.com'
+            --exclude-mail
+            --accept 200,204,301,302,307,308,403
+            'http://localhost:8080'
           fail: true
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Stop local server
+        if: always()
+        run: kill $SERVER_PID || true
