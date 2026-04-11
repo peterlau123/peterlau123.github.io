@@ -24,7 +24,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3'
+          ruby-version: "3.3"
           bundler-cache: true
 
       - name: Setup Pages
@@ -35,6 +35,16 @@ jobs:
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
+
+      - name: Verify build output
+        run: |
+          echo "Checking _site/index.html..."
+          if grep -q "{% for post" _site/index.html; then
+            echo "ERROR: Jekyll template code found in _site/index.html - Jekyll build failed!"
+            head -20 _site/index.html
+            exit 1
+          fi
+          echo "Build verification passed - _site/index.html is properly rendered"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4

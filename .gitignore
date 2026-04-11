@@ -4,7 +4,7 @@ _archive
 node_modules
 .vscode
 *.log
-*.lock
+# *.lock  # Commented out to allow Gemfile.lock for Jekyll dependency management
 *.sh
 .DS_Store
 .jekyll-cache
