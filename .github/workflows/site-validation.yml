@@ -57,7 +57,7 @@ jobs:
             --verbose
             --no-progress
             --timeout 30
-            --retry 2
+            --max-retries 2
             --exclude 'https://peterlau123\.github\.io.*'
             --exclude 'http://huangxuan\.me'
             --exclude 'http://cdn\.bootcss\.com'
