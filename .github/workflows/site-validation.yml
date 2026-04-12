@@ -64,7 +64,6 @@ jobs:
             --exclude 'https://oss\.maxcdn\.com'
             --exclude 'https://ghbtns\.com'
             --exclude 'https://pagead2\.googlesyndication\.com'
-            --exclude-mail
             --accept 200,204,301,302,307,308,403
             'http://localhost:8080'
           fail: true
