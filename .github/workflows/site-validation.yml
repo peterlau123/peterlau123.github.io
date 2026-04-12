@@ -20,7 +20,12 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.3"
-          bundler-cache: true
+          bundler-cache: false
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
 
       - name: Build site
         run: bundle exec jekyll build
@@ -52,14 +57,13 @@ jobs:
             --verbose
             --no-progress
             --timeout 30
-            --retry 2
+            --max-retries 2
             --exclude 'https://peterlau123\.github\.io.*'
             --exclude 'http://huangxuan\.me'
             --exclude 'http://cdn\.bootcss\.com'
             --exclude 'https://oss\.maxcdn\.com'
             --exclude 'https://ghbtns\.com'
             --exclude 'https://pagead2\.googlesyndication\.com'
-            --exclude-mail
             --accept 200,204,301,302,307,308,403
             'http://localhost:8080'
           fail: true
