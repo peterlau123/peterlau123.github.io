@@ -75,9 +75,8 @@
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        console.log("Mermaid initialization starting...");
         mermaid.initialize({
-          startOnLoad: true,
+          startOnLoad: false,
           theme: 'default',
           securityLevel: 'loose',
           flowchart: {
@@ -86,7 +85,10 @@
             curve: 'basis'
           }
         });
-        console.log("Mermaid initialization complete");
+        // Use mermaid.run() for better compatibility with dynamically loaded content
+        mermaid.run({
+          querySelector: '.mermaid'
+        });
       });
     </script>
 
