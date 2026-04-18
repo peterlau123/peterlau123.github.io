@@ -87,6 +87,22 @@
         });
         // Use mermaid.run() for better compatibility with dynamically loaded content
         mermaid.run({
+          querySelector: 'pre code.language-mermaid, pre code.lang-mermaid, .mermaid'
+        });
+
+        // Fallback: convert fenced mermaid code blocks to .mermaid containers if needed
+        document.querySelectorAll('pre code.language-mermaid, pre code.lang-mermaid').forEach(function (codeEl) {
+          var pre = codeEl.closest('pre');
+          if (!pre) return;
+
+          var wrapper = document.createElement('div');
+          wrapper.className = 'mermaid';
+          wrapper.textContent = codeEl.textContent;
+          pre.parentNode.replaceChild(wrapper, pre);
+        });
+
+        // Re-run after fallback conversion
+        mermaid.run({
           querySelector: '.mermaid'
         });
       });
