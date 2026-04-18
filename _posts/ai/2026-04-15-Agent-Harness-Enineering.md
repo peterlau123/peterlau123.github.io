@@ -57,11 +57,11 @@ OpenAI 在 2025 年发布的 harness engineering 文章里说得更直白：Code
 
 ```mermaid
 flowchart LR
-    Rules["项目规则<br/>AGENTS.md / CLAUDE.md"] --> Agent["AI Agent"]
-    State["进度和 git<br/>PROGRESS.md / commits"] --> Agent
-    Agent --> Tools["工具<br/>shell / 文件 / 测试"]
-    Tools --> Env["运行环境<br/>依赖 / 服务 / 版本"]
-    Env --> Checks["检查结果<br/>test / lint / build"]
+    Rules["项目规则"] --> Agent["AI Agent"]
+    State["进度和 Git"] --> Agent
+    Agent --> Tools["工具系统"]
+    Tools --> Env["运行环境"]
+    Env --> Checks["检查结果"]
     Checks --> Agent
 ```
 
