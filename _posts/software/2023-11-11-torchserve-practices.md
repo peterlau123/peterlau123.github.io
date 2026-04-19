@@ -11,6 +11,8 @@ tags:
   - Computer science
   - Deep Learning
   - Pytorch
+toc: true
+toc_sticky: true
 ---
 
 

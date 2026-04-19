@@ -10,6 +10,8 @@ categories:
 tags:
   - Computer science
   - Design Patterns
+toc: true
+toc_sticky: true
 ---
 
 # Mixin pattern

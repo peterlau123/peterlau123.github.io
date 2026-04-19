@@ -10,6 +10,8 @@ categories:
 tags:
   - Computer science
   - Growth
+toc: true
+toc_sticky: true
 ---
 
 ## 务实的哲学

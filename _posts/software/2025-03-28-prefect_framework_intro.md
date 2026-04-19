@@ -11,6 +11,8 @@ tags:
   - Computer science
   - Software
   - Python
+toc: true
+toc_sticky: true
 ---
 
 <div>
