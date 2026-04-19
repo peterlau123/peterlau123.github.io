@@ -207,6 +207,10 @@ compress_html:
     envs: [development]
 
 exclude:
+  - .npm-cache
+  - node_modules
+  - migration
+  - .husky
   - "*.gem"
   - "*.gemspec"
   - docs
@@ -225,3 +229,4 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
