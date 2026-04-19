@@ -1,7 +1,7 @@
 ---
 title: "Agent Harness Engineering"
 subtitle: ""
-layout: chirpy-post
+layout: post
 author: "Peter Lau"
 published: true
 header-style: text
@@ -22,7 +22,7 @@ toc_sticky: true
 
 # 模型能力强不等于执行可靠
 
-Anthropic 做过一个对照实验。同一个 prompt（"做一个 2D 复古游戏编辑器"），同一个模型（Opus 4.5）。第一次让它裸跑——20分钟，花了$9，游戏核心功能根本跑不起来。第二次给它配上完整的harness(planner + generator + evaluator=agent 架构)——6 小时，花了 $200，游戏可以正常游玩。
+Anthropic 做过一个对照实验。同一个 prompt（"做一个 2D 复古游戏编辑器"），同一个模型（Opus 4.5）。第一次让它裸跑20分钟，花了9美元，游戏核心功能根本跑不起来。第二次给它配上完整的harness(planner + generator + evaluator)，6 小时，花了200美元，游戏可以正常游玩。
 
 模型没换。Opus 4.5 还是那个 Opus 4.5。换的是马鞍。
 
@@ -206,7 +206,7 @@ flowchart TB
 
 ## 如何解决
 
-```markdown
+```text
 # AGENTS.md
 
 ## Project Overview
@@ -256,7 +256,7 @@ flowchart LR
 
 第一个工具是定期记录PROGRESS.md，参考例子如下
 
-```markdown
+```text
 # Project Progress
 
 ## Current State
@@ -284,7 +284,7 @@ flowchart LR
 
 第二个工具是DECISION.md，参考例子如下
 
-```markdown
+```text
 # Design Decisions
 
 ## 2024-01-15: Use Redis for user preferences caching
@@ -352,7 +352,7 @@ Anthropic的长运行应用开发研究数据表明：在多轮会话中，细�
 
 **契约文件**
 
-```markdown
+```text
 # Initialization Contract
 
 ## Start Commands
@@ -376,7 +376,7 @@ Anthropic的长运行应用开发研究数据表明：在多轮会话中，细�
 
 **任务拆解**
 
-```
+```text
 # Task Breakdown
 
 ## Task 1: User Authentication Basics
@@ -880,7 +880,7 @@ flowchart LR
 
 质量文档是对每个模块持续评分的活跃工件——就像宿舍的卫生检查评分表：
 
-```markdown
+```text
 # 质量文档
 
 ## 用户认证模块 (质量: A)

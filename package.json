@@ -22,6 +22,8 @@
         "dev": "grunt watch & npm run start",
         "lint": "markdownlint '**/*.md' --config .markdownlint.json --ignore-path .markdownlintignore",
         "lint:fix": "markdownlint '**/*.md' --config .markdownlint.json --ignore-path .markdownlintignore --fix",
+        "lint:posts": "python scripts/check_posts.py",
+        "check": "npm run lint && npm run lint:posts",
         "boil": "git push boilerplate boilerplate:master",
         "push": "git push origin master --tag"
     }

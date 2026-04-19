@@ -4,8 +4,33 @@ layout: default
 
 <!-- Include Mermaid.js -->
 <script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true });
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: false, securityLevel: "loose", suppressErrorRendering: false });
+  window.addEventListener('DOMContentLoaded', async () => {
+    const blocks = document.querySelectorAll('pre code.language-mermaid');
+    for (const block of blocks) {
+      const source = block.textContent || '';
+      const pre = block.closest('pre');
+      const container = document.createElement('div');
+      container.className = 'mermaid';
+      container.textContent = source;
+      if (pre && pre.parentNode) {
+        pre.parentNode.replaceChild(container, pre);
+      }
+    }
+
+    const nodes = document.querySelectorAll('.mermaid');
+    for (let i = 0; i < nodes.length; i++) {
+      const el = nodes[i];
+      try {
+        const id = `mermaid-${i}`;
+        const { svg } = await mermaid.render(id, el.textContent || '');
+        el.innerHTML = svg;
+      } catch (e) {
+        console.error('Mermaid render failed:', e, el.textContent);
+      }
+    }
+  });
 </script>
 
 <!-- Image to hack wechat -->
@@ -20,9 +45,26 @@ layout: default
     <div class="container">
         <div class="row">
 
+    <!-- Side Catalog Container (left) -->
+        {% unless page.no-catalog %}
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        {% endunless %}
+
     <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-2
+                col-lg-8
                 col-md-10 col-md-offset-1
                 post-container">
 
@@ -68,23 +110,6 @@ layout: default
                 <!-- 网易云跟帖 评论框 end -->
                 {% endif %}
             </div>  
-
-    <!-- Side Catalog Container -->
-        {% unless page.no-catalog %}
-            <div class="
-                col-lg-2 col-lg-offset-0
-                visible-lg-block
-                sidebar-container
-                catalog-container">
-                <div class="side-catalog">
-                    <hr class="hidden-sm hidden-xs">
-                    <h5>
-                        <a class="catalog-toggle" href="#">CATALOG</a>
-                    </h5>
-                    <ul class="catalog-body"></ul>
-                </div>
-            </div>
-        {% endunless %}
 
     <!-- Sidebar Container -->
             <div class="
