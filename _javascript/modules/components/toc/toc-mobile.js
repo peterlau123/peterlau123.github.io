@@ -22,7 +22,7 @@ export class TocMobile {
     headingSelector: 'h1, h2, h3, h4',
     orderedList: false,
     scrollSmooth: false,
-    collapseDepth: 4,
+    collapseDepth: 0,
     headingsOffset: this.#barHeight
   };
 
