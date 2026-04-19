@@ -19,3 +19,4 @@ vendor/
 .npm-cache/
 .husky/
 migration/
+\nassets/js/dist/.tmp/\nassets/js/dist/*.map
