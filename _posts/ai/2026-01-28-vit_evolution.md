@@ -9,7 +9,10 @@ tags:
 - LLM
 - DeepSeek
 toc: true
+categories:
+- AI
 ---
+
 
 
 
