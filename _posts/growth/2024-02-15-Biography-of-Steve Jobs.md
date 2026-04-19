@@ -1,17 +1,17 @@
 ---
-title: "史蒂夫.乔布斯传"
-subtitle: "读书笔记"
+title: 史蒂夫.乔布斯传
+subtitle: 读书笔记
 layout: chirpy-post
-author: "Peter Lau"
+author: Peter Lau
 published: true
-header-style: text
 categories:
-  - Growth
+- Growth
 tags:
-  - Growth
+- Growth
 toc: true
-toc_sticky: true
+description: 读书笔记
 ---
+
 
 
 <div>

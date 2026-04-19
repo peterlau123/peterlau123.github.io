@@ -1,15 +1,14 @@
 ---
-title: ""
-subtitle: ""
+title: ''
+subtitle: ''
 layout: post
-author: "Peter Lau"
+author: Peter Lau
 published: false
-header-style: text
 tags:
-  - 
+- null
 toc: true
-toc_sticky: true
 ---
+
 
 
 

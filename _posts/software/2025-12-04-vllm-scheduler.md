@@ -1,17 +1,17 @@
 ---
-title: "vLLM Scheduler"
-subtitle: "Efficient inference scheduling for large language models"
+title: vLLM Scheduler
+subtitle: Efficient inference scheduling for large language models
 layout: chirpy-post
-author: "Peter Lau"
+author: Peter Lau
 published: false
-header-style: text
 categories:
-  - Software
+- Software
 tags:
-  - Computer science
-  - AI
-  - vLLM
-  - Software
+- Computer science
+- AI
+- vLLM
+- Software
 toc: true
-toc_sticky: true
+description: Efficient inference scheduling for large language models
 ---
+

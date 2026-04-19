@@ -1,18 +1,18 @@
 ---
-title: "务实的哲学"
-subtitle: "程序员修炼之道"
+title: 务实的哲学
+subtitle: 程序员修炼之道
 layout: chirpy-post
-author: "Peter Lau"
+author: Peter Lau
 published: true
-header-style: text
 categories:
-  - Growth
+- Growth
 tags:
-  - Computer science
-  - Growth
+- Computer science
+- Growth
 toc: true
-toc_sticky: true
+description: 程序员修炼之道
 ---
+
 
 ## 务实的哲学
 

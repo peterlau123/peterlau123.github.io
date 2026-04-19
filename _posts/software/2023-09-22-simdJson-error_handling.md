@@ -1,19 +1,19 @@
 ---
-title: "Error handling"
-subtitle: "simdJson"
+title: Error handling
+subtitle: simdJson
 layout: chirpy-post
-author: "Peter Lau"
+author: Peter Lau
 published: true
-header-style: text
 categories:
-  - Software
+- Software
 tags:
-  - Computer science
-  - Software
-  - C++
+- Computer science
+- Software
+- C++
 toc: true
-toc_sticky: true
+description: simdJson
 ---
+
 
 
 最近在进行C++的差错处理时，经常碰到如果函数内部发生异常或错误，返回结果该怎么设置的问题。最常见的办法是为可能出现的异常或错误，设置对应的返回数值，这样当调用者拿到结果时，检查返回值就可以知道函数工作是否正常了；另外一种办法可能就是为函数配备错误码，返回值放到函数中按照引用来标记，将错误作为返回值，调用者可以直接根据错误码就行判断。
