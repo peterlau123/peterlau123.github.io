@@ -2,7 +2,7 @@
 title: torchserve模型服务
 subtitle: optmization strategies
 layout: chirpy-post
-author: Peter Lau
+author: peter_lau
 published: true
 categories:
 - Software
@@ -13,6 +13,7 @@ tags:
 toc: true
 description: optmization strategies
 ---
+
 
 
 

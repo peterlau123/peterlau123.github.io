@@ -2,7 +2,7 @@
 title: ONNXRuntime API
 subtitle: APi设计方法
 layout: chirpy-post
-author: Peter Lau
+author: peter_lau
 published: true
 categories:
 - Software
@@ -12,6 +12,7 @@ tags:
 toc: true
 description: APi设计方法
 ---
+
 
 
 近期的工作由于经常涉及到基于onnxruntime进行模型部署，本着学啥熟悉啥的习惯，上来第一件事就是浏览了它的API。onnxruntime API带给我最大的感觉是清晰，让开发者很难会去误用它的接口。

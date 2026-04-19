@@ -2,7 +2,7 @@
 title: 史蒂夫.乔布斯传
 subtitle: 读书笔记
 layout: chirpy-post
-author: Peter Lau
+author: peter_lau
 published: true
 categories:
 - Growth
@@ -11,6 +11,7 @@ tags:
 toc: true
 description: 读书笔记
 ---
+
 
 
 

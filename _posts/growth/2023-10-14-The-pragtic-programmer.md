@@ -2,7 +2,7 @@
 title: 务实的哲学
 subtitle: 程序员修炼之道
 layout: chirpy-post
-author: Peter Lau
+author: peter_lau
 published: true
 categories:
 - Growth
@@ -12,6 +12,7 @@ tags:
 toc: true
 description: 程序员修炼之道
 ---
+
 
 
 ## 务实的哲学

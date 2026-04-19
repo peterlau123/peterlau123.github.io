@@ -2,7 +2,7 @@
 title: Agent Harness Engineering
 subtitle: ''
 layout: post
-author: Peter Lau
+author: peter_lau
 published: true
 categories:
 - AI
@@ -11,6 +11,7 @@ tags:
 - Engineering
 toc: true
 ---
+
 
 
 **本文总结自[learn-harness-engineering](https://github.com/walkinglabs/learn-harness-engineering)**

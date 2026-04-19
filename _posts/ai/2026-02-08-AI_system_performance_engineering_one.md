@@ -2,7 +2,7 @@
 title: 开篇词：AI系统性能工程
 subtitle: AI系统性能工程读书笔记
 layout: chirpy-post
-author: Peter Lau
+author: peter_lau
 published: true
 categories:
 - AI
@@ -12,6 +12,7 @@ tags:
 toc: true
 description: AI系统性能工程读书笔记
 ---
+
 
 
 

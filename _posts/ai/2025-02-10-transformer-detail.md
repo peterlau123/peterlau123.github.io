@@ -2,7 +2,7 @@
 title: The transformer's details
 subtitle: Mathmatical formula derivation
 layout: chirpy-post
-author: Peter Lau
+author: peter_lau
 published: true
 categories:
 - AI
@@ -13,6 +13,7 @@ tags:
 toc: true
 description: Mathmatical formula derivation
 ---
+
 
 
 

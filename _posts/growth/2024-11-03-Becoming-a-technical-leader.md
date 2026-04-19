@@ -2,7 +2,7 @@
 title: 问题解决风格
 subtitle: 如何成为技术领导者
 layout: chirpy-post
-author: Peter Lau
+author: peter_lau
 published: true
 categories:
 - Growth
@@ -11,6 +11,7 @@ tags:
 toc: true
 description: 如何成为技术领导者
 ---
+
 
 
 
