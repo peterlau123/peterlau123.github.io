@@ -12,7 +12,9 @@ tags:
 - C++
 toc: true
 description: simdJson
+mermaid: true
 ---
+
 
 
 

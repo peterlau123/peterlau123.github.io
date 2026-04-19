@@ -10,7 +10,9 @@ tags:
 - AI
 - Engineering
 toc: true
+mermaid: true
 ---
+
 
 
 
