@@ -1,7 +1,7 @@
 ---
 title: NVIDIA multi-process service
 subtitle: usage and internals
-layout: chirpy-post
+layout: post
 author: peter_lau
 published: true
 categories:
@@ -13,6 +13,7 @@ tags:
 toc: true
 description: usage and internals
 ---
+
 
 
 

@@ -1,7 +1,7 @@
 ---
 title: The transformer's decoding
 subtitle: Several decoding strategies
-layout: chirpy-post
+layout: post
 author: peter_lau
 published: true
 categories:
@@ -13,6 +13,7 @@ tags:
 toc: true
 description: Several decoding strategies
 ---
+
 
 
 

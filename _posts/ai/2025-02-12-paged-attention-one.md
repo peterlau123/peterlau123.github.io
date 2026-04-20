@@ -1,7 +1,7 @@
 ---
 title: Paged Attention
 subtitle: Mechanism Intro
-layout: chirpy-post
+layout: post
 author: peter_lau
 published: true
 categories:
@@ -14,6 +14,7 @@ tags:
 toc: true
 description: Mechanism Intro
 ---
+
 
 
 
