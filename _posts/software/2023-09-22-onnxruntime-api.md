@@ -1,16 +1,20 @@
 ---
-title: "ONNXRuntime API"
-subtitle: "APi设计方法"
-layout: chirpy-post
-author: "Peter Lau"
+title: ONNXRuntime API
+subtitle: APi设计方法
+layout: post
+author: peter_lau
 published: true
-header-style: text
 categories:
-  - Software
+- Software
 tags:
-  - Computer science
-  - Deep Learning
+- Computer science
+- Deep Learning
+toc: true
+description: APi设计方法
+date: 2023-09-22 00:00:00 +0800
 ---
+
+
 
 近期的工作由于经常涉及到基于onnxruntime进行模型部署，本着学啥熟悉啥的习惯，上来第一件事就是浏览了它的API。onnxruntime API带给我最大的感觉是清晰，让开发者很难会去误用它的接口。
 

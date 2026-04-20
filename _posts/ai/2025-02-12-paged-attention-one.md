@@ -1,18 +1,23 @@
 ---
-title: "Paged Attention"
-subtitle: "Mechanism Intro"
-layout: chirpy-post
-author: "Peter Lau"
+title: Paged Attention
+subtitle: Mechanism Intro
+layout: post
+author: peter_lau
 published: true
-header-style: text
 categories:
-  - AI
+- AI
 tags:
-  - Computer science
-  - LLM
-  - Transformers
-  - vLLM 
+- Computer science
+- LLM
+- Transformers
+- vLLM
+toc: true
+description: Mechanism Intro
+date: 2025-02-12 00:00:00 +0800
 ---
+
+
+
 
 
 <div>

@@ -1,17 +1,22 @@
 ---
-title: "NVIDIA multi-process service"
-subtitle: "usage and internals"
-layout: chirpy-post
-author: "Peter Lau"
+title: NVIDIA multi-process service
+subtitle: usage and internals
+layout: post
+author: peter_lau
 published: true
-header-style: text
 categories:
-  - AI
+- AI
 tags:
-  - Computer science
-  - HPC
-  - Nvidia
+- Computer science
+- HPC
+- Nvidia
+toc: true
+description: usage and internals
+date: 2023-10-20 00:00:00 +0800
 ---
+
+
+
 
 <div>
   <img class="mps" src="https://docs.nvidia.com/deploy/mps/_images/image1.png" width="500" height="300" alt="MPS benefits">

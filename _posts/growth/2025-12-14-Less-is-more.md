@@ -1,15 +1,19 @@
 ---
-title: "少即是多"
-subtitle: "从包豪斯风格想到的"
-layout: chirpy-post
-author: "Peter Lau"
+title: 少即是多
+subtitle: 从包豪斯风格想到的
+layout: post
+author: peter_lau
 published: true
-header-style: text
 categories:
-  - Growth
+- Growth
 tags:
-  - Growth 
+- Growth
+toc: true
+description: 从包豪斯风格想到的
+date: 2025-12-14 00:00:00 +0800
 ---
+
+
 
 <div>
   <img class="cursor" src="/img/growth/less-is-more.png" width="400" height="300" alt="less is more">

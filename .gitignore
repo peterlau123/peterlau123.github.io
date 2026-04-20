@@ -12,3 +12,11 @@ node_modules
 */*/.DS_Store
 .idea
 _site/
+vendor/
+.bundle/
+
+# Local caches and migration artifacts
+.npm-cache/
+.husky/
+migration/
+\nassets/js/dist/.tmp/\nassets/js/dist/*.map

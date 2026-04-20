@@ -1,16 +1,20 @@
 ---
-title: "Design Pattern"
-subtitle: "Mixin"
-layout: chirpy-post
-author: "Peter Lau"
+title: Design Pattern
+subtitle: Mixin
+layout: post
+author: peter_lau
 published: true
-header-style: text
 categories:
-  - Software
+- Software
 tags:
-  - Computer science
-  - Design Patterns
+- Computer science
+- Design Patterns
+toc: true
+description: Mixin
+date: 2023-09-07 00:00:00 +0800
 ---
+
+
 
 # Mixin pattern
 

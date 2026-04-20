@@ -1,16 +1,21 @@
 ---
-title: "开篇词：AI系统性能工程"
-subtitle: "AI系统性能工程读书笔记"
-layout: chirpy-post
-author: "Peter Lau"
+title: 开篇词：AI系统性能工程
+subtitle: AI系统性能工程读书笔记
+layout: post
+author: peter_lau
 published: true
-header-style: text
 categories:
-  - AI
+- AI
 tags:
-  - AI
-  - Engineering
+- AI
+- Engineering
+toc: true
+description: AI系统性能工程读书笔记
+date: 2026-02-08 00:00:00 +0800
 ---
+
+
+
 
 
 <div>

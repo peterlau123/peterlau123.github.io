@@ -1,17 +1,21 @@
 ---
-title: "torchserve模型服务"
-subtitle: "optmization strategies"
-layout: chirpy-post
-author: "Peter Lau"
+title: torchserve模型服务
+subtitle: optmization strategies
+layout: post
+author: peter_lau
 published: true
-header-style: text
 categories:
-  - Software
+- Software
 tags:
-  - Computer science
-  - Deep Learning
-  - Pytorch
+- Computer science
+- Deep Learning
+- Pytorch
+toc: true
+description: optmization strategies
+date: 2023-11-11 00:00:00 +0800
 ---
+
+
 
 
 <div>

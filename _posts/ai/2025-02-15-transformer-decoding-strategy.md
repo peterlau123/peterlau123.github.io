@@ -1,17 +1,22 @@
 ---
-title: "The transformer's decoding"
-subtitle: "Several decoding strategies"
-layout: chirpy-post
-author: "Peter Lau"
+title: The transformer's decoding
+subtitle: Several decoding strategies
+layout: post
+author: peter_lau
 published: true
-header-style: text
 categories:
-  - AI
+- AI
 tags:
-  - Computer science
-  - LLM
-  - Transformers
+- Computer science
+- LLM
+- Transformers
+toc: true
+description: Several decoding strategies
+date: 2025-02-15 00:00:00 +0800
 ---
+
+
+
 
 <div>
   <img class="decoding" src="/img/transformers/MIT-GrandDecoder-01-press.jpg" width="500" height="300" alt="decoding strategy">

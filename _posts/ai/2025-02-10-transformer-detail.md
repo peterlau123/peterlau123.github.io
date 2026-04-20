@@ -1,17 +1,22 @@
 ---
-title: "The transformer's details"
-subtitle: "Mathmatical formula derivation"
-layout: chirpy-post
-author: "Peter Lau"
+title: The transformer's details
+subtitle: Mathmatical formula derivation
+layout: post
+author: peter_lau
 published: true
-header-style: text
 categories:
-  - AI
+- AI
 tags:
-  - Computer science
-  - LLM
-  - Transformers 
+- Computer science
+- LLM
+- Transformers
+toc: true
+description: Mathmatical formula derivation
+date: 2025-02-10 00:00:00 +0800
 ---
+
+
+
 
 
 <div>

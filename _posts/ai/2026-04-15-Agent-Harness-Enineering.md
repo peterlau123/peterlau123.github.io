@@ -1,30 +1,35 @@
 ---
-title: "Agent Harness Engineering"
-subtitle: ""
-layout: chirpy-post
-author: "Peter Lau"
+title: Agent Harness Engineering
+subtitle: ''
+layout: post
+author: peter_lau
 published: true
-header-style: text
 categories:
-  - AI
+- AI
 tags:
-  - AI
-  - Engineering
+- AI
+- Engineering
+toc: true
+mermaid: true
+date: 2026-04-15 00:00:00 +0800
 ---
 
+
+
+
 **本文总结自[learn-harness-engineering](https://github.com/walkinglabs/learn-harness-engineering)**
+
+🔥标记为重点章节
 
 🙋‍♂️为个人理解部分
 
 # 模型能力强不等于执行可靠
 
-Anthropic 做过一个对照实验。同一个 prompt（"做一个 2D 复古游戏编辑器"），同一个模型（Opus 4.5）。第一次让它裸跑——20 分钟，花了 $9，游戏核心功能根本跑不起来。第二次给它配上完整的 harness（planner + generator + evaluator 三 agent 架构）——6 小时，花了 $200，游戏可以正常游玩。
+Anthropic 做过一个对照实验。同一个 prompt（"做一个 2D 复古游戏编辑器"），同一个模型（Opus 4.5）。第一次让它裸跑20分钟，花了9美元，游戏核心功能根本跑不起来。第二次给它配上完整的harness(planner + generator + evaluator)，6 小时，花了200美元，游戏可以正常游玩。
 
 模型没换。Opus 4.5 还是那个 Opus 4.5。换的是马鞍。
 
 OpenAI 在 2025 年发布的 harness engineering 文章里说得更直白：Codex 在一个 harness 搭得好的仓库里，表现能从"不可靠"变成"可靠"。注意他们的用词——不是"好了一点"，是质变。就像一匹千里马，没马鞍你也能骑，但骑不了多远、跑不了多快、摔下来也不稀奇。harness 就是那个马鞍——**模型权重之外的一切工程基础设施**。
-
-
 
 核心原则：**遇到失败，先别换模型，先检查 harness。** 如果同一个模型在类似的结构良好的任务中能成功，那优先假设是 harness 的问题。这就像汽车抛锚——你不会第一时间怀疑是发动机坏了，你会先看看是不是没油了。
 
@@ -34,7 +39,7 @@ OpenAI 在 2025 年发布的 harness engineering 文章里说得更直白：Code
 
 **给每个任务写显式的完成定义。** 不要说"加个搜索功能"，要说：
 
-```
+```markdown
 完成标准：
 - 新增 GET /api/search?q=xxx 端点
 - 支持分页，默认 20 条
@@ -49,25 +54,21 @@ OpenAI 在 2025 年发布的 harness engineering 文章里说得更直白：Code
 
 **量化改进。** 记个简单的日志：每个任务成功了没有，失败了是哪一层的问题。跑几轮之后你就能看出来哪个层是瓶颈，集中火力修那个层。
 
-
-
-# 什么是Harness
+# 🔥什么是Harness
 
 模型权重之外的一切基础设施
 
 ```mermaid
 flowchart LR
-    Rules["项目规则<br/>AGENTS.md / CLAUDE.md"] --> Agent["AI Agent"]
-    State["进度和 git<br/>PROGRESS.md / commits"] --> Agent
-    Agent --> Tools["工具<br/>shell / 文件 / 测试"]
-    Tools --> Env["运行环境<br/>依赖 / 服务 / 版本"]
-    Env --> Checks["检查结果<br/>test / lint / build"]
+    Rules["项目规则"] --> Agent["AI Agent"]
+    State["进度和 Git"] --> Agent
+    Agent --> Tools["工具系统"]
+    Tools --> Env["运行环境"]
+    Env --> Checks["检查结果"]
     Checks --> Agent
 ```
 
 Harness不是简单的prompt文件，它由五大部分组成，如上图所示。
-
-
 
 **指令子系统（菜谱架）**：创建 `AGENTS.md`（或 `CLAUDE.md`），内容包括项目概览和目的（一句话说清楚这是什么）、技术栈和版本（Python 3.11、FastAPI 0.100+、PostgreSQL 15）、首次运行命令（`make setup`、`make test`）、不可违反的硬约束（"所有 API 必须走 OAuth 2.0"）、指向更详细文档的链接。
 
@@ -89,15 +90,11 @@ Harness不是简单的prompt文件，它由五大部分组成，如上图所示�
 - 完整验证：make check（包含以上全部）
 ```
 
-
-
-# 把你的仓库变为唯一的信息源头
+# 🔥把你的仓库变为唯一的信息源头
 
 > OpenAI states this bluntly: **information that doesn't exist in the repo, doesn't exist for the agent.** They call this the "repo as spec" principle — the repository itself is the highest-authority specification document.
 
 按照OpenAI的说法，你的仓库要包含Agent需要的所有信息，没有额外的必需信息散落在仓库以外。参考下图
-
-
 
 ```mermaid
 flowchart LR
@@ -109,8 +106,6 @@ flowchart LR
     Repo --> Agent["新的 agent 会话<br/>直接读仓库"]
     Warning["规则不写进仓库<br/>agent 就看不见"] --> Agent
 ```
-
-
 
 🙋‍♂️将仓库本身作为Agent的导航地图
 
@@ -133,8 +128,6 @@ flowchart TB
     A5 --> Ready
 ```
 
-
-
 遵循下叙4个准则：
 
 + 准则一：指示要在代码附近。
@@ -155,7 +148,7 @@ AGENTS.md（或者CLAUDE.md）是agent的导引文档。它不必包含所有的
 
 根据上述规则，好的仓库目录结构大致如下
 
-```
+```markdown
 project/
 ├── AGENTS.md              # 入口：项目概览、运行命令、硬约束
 ├── src/
@@ -169,8 +162,6 @@ project/
 ├── PROGRESS.md             # 当前进度：做了什么、在做什么、被什么阻塞
 └── Makefile                # 标准化的操作命令：setup、test、lint、check
 ```
-
-
 
 ## Agent state管理原则
 
@@ -192,9 +183,7 @@ Agent每次操作后都可以进行验证，中间状态不会被提交。
 
 关键的仓库知识如AGENTS.md必须要提交，临时的Agent状态信息可以存在会话存储区，但是跨会话的知识必须持久化至本地文件中。
 
-
-
-# 如何应对爆炸增长的Agent instruction
+# 🔥如何应对爆炸增长的Agent instruction
 
 ## 问题背景
 
@@ -216,13 +205,11 @@ flowchart TB
     Mid --> Missed["高概率被稀释或忽略"]
 ```
 
-
-
 另外，指令文件中的规则优先级是不一样的，如果一股脑都放在里面，不分顺序。Agent可能自身是无法分清楚相对优先级，这样在遵循指令的时候，可能不会那么准确。如同软件开发中的技术债一样，指令文件中不断增长的指令维护成本也会上升，久远的指令有时可能很难说清楚清理掉会带来什么影响，也可能使得前后增加的指令约束存在南辕北辙的情况。
 
 ## 如何解决
 
-```markdown
+```text
 # AGENTS.md
 
 ## Project Overview
@@ -243,8 +230,6 @@ Python 3.11 FastAPI backend, PostgreSQL 15 database.
 - [Database Rules](docs/database-rules.md) — Required when modifying database operations
 - [Testing Standards](docs/testing-standards.md) — Reference when writing tests
 ```
-
-
 
 参考上图，将指令文件进行拆分。经常使用和必备的指令如**Quick Start**和**Hard Constraints**放在开头，专项的指令按照**Topic Docs**组织，由Agent来进行按需加载。文件中间尽量避免存放过多指令约束。OpenAI认为指引文件应该**short and routing-oriented**。
 
@@ -274,7 +259,7 @@ flowchart LR
 
 第一个工具是定期记录PROGRESS.md，参考例子如下
 
-```markdown
+```text
 # Project Progress
 
 ## Current State
@@ -302,7 +287,7 @@ flowchart LR
 
 第二个工具是DECISION.md，参考例子如下
 
-```markdown
+```text
 # Design Decisions
 
 ## 2024-01-15: Use Redis for user preferences caching
@@ -370,7 +355,7 @@ Anthropic的长运行应用开发研究数据表明：在多轮会话中，细�
 
 **契约文件**
 
-```markdown
+```text
 # Initialization Contract
 
 ## Start Commands
@@ -394,7 +379,7 @@ Anthropic的长运行应用开发研究数据表明：在多轮会话中，细�
 
 **任务拆解**
 
-```
+```text
 # Task Breakdown
 
 ## Task 1: User Authentication Basics
@@ -417,11 +402,7 @@ Anthropic的长运行应用开发研究数据表明：在多轮会话中，细�
 
 ---
 
-
-
 当然为了避免冗长繁复的初始化工作，可以直接使用一些通用的项目模板如 Python/C++ 项目模板（参考 [rochacbruno/python-project-template](https://github.com/rochacbruno/python-project-template)），只需要再添加项目相关的文件。
-
-
 
 可根据如下检查清单确认初始化完成
 
@@ -546,8 +527,6 @@ flowchart LR
     Passing --> Handoff["更新交接说明<br/>和当前进度"]
     Active --> Agent
 ```
-
-
 
 具体实施策略如下：
 
@@ -697,8 +676,6 @@ OpenAI 的经验：**对 agent 生成的代码库，架构约束必须是第一�
 grep -r "require('fs')" src/renderer/ && exit 1 || echo "OK: no direct fs access in renderer"
 ```
 
-
-
 **设计面向 agent 的错误消息**
 
 失败信息要包含三要素：什么出了问题、为什么、怎么修：
@@ -726,8 +703,6 @@ FIX: Move file operations to src/preload/file-ops.ts and call via window.api.rea
 **重试变成盲猜**：agent 不知道为什么失败时，重试方向是随机的。它可能在错误的方向上反复尝试——修复了不相关的代码路径而忽略真正的故障根源。就像你开车发现车跑偏了，但你没有仪表盘——你猜是轮胎的问题换了轮胎，实际是方向盘的 alignment 出了问题。每次盲重试都消耗 token 和时间。
 
 **会话交接信息断崖**：当未完成的工作移交给下一个会话时，缺乏可观测性意味着新会话必须从零诊断系统状态。Anthropic 的长期运行 agent 观察表明，这种重复诊断可能占会话总时间的 30-50%。就像换班司机上车发现没有交接记录——他得花半小时检查油量、胎压、发动机状态才能出发。
-
-
 
 想象一个使用"计划者-生成者-评估者"三角色工作流的 harness，执行"为应用添加暗色模式"任务。
 
@@ -840,8 +815,6 @@ QA 第 1 轮反馈的示例——"这是一个视觉上令人印象深刻的应�
 
 Evaluator 不是一开始就这么强。早期版本会识别出合理的问题，然后说服自己这些问题不严重，最终批准工作。调校方式是：读 evaluator 的日志，找到它的判断和人类判断分叉的地方，更新 QA 的 prompt 解决那些问题。经过几轮这种开发循环，evaluator 的评分才变得合理。就像训练一个新验收工程师——一开始他太宽容，出了几次事故后学会了严格。
 
-
-
 # 每次会话结束前都做好交接
 
 ## 问题背景
@@ -850,11 +823,7 @@ Evaluator 不是一开始就这么强。早期版本会识别出合理的问题�
 
 OpenAI 和 Anthropic 都明确指出：**长期可靠性取决于操作纪律，不仅是单次运行的成功。** 每个会话结束时的状态质量，直接决定下一个会话的效率。
 
-
-
 Lehman 的软件演化定律告诉我们：持续变更的系统，除非主动管理，否则复杂性必然增加。这对 AI 编码 agent 尤其成立——agent 每次会话都会引入变更，如果不在退出时清理，技术债务会指数级累积。宿舍不打扫，脏衣服和外卖盒只会越堆越多，不会自己消失。
-
-
 
 糟糕的交接流程如下
 
@@ -914,7 +883,7 @@ flowchart LR
 
 质量文档是对每个模块持续评分的活跃工件——就像宿舍的卫生检查评分表：
 
-```markdown
+```text
 # 质量文档
 
 ## 用户认证模块 (质量: A)

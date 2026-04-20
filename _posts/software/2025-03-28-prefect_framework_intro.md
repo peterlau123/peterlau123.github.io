@@ -1,17 +1,21 @@
 ---
-title: "Prefect intro"
-subtitle: "Python workflow"
-layout: chirpy-post
-author: "Peter Lau"
+title: Prefect intro
+subtitle: Python workflow
+layout: post
+author: peter_lau
 published: true
-header-style: text
 categories:
-  - Software
+- Software
 tags:
-  - Computer science
-  - Software
-  - Python
+- Computer science
+- Software
+- Python
+toc: true
+description: Python workflow
+date: 2025-03-28 00:00:00 +0800
 ---
+
+
 
 <div>
   <img class="prefect logo" src="/img/prefect/prefect_logo.png" width="500" height="300" alt="Prefect">

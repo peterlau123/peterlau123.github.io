@@ -1,15 +1,19 @@
 ---
-title: "问题解决风格"
-subtitle: "如何成为技术领导者"
-layout: chirpy-post
-author: "Peter Lau"
+title: 问题解决风格
+subtitle: 如何成为技术领导者
+layout: post
+author: peter_lau
 published: true
-header-style: text
 categories:
-  - Growth
+- Growth
 tags:
-  - Growth
+- Growth
+toc: true
+description: 如何成为技术领导者
+date: 2024-11-03 00:00:00 +0800
 ---
+
+
 
 
 本周读了《如何成为技术领导者》第三章，该章描述了问题解决风格（Problem-solving style）的具体表现是怎样的，作者基于MOI模型来论述并举例说明。作为IT从业者，看完后并结合过往职业经历，受到了不少启发。开篇作者引用了《爱丽丝漫游奇境》中爱丽丝与猫的一番对话。
