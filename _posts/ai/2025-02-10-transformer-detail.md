@@ -12,6 +12,7 @@ tags:
 - Transformers
 toc: true
 description: Mathmatical formula derivation
+date: 2025-02-10 00:00:00 +0800
 ---
 
 

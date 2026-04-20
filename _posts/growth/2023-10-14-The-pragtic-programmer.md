@@ -1,7 +1,7 @@
 ---
 title: 务实的哲学
 subtitle: 程序员修炼之道
-layout: chirpy-post
+layout: post
 author: peter_lau
 published: true
 categories:
@@ -11,6 +11,7 @@ tags:
 - Growth
 toc: true
 description: 程序员修炼之道
+date: 2023-10-14 00:00:00 +0800
 ---
 
 

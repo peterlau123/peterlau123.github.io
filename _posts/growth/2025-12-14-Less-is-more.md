@@ -1,7 +1,7 @@
 ---
 title: 少即是多
 subtitle: 从包豪斯风格想到的
-layout: chirpy-post
+layout: post
 author: peter_lau
 published: true
 categories:
@@ -10,6 +10,7 @@ tags:
 - Growth
 toc: true
 description: 从包豪斯风格想到的
+date: 2025-12-14 00:00:00 +0800
 ---
 
 

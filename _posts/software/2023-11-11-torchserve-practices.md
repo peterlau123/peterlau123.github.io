@@ -1,7 +1,7 @@
 ---
 title: torchserve模型服务
 subtitle: optmization strategies
-layout: chirpy-post
+layout: post
 author: peter_lau
 published: true
 categories:
@@ -12,6 +12,7 @@ tags:
 - Pytorch
 toc: true
 description: optmization strategies
+date: 2023-11-11 00:00:00 +0800
 ---
 
 

@@ -1,7 +1,7 @@
 ---
 title: Error handling
 subtitle: simdJson
-layout: chirpy-post
+layout: post
 author: peter_lau
 published: true
 categories:
@@ -13,6 +13,7 @@ tags:
 toc: true
 description: simdJson
 mermaid: true
+date: 2023-09-22 00:00:00 +0800
 ---
 
 

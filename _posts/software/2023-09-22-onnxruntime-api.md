@@ -1,7 +1,7 @@
 ---
 title: ONNXRuntime API
 subtitle: APi设计方法
-layout: chirpy-post
+layout: post
 author: peter_lau
 published: true
 categories:
@@ -11,6 +11,7 @@ tags:
 - Deep Learning
 toc: true
 description: APi设计方法
+date: 2023-09-22 00:00:00 +0800
 ---
 
 

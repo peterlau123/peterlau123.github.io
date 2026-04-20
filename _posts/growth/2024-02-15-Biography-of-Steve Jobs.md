@@ -1,7 +1,7 @@
 ---
 title: 史蒂夫.乔布斯传
 subtitle: 读书笔记
-layout: chirpy-post
+layout: post
 author: peter_lau
 published: true
 categories:
@@ -10,6 +10,7 @@ tags:
 - Growth
 toc: true
 description: 读书笔记
+date: 2024-02-15 00:00:00 +0800
 ---
 
 

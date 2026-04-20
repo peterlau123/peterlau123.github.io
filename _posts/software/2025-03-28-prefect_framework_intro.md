@@ -1,7 +1,7 @@
 ---
 title: Prefect intro
 subtitle: Python workflow
-layout: chirpy-post
+layout: post
 author: peter_lau
 published: true
 categories:
@@ -12,6 +12,7 @@ tags:
 - Python
 toc: true
 description: Python workflow
+date: 2025-03-28 00:00:00 +0800
 ---
 
 

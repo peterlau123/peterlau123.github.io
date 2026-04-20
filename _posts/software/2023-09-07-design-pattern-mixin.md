@@ -1,7 +1,7 @@
 ---
 title: Design Pattern
 subtitle: Mixin
-layout: chirpy-post
+layout: post
 author: peter_lau
 published: true
 categories:
@@ -11,6 +11,7 @@ tags:
 - Design Patterns
 toc: true
 description: Mixin
+date: 2023-09-07 00:00:00 +0800
 ---
 
 
