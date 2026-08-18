@@ -1,6 +1,7 @@
 ---
 title: "Bifrost：一个借鉴 Agent 思想的任务执行框架"
 date: 2026-08-05
+layout: post
 categories:
   - System Design
   - Agent
@@ -9,6 +10,8 @@ tags:
   - Agent
   - Architecture
   - Bifrost
+mermaid: true
+toc: true
 ---
 
 假设你手头有两台机器A和B，A可以连接外网，B无法连接外网。用户可以登陆A和B机器，A与B仅共享存储却无法直接建立网络连接，如果此时要在B机器上跑一些程序，你该怎么办？
@@ -182,29 +185,22 @@ impl Executor {
 
 ### 并发执行流程
 
-```
-                ┌─────────────────┐
-                │   inotify 监听   │
-                │  commands/ 目录  │
-                └────────┬────────┘
-                         │ 新文件事件
-                         ▼
-                ┌─────────────────┐
-                │   读取 Task JSON │
-                └────────┬────────┘
-                         │
-                         ▼
-            ┌────────────────────────┐
-            │  tokio::spawn(async {  │
-            │    executor.execute()  │
-            │  })                    │
-            └────────────┬───────────┘
-                         │ 并发执行 (max_concurrent)
-                         ▼
-                ┌─────────────────┐
-                │ 写入 Result JSON │
-                │  results/ 目录   │
-                └─────────────────┘
+```mermaid
+flowchart TD
+    subgraph Watch["监听层"]
+        W1["inotify 监听<br/>commands/ 目录"] -->|"新文件事件"| W2["读取 Task JSON"]
+    end
+
+    subgraph Exec["并发执行层"]
+        W2 -->|"tokio::spawn"| E1["executor.execute()"]
+        E1 -->|"并发执行<br/>max_concurrent = 10"| E2["子任务互不阻塞"]
+    end
+
+    subgraph Result["结果回写层"]
+        E2 --> R1["写入 Result JSON<br/>results/ 目录"]
+    end
+
+    W1 -.->|"fallback: 100ms 轮询"| W2
 ```
 
 inotify 实时感知新任务（fallback 100ms 轮询兜底），每个任务通过 `tokio::spawn` 异步执行，互不阻塞。
@@ -235,18 +231,18 @@ pub trait Bridge: Send + Sync {
 | `NetworkBridge` *(规划中)* | SSH / gRPC | 在线机器 |
 
 ```mermaid
-graph LR
-    A[Client] --> B[Bridge Trait]
-    B --> C[SharedStorageBridge]
-    B --> D[NetworkBridge]
-    
-    C --> E[GPFS 共享存储]
-    C --> F[NFS 挂载]
-    
-    D --> G[SSH 连接]
-    D --> H[gRPC 通道]
-    
-    E --> I[Daemon]
+flowchart LR
+    A["Client"] --> B["Bridge Trait"]
+    B --> C["SharedStorageBridge"]
+    B --> D["NetworkBridge"]
+
+    C --> E["GPFS 共享存储"]
+    C --> F["NFS 挂载"]
+
+    D --> G["SSH 连接"]
+    D --> H["gRPC 通道"]
+
+    E --> I["Daemon"]
     F --> I
     G --> I
     H --> I
