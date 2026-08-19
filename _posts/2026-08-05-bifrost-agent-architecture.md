@@ -73,9 +73,11 @@ flowchart LR
     S1 -->|"轮询"| C1
     S1 -->|"轮询"| C2
     
-    C1 -.->|"未来"| S2
-    S2 -.->|"未来"| D1
+    C1 -.-> S2
+    S2 -.-> D1
 ```
+
+> **未来规划**：虚线表示尚未实现的通信路径。当前仅 SharedStorageBridge 落地，NetworkBridge（SSH/gRPC）为下一步方向。
 
 | 角色 | Agent 架构 | Bifrost 架构 |
 |------|-----------|--------------|
