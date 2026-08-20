@@ -23,7 +23,9 @@ toc: true
 
 此种情景下，我想到了第三种做法：开发桥接工具，打通A和B，在A上发出程序运行命令，在B上解析这些命令执行并返回结果。这种做法既可以稳定运行，也能解决运行时的资源依赖问题，唯一的缺点是需要开发新工具。我将这个工具命名为Bifrost，寓意连通之意。
 
-开发 [Bifrost](https://github.com/peterlau123/Bifrost) 时，我意识到它的设计哲学和 Agent 架构惊人地相似——**决策者与执行者的分离**。
+[Bifrost](https://github.com/peterlau123/Bifrost)使用Rust进行开发，编译后可以在任何支持Rust的平台上运行。
+
+开发**Bifrost**时，我意识到它的设计哲学和 Agent 架构惊人地相似——**决策者与执行者的分离**。
 
 ## Agent 架构的核心模式
 
@@ -89,7 +91,7 @@ flowchart LR
 
 ## 为什么选择 Rust
 
-- **无运行时依赖**：单一二进制，部署到离线机器无需安装任何环境
+- **无运行时依赖**：单一二进制，部署到离线机器无需安装任何环境依赖
 - **性能与安全兼顾**：tokio 异步运行时，零成本抽象；所有权系统避免内存问题
 - **适合常驻进程**：内存占用稳定，长时间运行无 GC 停顿
 
@@ -276,3 +278,8 @@ Bifrost 借鉴了 Agent 架构的核心思想——**决策者与执行者分离
 1. **异步**：提交即返回，不阻塞决策者
 2. **解耦**：双方独立演进，通过通道通信
 3. **可观测**：任务状态、日志、产物全程可追溯
+
+## 参考资料
+
+1. [Bifrost - Offline Machine Command Execution Framework](https://github.com/peterlau123/bifrost)
+2. [Pi-to-Pi](https://www.youtube.com/watch?v=PIdETjcXNIk)
