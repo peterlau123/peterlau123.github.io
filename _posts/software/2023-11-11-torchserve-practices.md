@@ -7,9 +7,10 @@ published: true
 categories:
 - Software
 tags:
+- Software
 - Computer science
 - Deep Learning
-- Pytorch
+- PyTorch
 toc: true
 description: optmization strategies
 date: 2023-11-11 00:00:00 +0800
