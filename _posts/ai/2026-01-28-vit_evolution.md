@@ -6,7 +6,7 @@ author: peter_lau
 published: true
 tags:
 - Computer science
-- LLM
+- AI
 - DeepSeek
 toc: true
 categories:

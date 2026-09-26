@@ -8,7 +8,7 @@ categories:
 - AI
 tags:
 - Computer science
-- LLM
+- AI
 - Transformers
 toc: true
 description: Mathmatical formula derivation

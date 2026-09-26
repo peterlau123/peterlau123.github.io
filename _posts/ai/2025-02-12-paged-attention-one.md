@@ -8,7 +8,7 @@ categories:
 - AI
 tags:
 - Computer science
-- LLM
+- AI
 - Transformers
 - vLLM
 toc: true
