@@ -4,9 +4,9 @@ subtitle: What, Why, When, How
 date: 2026-08-25
 layout: post
 categories:
-  - System Design
-  - Agent
+  - Software
 tags:
+  - Software
   - Agent
 mermaid: true
 toc: true

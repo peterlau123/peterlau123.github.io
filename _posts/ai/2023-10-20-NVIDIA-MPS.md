@@ -7,9 +7,10 @@ published: true
 categories:
 - AI
 tags:
+- AI
 - Computer science
 - HPC
-- Nvidia
+- NVIDIA
 toc: true
 description: usage and internals
 date: 2023-10-20 00:00:00 +0800

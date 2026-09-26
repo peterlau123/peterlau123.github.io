@@ -3,9 +3,9 @@ title: "Bifrost：一个借鉴 Agent 思想的任务执行框架"
 date: 2026-08-05
 layout: post
 categories:
-  - System Design
-  - Agent
+  - Software
 tags:
+  - Software
   - Rust
   - Agent
   - Architecture

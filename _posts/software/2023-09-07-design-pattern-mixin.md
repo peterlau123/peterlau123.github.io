@@ -7,6 +7,7 @@ published: true
 categories:
 - Software
 tags:
+- Software
 - Computer science
 - Design Patterns
 toc: true
