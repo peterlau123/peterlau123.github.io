@@ -1,1 +1,0 @@
-OK: no missing local image references found in _posts\n
