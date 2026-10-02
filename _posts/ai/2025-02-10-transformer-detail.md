@@ -1,6 +1,6 @@
 ---
-title: The transformer's details
-subtitle: Mathmatical formula derivation
+title: transformer的细节
+subtitle: 沿着数学公式观察
 layout: post
 author: peter_lau
 published: true
